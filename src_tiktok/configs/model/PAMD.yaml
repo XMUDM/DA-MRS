@@ -1,0 +1,23 @@
+# embedding_size: 64
+# reg_weight: [2.0, 1.0, 1e-01, 1e-02, 1e-03, 1e-04, 1e-05]
+# hyper_parameters: ["reg_weight"]
+
+
+embedding_size: 64
+reg_weight: [0.1] # , 1e-1, 0] # [2.0, 1.0, 1e-01, 1e-02] # , 1e-03, 1e-04, 1e-05]
+pre_l_r: [1e-4] # ,1e-4
+weight_decay: 1e-5
+
+pre_num_epoch: 500
+temperature: [0.5]
+dropratio: [0.5]
+
+
+pretrain_batch_size: 256
+img_dim: 4096
+txt_dim: 384
+pre_emb_dim: 64
+
+pretrain_hyper_parameters: ["pre_l_r", "temperature", "dropratio"]
+
+hyper_parameters: ["reg_weight"]

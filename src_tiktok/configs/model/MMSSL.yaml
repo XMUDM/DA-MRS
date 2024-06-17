@@ -1,0 +1,29 @@
+emb_dim: 64
+weight_size: [64,64]
+
+feat_reg_decay: 1e-5
+
+#GNN
+drop_rate: [0.2, 0.4]
+head_num: 4
+model_cat_rate: 0.55
+id_cat_rate: 0.36
+
+#GAN
+G_rate: 0.00001
+G_drop1: 0.31
+G_drop2: 0.5
+real_data_tau: 0.005
+ui_pre_scale: 100
+gp_rate: 1
+
+#cl
+log_log_scale: 0.00001
+tau: 0.5
+cl_rate: [0.03] # [0.01, 0.1, 1] #0.03
+g_lr: 0.00055
+d_lr: 3e-4
+weight_decay: [1e-5] # , 1.2e-2, 1e-3] #1e-5
+layer: [2, 3, 4] # [1, 2, 3, 4]
+
+hyper_parameters: ["drop_rate","cl_rate", "weight_decay","layer"]

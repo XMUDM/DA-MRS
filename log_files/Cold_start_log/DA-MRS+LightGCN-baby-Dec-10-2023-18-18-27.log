@@ -1,0 +1,1277 @@
+Sun 10 Dec 2023 18:18:27 INFO ██Server: 	psdz
+
+Sun 10 Dec 2023 18:18:27 INFO 
+gpu_id=5
+use_gpu=True
+seed=[999]
+data_path=../data/
+inter_splitting_label=x_label
+filter_out_cod_start_users=True
+is_multimodal_model=True
+checkpoint_dir=saved
+save_recommended_topk=True
+recommend_topk=recommend_topk/
+embedding_size=64
+weight_decay=0.0
+req_training=True
+epochs=500
+stopping_step=25
+train_batch_size=4096
+learner=adam
+learning_rate=[0.001]
+learning_rate_scheduler=[1.0, 50]
+eval_step=1
+training_neg_sample_num=1
+use_neg_sampling=True
+use_full_sampling=False
+NEG_PREFIX=neg__
+USER_ID_FIELD=userID
+ITEM_ID_FIELD=itemID
+TIME_FIELD=timestamp
+field_separator=	
+metrics=['Recall', 'NDCG', 'Precision', 'MAP']
+topk=[5, 10, 20, 50]
+valid_metric=Recall@20
+eval_batch_size=4096
+use_raw_features=False
+max_txt_len=32
+max_img_size=256
+vocab_size=30522
+type_vocab_size=2
+hidden_size=4
+pad_token_id=0
+max_position_embeddings=512
+layer_norm_eps=1e-12
+hidden_dropout_prob=0.1
+end2end=False
+hyper_parameters=['n_ui_layers', 'neighbor_weight', 'kl_weight', 'n_mm_layers', 'learning_rate', 'seed']
+inter_file_name=baby.inter
+vision_feature_file=image_feat.npy
+text_feature_file=text_feat.npy
+user_graph_dict_file=user_graph_dict.npy
+item_graph_dict_file=item_graph_dict2.npy
+feat_embed_dim=64
+weight_size=[64, 64]
+lambda_coeff=0.9
+kl_weight=[1]
+neighbor_weight=[0.001]
+n_mm_layers=[1]
+n_ui_layers=[2]
+knn_k=10
+model=LightGCN
+dataset=baby
+valid_metric_bigger=True
+device=cuda
+
+
+Sun 10 Dec 2023 18:18:28 INFO baby
+The number of users: 19445
+Average actions of users: 8.269066598097197
+The number of items: 7050
+Average actions of items: 22.807375886524824
+The number of inters: 160792
+The sparsity of the dataset: 99.8827082752043%
+Sun 10 Dec 2023 18:18:28 INFO 
+====Training====
+baby
+The number of users: 19445
+Average actions of users: 6.096734379017742
+The number of items: 7047
+Average actions of items: 16.82290336313325
+The number of inters: 118551
+The sparsity of the dataset: 99.9134846831415%
+Sun 10 Dec 2023 18:18:28 INFO 
+====Validation====
+baby
+The number of users: 19445
+Average actions of users: 1.0572897917202366
+The number of items: 5483
+Average actions of items: 3.749589640707642
+The number of inters: 20559
+The sparsity of the dataset: 99.98071694707788%
+Sun 10 Dec 2023 18:18:28 INFO 
+====Testing====
+baby
+The number of users: 19445
+Average actions of users: 1.1150424273592183
+The number of items: 5549
+Average actions of items: 3.907370697422959
+The number of inters: 21682
+The sparsity of the dataset: 99.97990552482683%
+Sun 10 Dec 2023 18:18:28 INFO 
+====top_u====
+baby
+The number of users: 27
+Average actions of users: 7.0
+The number of items: 178
+Average actions of items: 1.0617977528089888
+The number of inters: 189
+The sparsity of the dataset: 96.06741573033707%
+Sun 10 Dec 2023 18:18:28 INFO 
+====top_u====
+baby
+The number of users: 15063
+Average actions of users: 1.0
+The number of items: 4853
+Average actions of items: 3.103853286626829
+The number of inters: 15063
+The sparsity of the dataset: 99.97939418916134%
+Sun 10 Dec 2023 18:18:41 INFO 
+
+=================================
+
+
+Sun 10 Dec 2023 18:18:41 INFO =========1/1: Parameters:['n_ui_layers', 'neighbor_weight', 'kl_weight', 'n_mm_layers', 'learning_rate', 'seed']=(2, 0.001, 1, 1, 0.001, 999)=======
+Sun 10 Dec 2023 18:18:48 INFO LightGCN(
+  (user_embedding): Embedding(19445, 64)
+  (item_id_embedding): Embedding(7050, 64)
+  (image_embedding): Embedding(7050, 4096)
+  (image_trs): Linear(in_features=4096, out_features=64, bias=True)
+  (text_embedding): Embedding(7050, 384)
+  (text_trs): Linear(in_features=384, out_features=64, bias=True)
+)
+Trainable parameters: 33566528
+Sun 10 Dec 2023 18:18:53 INFO epoch 0 training [time: 3.91s, train loss: 7.2204]
+Sun 10 Dec 2023 18:19:14 INFO epoch 0 evaluating [time: 8.67s, valid_score: 0.031500]
+Sun 10 Dec 2023 18:19:14 INFO valid result: 
+recall@5: 0.0140    recall@10: 0.0213    recall@20: 0.0315    recall@50: 0.0545    ndcg@5: 0.0096    ndcg@10: 0.0119    ndcg@20: 0.0145    ndcg@50: 0.0191    precision@5: 0.0030    precision@10: 0.0023    precision@20: 0.0017    precision@50: 0.0012    map@5: 0.0079    map@10: 0.0089    map@20: 0.0096    map@50: 0.0103    
+Sun 10 Dec 2023 18:19:14 INFO topu result: 
+recall@5: 0.0198    recall@10: 0.0397    recall@20: 0.0511    recall@50: 0.1210    ndcg@5: 0.0330    ndcg@10: 0.0376    ndcg@20: 0.0424    ndcg@50: 0.0681    precision@5: 0.0296    precision@10: 0.0296    precision@20: 0.0185    precision@50: 0.0170    map@5: 0.0160    map@10: 0.0129    map@20: 0.0139    map@50: 0.0175    
+Sun 10 Dec 2023 18:19:14 INFO bottomu result: 
+recall@5: 0.0123    recall@10: 0.0189    recall@20: 0.0304    recall@50: 0.0543    ndcg@5: 0.0080    ndcg@10: 0.0101    ndcg@20: 0.0130    ndcg@50: 0.0177    precision@5: 0.0025    precision@10: 0.0019    precision@20: 0.0015    precision@50: 0.0011    map@5: 0.0066    map@10: 0.0075    map@20: 0.0083    map@50: 0.0090    
+Sun 10 Dec 2023 18:19:14 INFO ██ LightGCN--Best validation results updated!!!
+Sun 10 Dec 2023 18:19:17 INFO epoch 1 training [time: 3.31s, train loss: 7.2581]
+Sun 10 Dec 2023 18:19:36 INFO epoch 1 evaluating [time: 8.54s, valid_score: 0.066600]
+Sun 10 Dec 2023 18:19:36 INFO valid result: 
+recall@5: 0.0267    recall@10: 0.0426    recall@20: 0.0666    recall@50: 0.1140    ndcg@5: 0.0178    ndcg@10: 0.0229    ndcg@20: 0.0290    ndcg@50: 0.0385    precision@5: 0.0056    precision@10: 0.0045    precision@20: 0.0035    precision@50: 0.0024    map@5: 0.0146    map@10: 0.0167    map@20: 0.0183    map@50: 0.0198    
+Sun 10 Dec 2023 18:19:36 INFO topu result: 
+recall@5: 0.0322    recall@10: 0.0593    recall@20: 0.0782    recall@50: 0.1788    ndcg@5: 0.0403    ndcg@10: 0.0477    ndcg@20: 0.0559    ndcg@50: 0.0943    precision@5: 0.0444    precision@10: 0.0370    precision@20: 0.0241    precision@50: 0.0237    map@5: 0.0169    map@10: 0.0154    map@20: 0.0170    map@50: 0.0227    
+Sun 10 Dec 2023 18:19:36 INFO bottomu result: 
+recall@5: 0.0264    recall@10: 0.0423    recall@20: 0.0675    recall@50: 0.1138    ndcg@5: 0.0175    ndcg@10: 0.0226    ndcg@20: 0.0290    ndcg@50: 0.0381    precision@5: 0.0053    precision@10: 0.0042    precision@20: 0.0034    precision@50: 0.0023    map@5: 0.0146    map@10: 0.0167    map@20: 0.0184    map@50: 0.0199    
+Sun 10 Dec 2023 18:19:36 INFO ██ LightGCN--Best validation results updated!!!
+Sun 10 Dec 2023 18:19:39 INFO epoch 2 training [time: 3.51s, train loss: 7.3026]
+Sun 10 Dec 2023 18:20:04 INFO epoch 2 evaluating [time: 9.11s, valid_score: 0.076700]
+Sun 10 Dec 2023 18:20:04 INFO valid result: 
+recall@5: 0.0297    recall@10: 0.0482    recall@20: 0.0767    recall@50: 0.1335    ndcg@5: 0.0195    ndcg@10: 0.0255    ndcg@20: 0.0328    ndcg@50: 0.0441    precision@5: 0.0062    precision@10: 0.0051    precision@20: 0.0040    precision@50: 0.0028    map@5: 0.0160    map@10: 0.0183    map@20: 0.0203    map@50: 0.0221    
+Sun 10 Dec 2023 18:20:04 INFO topu result: 
+recall@5: 0.0272    recall@10: 0.0544    recall@20: 0.0918    recall@50: 0.2104    ndcg@5: 0.0340    ndcg@10: 0.0439    ndcg@20: 0.0623    ndcg@50: 0.1075    precision@5: 0.0370    precision@10: 0.0333    precision@20: 0.0296    precision@50: 0.0281    map@5: 0.0144    map@10: 0.0144    map@20: 0.0178    map@50: 0.0248    
+Sun 10 Dec 2023 18:20:04 INFO bottomu result: 
+recall@5: 0.0317    recall@10: 0.0497    recall@20: 0.0791    recall@50: 0.1346    ndcg@5: 0.0202    ndcg@10: 0.0260    ndcg@20: 0.0334    ndcg@50: 0.0443    precision@5: 0.0063    precision@10: 0.0050    precision@20: 0.0040    precision@50: 0.0027    map@5: 0.0165    map@10: 0.0189    map@20: 0.0209    map@50: 0.0226    
+Sun 10 Dec 2023 18:20:04 INFO ██ LightGCN--Best validation results updated!!!
+Sun 10 Dec 2023 18:20:07 INFO epoch 3 training [time: 3.37s, train loss: 7.2435]
+Sun 10 Dec 2023 18:20:26 INFO epoch 3 evaluating [time: 7.01s, valid_score: 0.072800]
+Sun 10 Dec 2023 18:20:26 INFO valid result: 
+recall@5: 0.0284    recall@10: 0.0453    recall@20: 0.0728    recall@50: 0.1306    ndcg@5: 0.0188    ndcg@10: 0.0243    ndcg@20: 0.0313    ndcg@50: 0.0429    precision@5: 0.0060    precision@10: 0.0048    precision@20: 0.0039    precision@50: 0.0028    map@5: 0.0154    map@10: 0.0176    map@20: 0.0195    map@50: 0.0213    
+Sun 10 Dec 2023 18:20:26 INFO topu result: 
+recall@5: 0.0272    recall@10: 0.0544    recall@20: 0.1194    recall@50: 0.2145    ndcg@5: 0.0340    ndcg@10: 0.0426    ndcg@20: 0.0721    ndcg@50: 0.1092    precision@5: 0.0370    precision@10: 0.0333    precision@20: 0.0370    precision@50: 0.0289    map@5: 0.0144    map@10: 0.0137    map@20: 0.0195    map@50: 0.0251    
+Sun 10 Dec 2023 18:20:26 INFO bottomu result: 
+recall@5: 0.0311    recall@10: 0.0483    recall@20: 0.0743    recall@50: 0.1310    ndcg@5: 0.0202    ndcg@10: 0.0257    ndcg@20: 0.0323    ndcg@50: 0.0435    precision@5: 0.0062    precision@10: 0.0048    precision@20: 0.0037    precision@50: 0.0026    map@5: 0.0166    map@10: 0.0189    map@20: 0.0206    map@50: 0.0224    
+Sun 10 Dec 2023 18:20:28 INFO epoch 4 training [time: 1.95s, train loss: 6.9647]
+Sun 10 Dec 2023 18:20:45 INFO epoch 4 evaluating [time: 6.30s, valid_score: 0.071600]
+Sun 10 Dec 2023 18:20:45 INFO valid result: 
+recall@5: 0.0282    recall@10: 0.0438    recall@20: 0.0716    recall@50: 0.1284    ndcg@5: 0.0188    ndcg@10: 0.0238    ndcg@20: 0.0309    ndcg@50: 0.0422    precision@5: 0.0060    precision@10: 0.0046    precision@20: 0.0038    precision@50: 0.0027    map@5: 0.0155    map@10: 0.0175    map@20: 0.0194    map@50: 0.0211    
+Sun 10 Dec 2023 18:20:45 INFO topu result: 
+recall@5: 0.0226    recall@10: 0.0532    recall@20: 0.0963    recall@50: 0.2116    ndcg@5: 0.0292    ndcg@10: 0.0415    ndcg@20: 0.0619    ndcg@50: 0.1061    precision@5: 0.0296    precision@10: 0.0333    precision@20: 0.0315    precision@50: 0.0289    map@5: 0.0130    map@10: 0.0138    map@20: 0.0170    map@50: 0.0238    
+Sun 10 Dec 2023 18:20:45 INFO bottomu result: 
+recall@5: 0.0302    recall@10: 0.0463    recall@20: 0.0730    recall@50: 0.1295    ndcg@5: 0.0197    ndcg@10: 0.0249    ndcg@20: 0.0316    ndcg@50: 0.0428    precision@5: 0.0060    precision@10: 0.0046    precision@20: 0.0036    precision@50: 0.0026    map@5: 0.0162    map@10: 0.0184    map@20: 0.0202    map@50: 0.0220    
+Sun 10 Dec 2023 18:20:47 INFO epoch 5 training [time: 1.91s, train loss: 6.5061]
+Sun 10 Dec 2023 18:21:07 INFO epoch 5 evaluating [time: 8.32s, valid_score: 0.070500]
+Sun 10 Dec 2023 18:21:07 INFO valid result: 
+recall@5: 0.0281    recall@10: 0.0433    recall@20: 0.0705    recall@50: 0.1268    ndcg@5: 0.0187    ndcg@10: 0.0237    ndcg@20: 0.0306    ndcg@50: 0.0419    precision@5: 0.0059    precision@10: 0.0046    precision@20: 0.0037    precision@50: 0.0027    map@5: 0.0154    map@10: 0.0174    map@20: 0.0193    map@50: 0.0211    
+Sun 10 Dec 2023 18:21:07 INFO topu result: 
+recall@5: 0.0226    recall@10: 0.0470    recall@20: 0.0975    recall@50: 0.2075    ndcg@5: 0.0292    ndcg@10: 0.0388    ndcg@20: 0.0632    ndcg@50: 0.1044    precision@5: 0.0296    precision@10: 0.0296    precision@20: 0.0315    precision@50: 0.0281    map@5: 0.0130    map@10: 0.0129    map@20: 0.0174    map@50: 0.0235    
+Sun 10 Dec 2023 18:21:07 INFO bottomu result: 
+recall@5: 0.0297    recall@10: 0.0456    recall@20: 0.0732    recall@50: 0.1283    ndcg@5: 0.0195    ndcg@10: 0.0246    ndcg@20: 0.0315    ndcg@50: 0.0424    precision@5: 0.0059    precision@10: 0.0046    precision@20: 0.0037    precision@50: 0.0026    map@5: 0.0161    map@10: 0.0182    map@20: 0.0201    map@50: 0.0218    
+Sun 10 Dec 2023 18:21:10 INFO epoch 6 training [time: 2.75s, train loss: 6.0332]
+Sun 10 Dec 2023 18:21:31 INFO epoch 6 evaluating [time: 8.88s, valid_score: 0.070500]
+Sun 10 Dec 2023 18:21:31 INFO valid result: 
+recall@5: 0.0279    recall@10: 0.0440    recall@20: 0.0705    recall@50: 0.1278    ndcg@5: 0.0187    ndcg@10: 0.0239    ndcg@20: 0.0306    ndcg@50: 0.0421    precision@5: 0.0059    precision@10: 0.0046    precision@20: 0.0037    precision@50: 0.0027    map@5: 0.0154    map@10: 0.0175    map@20: 0.0193    map@50: 0.0211    
+Sun 10 Dec 2023 18:21:31 INFO topu result: 
+recall@5: 0.0288    recall@10: 0.0485    recall@20: 0.1004    recall@50: 0.1928    ndcg@5: 0.0340    ndcg@10: 0.0395    ndcg@20: 0.0650    ndcg@50: 0.0991    precision@5: 0.0370    precision@10: 0.0296    precision@20: 0.0333    precision@50: 0.0259    map@5: 0.0144    map@10: 0.0138    map@20: 0.0179    map@50: 0.0232    
+Sun 10 Dec 2023 18:21:31 INFO bottomu result: 
+recall@5: 0.0295    recall@10: 0.0457    recall@20: 0.0722    recall@50: 0.1289    ndcg@5: 0.0195    ndcg@10: 0.0247    ndcg@20: 0.0314    ndcg@50: 0.0426    precision@5: 0.0059    precision@10: 0.0046    precision@20: 0.0036    precision@50: 0.0026    map@5: 0.0163    map@10: 0.0184    map@20: 0.0202    map@50: 0.0220    
+Sun 10 Dec 2023 18:21:33 INFO epoch 7 training [time: 2.58s, train loss: 5.6856]
+Sun 10 Dec 2023 18:21:52 INFO epoch 7 evaluating [time: 7.97s, valid_score: 0.070400]
+Sun 10 Dec 2023 18:21:52 INFO valid result: 
+recall@5: 0.0279    recall@10: 0.0445    recall@20: 0.0704    recall@50: 0.1292    ndcg@5: 0.0187    ndcg@10: 0.0240    ndcg@20: 0.0306    ndcg@50: 0.0424    precision@5: 0.0059    precision@10: 0.0047    precision@20: 0.0037    precision@50: 0.0027    map@5: 0.0154    map@10: 0.0176    map@20: 0.0193    map@50: 0.0212    
+Sun 10 Dec 2023 18:21:52 INFO topu result: 
+recall@5: 0.0288    recall@10: 0.0572    recall@20: 0.1004    recall@50: 0.1867    ndcg@5: 0.0392    ndcg@10: 0.0492    ndcg@20: 0.0694    ndcg@50: 0.1012    precision@5: 0.0370    precision@10: 0.0370    precision@20: 0.0333    precision@50: 0.0252    map@5: 0.0185    map@10: 0.0178    map@20: 0.0209    map@50: 0.0259    
+Sun 10 Dec 2023 18:21:52 INFO bottomu result: 
+recall@5: 0.0295    recall@10: 0.0463    recall@20: 0.0737    recall@50: 0.1296    ndcg@5: 0.0196    ndcg@10: 0.0250    ndcg@20: 0.0319    ndcg@50: 0.0429    precision@5: 0.0059    precision@10: 0.0046    precision@20: 0.0037    precision@50: 0.0026    map@5: 0.0164    map@10: 0.0186    map@20: 0.0204    map@50: 0.0222    
+Sun 10 Dec 2023 18:21:55 INFO epoch 8 training [time: 2.76s, train loss: 5.4198]
+Sun 10 Dec 2023 18:22:18 INFO epoch 8 evaluating [time: 10.19s, valid_score: 0.071400]
+Sun 10 Dec 2023 18:22:18 INFO valid result: 
+recall@5: 0.0280    recall@10: 0.0453    recall@20: 0.0714    recall@50: 0.1300    ndcg@5: 0.0187    ndcg@10: 0.0243    ndcg@20: 0.0310    ndcg@50: 0.0427    precision@5: 0.0059    precision@10: 0.0048    precision@20: 0.0038    precision@50: 0.0028    map@5: 0.0154    map@10: 0.0177    map@20: 0.0195    map@50: 0.0213    
+Sun 10 Dec 2023 18:22:18 INFO topu result: 
+recall@5: 0.0288    recall@10: 0.0572    recall@20: 0.0930    recall@50: 0.1867    ndcg@5: 0.0392    ndcg@10: 0.0494    ndcg@20: 0.0670    ndcg@50: 0.1016    precision@5: 0.0370    precision@10: 0.0370    precision@20: 0.0315    precision@50: 0.0252    map@5: 0.0185    map@10: 0.0179    map@20: 0.0208    map@50: 0.0261    
+Sun 10 Dec 2023 18:22:18 INFO bottomu result: 
+recall@5: 0.0293    recall@10: 0.0479    recall@20: 0.0739    recall@50: 0.1316    ndcg@5: 0.0197    ndcg@10: 0.0256    ndcg@20: 0.0321    ndcg@50: 0.0435    precision@5: 0.0059    precision@10: 0.0048    precision@20: 0.0037    precision@50: 0.0026    map@5: 0.0165    map@10: 0.0189    map@20: 0.0207    map@50: 0.0225    
+Sun 10 Dec 2023 18:22:20 INFO epoch 9 training [time: 2.06s, train loss: 5.1906]
+Sun 10 Dec 2023 18:22:42 INFO epoch 9 evaluating [time: 8.40s, valid_score: 0.072200]
+Sun 10 Dec 2023 18:22:42 INFO valid result: 
+recall@5: 0.0287    recall@10: 0.0460    recall@20: 0.0722    recall@50: 0.1316    ndcg@5: 0.0191    ndcg@10: 0.0247    ndcg@20: 0.0313    ndcg@50: 0.0432    precision@5: 0.0060    precision@10: 0.0049    precision@20: 0.0038    precision@50: 0.0028    map@5: 0.0157    map@10: 0.0180    map@20: 0.0197    map@50: 0.0216    
+Sun 10 Dec 2023 18:22:42 INFO topu result: 
+recall@5: 0.0288    recall@10: 0.0625    recall@20: 0.0930    recall@50: 0.1975    ndcg@5: 0.0392    ndcg@10: 0.0527    ndcg@20: 0.0676    ndcg@50: 0.1060    precision@5: 0.0370    precision@10: 0.0407    precision@20: 0.0315    precision@50: 0.0267    map@5: 0.0185    map@10: 0.0191    map@20: 0.0213    map@50: 0.0270    
+Sun 10 Dec 2023 18:22:42 INFO bottomu result: 
+recall@5: 0.0297    recall@10: 0.0477    recall@20: 0.0749    recall@50: 0.1325    ndcg@5: 0.0199    ndcg@10: 0.0256    ndcg@20: 0.0325    ndcg@50: 0.0438    precision@5: 0.0059    precision@10: 0.0048    precision@20: 0.0037    precision@50: 0.0027    map@5: 0.0167    map@10: 0.0190    map@20: 0.0208    map@50: 0.0226    
+Sun 10 Dec 2023 18:22:44 INFO epoch 10 training [time: 1.98s, train loss: 5.0082]
+Sun 10 Dec 2023 18:23:04 INFO epoch 10 evaluating [time: 7.55s, valid_score: 0.073500]
+Sun 10 Dec 2023 18:23:04 INFO valid result: 
+recall@5: 0.0290    recall@10: 0.0469    recall@20: 0.0735    recall@50: 0.1331    ndcg@5: 0.0193    ndcg@10: 0.0251    ndcg@20: 0.0318    ndcg@50: 0.0438    precision@5: 0.0061    precision@10: 0.0050    precision@20: 0.0039    precision@50: 0.0028    map@5: 0.0159    map@10: 0.0182    map@20: 0.0200    map@50: 0.0219    
+Sun 10 Dec 2023 18:23:04 INFO topu result: 
+recall@5: 0.0288    recall@10: 0.0572    recall@20: 0.0930    recall@50: 0.1975    ndcg@5: 0.0392    ndcg@10: 0.0496    ndcg@20: 0.0673    ndcg@50: 0.1055    precision@5: 0.0370    precision@10: 0.0370    precision@20: 0.0315    precision@50: 0.0267    map@5: 0.0185    map@10: 0.0185    map@20: 0.0211    map@50: 0.0268    
+Sun 10 Dec 2023 18:23:04 INFO bottomu result: 
+recall@5: 0.0301    recall@10: 0.0482    recall@20: 0.0761    recall@50: 0.1346    ndcg@5: 0.0202    ndcg@10: 0.0259    ndcg@20: 0.0330    ndcg@50: 0.0445    precision@5: 0.0060    precision@10: 0.0048    precision@20: 0.0038    precision@50: 0.0027    map@5: 0.0169    map@10: 0.0192    map@20: 0.0211    map@50: 0.0229    
+Sun 10 Dec 2023 18:23:06 INFO epoch 11 training [time: 1.99s, train loss: 4.8523]
+Sun 10 Dec 2023 18:23:24 INFO epoch 11 evaluating [time: 9.61s, valid_score: 0.074200]
+Sun 10 Dec 2023 18:23:24 INFO valid result: 
+recall@5: 0.0298    recall@10: 0.0474    recall@20: 0.0742    recall@50: 0.1346    ndcg@5: 0.0199    ndcg@10: 0.0256    ndcg@20: 0.0323    ndcg@50: 0.0445    precision@5: 0.0063    precision@10: 0.0050    precision@20: 0.0039    precision@50: 0.0029    map@5: 0.0164    map@10: 0.0187    map@20: 0.0205    map@50: 0.0224    
+Sun 10 Dec 2023 18:23:24 INFO topu result: 
+recall@5: 0.0288    recall@10: 0.0572    recall@20: 0.0950    recall@50: 0.1908    ndcg@5: 0.0392    ndcg@10: 0.0501    ndcg@20: 0.0683    ndcg@50: 0.1041    precision@5: 0.0370    precision@10: 0.0370    precision@20: 0.0315    precision@50: 0.0259    map@5: 0.0185    map@10: 0.0190    map@20: 0.0217    map@50: 0.0270    
+Sun 10 Dec 2023 18:23:24 INFO bottomu result: 
+recall@5: 0.0303    recall@10: 0.0485    recall@20: 0.0775    recall@50: 0.1354    ndcg@5: 0.0204    ndcg@10: 0.0262    ndcg@20: 0.0335    ndcg@50: 0.0450    precision@5: 0.0061    precision@10: 0.0048    precision@20: 0.0039    precision@50: 0.0027    map@5: 0.0171    map@10: 0.0195    map@20: 0.0215    map@50: 0.0233    
+Sun 10 Dec 2023 18:23:26 INFO epoch 12 training [time: 2.01s, train loss: 4.7016]
+Sun 10 Dec 2023 18:23:43 INFO epoch 12 evaluating [time: 6.35s, valid_score: 0.075700]
+Sun 10 Dec 2023 18:23:43 INFO valid result: 
+recall@5: 0.0299    recall@10: 0.0473    recall@20: 0.0757    recall@50: 0.1353    ndcg@5: 0.0200    ndcg@10: 0.0256    ndcg@20: 0.0328    ndcg@50: 0.0448    precision@5: 0.0063    precision@10: 0.0050    precision@20: 0.0040    precision@50: 0.0029    map@5: 0.0165    map@10: 0.0187    map@20: 0.0207    map@50: 0.0226    
+Sun 10 Dec 2023 18:23:43 INFO topu result: 
+recall@5: 0.0288    recall@10: 0.0572    recall@20: 0.0979    recall@50: 0.1954    ndcg@5: 0.0439    ndcg@10: 0.0532    ndcg@20: 0.0729    ndcg@50: 0.1089    precision@5: 0.0370    precision@10: 0.0370    precision@20: 0.0333    precision@50: 0.0267    map@5: 0.0222    map@10: 0.0211    map@20: 0.0240    map@50: 0.0294    
+Sun 10 Dec 2023 18:23:43 INFO bottomu result: 
+recall@5: 0.0309    recall@10: 0.0498    recall@20: 0.0793    recall@50: 0.1368    ndcg@5: 0.0207    ndcg@10: 0.0267    ndcg@20: 0.0341    ndcg@50: 0.0455    precision@5: 0.0062    precision@10: 0.0050    precision@20: 0.0040    precision@50: 0.0027    map@5: 0.0173    map@10: 0.0198    map@20: 0.0218    map@50: 0.0236    
+Sun 10 Dec 2023 18:23:46 INFO epoch 13 training [time: 3.14s, train loss: 4.5198]
+Sun 10 Dec 2023 18:24:09 INFO epoch 13 evaluating [time: 8.28s, valid_score: 0.077000]
+Sun 10 Dec 2023 18:24:09 INFO valid result: 
+recall@5: 0.0301    recall@10: 0.0477    recall@20: 0.0770    recall@50: 0.1376    ndcg@5: 0.0202    ndcg@10: 0.0260    ndcg@20: 0.0334    ndcg@50: 0.0455    precision@5: 0.0063    precision@10: 0.0050    precision@20: 0.0041    precision@50: 0.0029    map@5: 0.0167    map@10: 0.0190    map@20: 0.0210    map@50: 0.0230    
+Sun 10 Dec 2023 18:24:09 INFO topu result: 
+recall@5: 0.0288    recall@10: 0.0539    recall@20: 0.1012    recall@50: 0.1954    ndcg@5: 0.0447    ndcg@10: 0.0526    ndcg@20: 0.0742    ndcg@50: 0.1092    precision@5: 0.0370    precision@10: 0.0370    precision@20: 0.0333    precision@50: 0.0267    map@5: 0.0228    map@10: 0.0211    map@20: 0.0246    map@50: 0.0296    
+Sun 10 Dec 2023 18:24:09 INFO bottomu result: 
+recall@5: 0.0314    recall@10: 0.0508    recall@20: 0.0802    recall@50: 0.1374    ndcg@5: 0.0208    ndcg@10: 0.0270    ndcg@20: 0.0343    ndcg@50: 0.0456    precision@5: 0.0063    precision@10: 0.0051    precision@20: 0.0040    precision@50: 0.0027    map@5: 0.0173    map@10: 0.0198    map@20: 0.0218    map@50: 0.0236    
+Sun 10 Dec 2023 18:24:09 INFO ██ LightGCN--Best validation results updated!!!
+Sun 10 Dec 2023 18:24:13 INFO epoch 14 training [time: 3.36s, train loss: 4.3880]
+Sun 10 Dec 2023 18:24:32 INFO epoch 14 evaluating [time: 9.30s, valid_score: 0.077400]
+Sun 10 Dec 2023 18:24:32 INFO valid result: 
+recall@5: 0.0306    recall@10: 0.0484    recall@20: 0.0774    recall@50: 0.1397    ndcg@5: 0.0206    ndcg@10: 0.0264    ndcg@20: 0.0337    ndcg@50: 0.0462    precision@5: 0.0064    precision@10: 0.0051    precision@20: 0.0041    precision@50: 0.0030    map@5: 0.0170    map@10: 0.0194    map@20: 0.0213    map@50: 0.0233    
+Sun 10 Dec 2023 18:24:32 INFO topu result: 
+recall@5: 0.0288    recall@10: 0.0539    recall@20: 0.1012    recall@50: 0.1913    ndcg@5: 0.0447    ndcg@10: 0.0526    ndcg@20: 0.0738    ndcg@50: 0.1074    precision@5: 0.0370    precision@10: 0.0370    precision@20: 0.0333    precision@50: 0.0259    map@5: 0.0228    map@10: 0.0210    map@20: 0.0244    map@50: 0.0294    
+Sun 10 Dec 2023 18:24:32 INFO bottomu result: 
+recall@5: 0.0315    recall@10: 0.0513    recall@20: 0.0811    recall@50: 0.1389    ndcg@5: 0.0209    ndcg@10: 0.0272    ndcg@20: 0.0347    ndcg@50: 0.0461    precision@5: 0.0063    precision@10: 0.0051    precision@20: 0.0041    precision@50: 0.0028    map@5: 0.0174    map@10: 0.0200    map@20: 0.0220    map@50: 0.0238    
+Sun 10 Dec 2023 18:24:32 INFO ██ LightGCN--Best validation results updated!!!
+Sun 10 Dec 2023 18:24:35 INFO epoch 15 training [time: 2.90s, train loss: 4.2181]
+Sun 10 Dec 2023 18:24:55 INFO epoch 15 evaluating [time: 7.43s, valid_score: 0.077900]
+Sun 10 Dec 2023 18:24:55 INFO valid result: 
+recall@5: 0.0307    recall@10: 0.0492    recall@20: 0.0779    recall@50: 0.1409    ndcg@5: 0.0208    ndcg@10: 0.0268    ndcg@20: 0.0341    ndcg@50: 0.0467    precision@5: 0.0064    precision@10: 0.0052    precision@20: 0.0041    precision@50: 0.0030    map@5: 0.0173    map@10: 0.0197    map@20: 0.0217    map@50: 0.0237    
+Sun 10 Dec 2023 18:24:55 INFO topu result: 
+recall@5: 0.0288    recall@10: 0.0601    recall@20: 0.1020    recall@50: 0.1913    ndcg@5: 0.0447    ndcg@10: 0.0561    ndcg@20: 0.0750    ndcg@50: 0.1078    precision@5: 0.0370    precision@10: 0.0407    precision@20: 0.0352    precision@50: 0.0259    map@5: 0.0228    map@10: 0.0219    map@20: 0.0244    map@50: 0.0295    
+Sun 10 Dec 2023 18:24:55 INFO bottomu result: 
+recall@5: 0.0320    recall@10: 0.0517    recall@20: 0.0818    recall@50: 0.1409    ndcg@5: 0.0212    ndcg@10: 0.0275    ndcg@20: 0.0351    ndcg@50: 0.0468    precision@5: 0.0064    precision@10: 0.0052    precision@20: 0.0041    precision@50: 0.0028    map@5: 0.0177    map@10: 0.0202    map@20: 0.0223    map@50: 0.0242    
+Sun 10 Dec 2023 18:24:55 INFO ██ LightGCN--Best validation results updated!!!
+Sun 10 Dec 2023 18:24:57 INFO epoch 16 training [time: 2.28s, train loss: 4.1048]
+Sun 10 Dec 2023 18:25:23 INFO epoch 16 evaluating [time: 8.69s, valid_score: 0.079800]
+Sun 10 Dec 2023 18:25:23 INFO valid result: 
+recall@5: 0.0308    recall@10: 0.0497    recall@20: 0.0798    recall@50: 0.1412    ndcg@5: 0.0209    ndcg@10: 0.0271    ndcg@20: 0.0347    ndcg@50: 0.0470    precision@5: 0.0065    precision@10: 0.0052    precision@20: 0.0042    precision@50: 0.0030    map@5: 0.0173    map@10: 0.0199    map@20: 0.0219    map@50: 0.0238    
+Sun 10 Dec 2023 18:25:23 INFO topu result: 
+recall@5: 0.0288    recall@10: 0.0601    recall@20: 0.0991    recall@50: 0.1913    ndcg@5: 0.0447    ndcg@10: 0.0566    ndcg@20: 0.0741    ndcg@50: 0.1083    precision@5: 0.0370    precision@10: 0.0407    precision@20: 0.0333    precision@50: 0.0259    map@5: 0.0228    map@10: 0.0221    map@20: 0.0244    map@50: 0.0297    
+Sun 10 Dec 2023 18:25:23 INFO bottomu result: 
+recall@5: 0.0318    recall@10: 0.0518    recall@20: 0.0836    recall@50: 0.1423    ndcg@5: 0.0210    ndcg@10: 0.0275    ndcg@20: 0.0355    ndcg@50: 0.0471    precision@5: 0.0064    precision@10: 0.0052    precision@20: 0.0042    precision@50: 0.0028    map@5: 0.0175    map@10: 0.0202    map@20: 0.0223    map@50: 0.0242    
+Sun 10 Dec 2023 18:25:23 INFO ██ LightGCN--Best validation results updated!!!
+Sun 10 Dec 2023 18:25:25 INFO epoch 17 training [time: 2.00s, train loss: 3.9411]
+Sun 10 Dec 2023 18:25:45 INFO epoch 17 evaluating [time: 9.53s, valid_score: 0.080300]
+Sun 10 Dec 2023 18:25:45 INFO valid result: 
+recall@5: 0.0317    recall@10: 0.0498    recall@20: 0.0803    recall@50: 0.1432    ndcg@5: 0.0213    ndcg@10: 0.0273    ndcg@20: 0.0350    ndcg@50: 0.0476    precision@5: 0.0067    precision@10: 0.0053    precision@20: 0.0043    precision@50: 0.0030    map@5: 0.0177    map@10: 0.0201    map@20: 0.0221    map@50: 0.0241    
+Sun 10 Dec 2023 18:25:45 INFO topu result: 
+recall@5: 0.0288    recall@10: 0.0601    recall@20: 0.0938    recall@50: 0.1987    ndcg@5: 0.0401    ndcg@10: 0.0529    ndcg@20: 0.0684    ndcg@50: 0.1073    precision@5: 0.0370    precision@10: 0.0407    precision@20: 0.0315    precision@50: 0.0267    map@5: 0.0191    map@10: 0.0196    map@20: 0.0218    map@50: 0.0275    
+Sun 10 Dec 2023 18:25:45 INFO bottomu result: 
+recall@5: 0.0323    recall@10: 0.0523    recall@20: 0.0836    recall@50: 0.1427    ndcg@5: 0.0212    ndcg@10: 0.0277    ndcg@20: 0.0355    ndcg@50: 0.0472    precision@5: 0.0065    precision@10: 0.0052    precision@20: 0.0042    precision@50: 0.0029    map@5: 0.0176    map@10: 0.0202    map@20: 0.0224    map@50: 0.0242    
+Sun 10 Dec 2023 18:25:45 INFO ██ LightGCN--Best validation results updated!!!
+Sun 10 Dec 2023 18:25:47 INFO epoch 18 training [time: 1.96s, train loss: 3.8170]
+Sun 10 Dec 2023 18:26:06 INFO epoch 18 evaluating [time: 8.37s, valid_score: 0.080500]
+Sun 10 Dec 2023 18:26:06 INFO valid result: 
+recall@5: 0.0320    recall@10: 0.0501    recall@20: 0.0805    recall@50: 0.1449    ndcg@5: 0.0215    ndcg@10: 0.0274    ndcg@20: 0.0352    ndcg@50: 0.0480    precision@5: 0.0067    precision@10: 0.0053    precision@20: 0.0043    precision@50: 0.0031    map@5: 0.0178    map@10: 0.0202    map@20: 0.0223    map@50: 0.0243    
+Sun 10 Dec 2023 18:26:06 INFO topu result: 
+recall@5: 0.0288    recall@10: 0.0613    recall@20: 0.1000    recall@50: 0.1987    ndcg@5: 0.0447    ndcg@10: 0.0573    ndcg@20: 0.0754    ndcg@50: 0.1115    precision@5: 0.0370    precision@10: 0.0407    precision@20: 0.0333    precision@50: 0.0267    map@5: 0.0228    map@10: 0.0226    map@20: 0.0251    map@50: 0.0305    
+Sun 10 Dec 2023 18:26:06 INFO bottomu result: 
+recall@5: 0.0326    recall@10: 0.0530    recall@20: 0.0850    recall@50: 0.1437    ndcg@5: 0.0212    ndcg@10: 0.0278    ndcg@20: 0.0358    ndcg@50: 0.0474    precision@5: 0.0065    precision@10: 0.0053    precision@20: 0.0042    precision@50: 0.0029    map@5: 0.0175    map@10: 0.0202    map@20: 0.0224    map@50: 0.0242    
+Sun 10 Dec 2023 18:26:06 INFO ██ LightGCN--Best validation results updated!!!
+Sun 10 Dec 2023 18:26:08 INFO epoch 19 training [time: 2.30s, train loss: 3.6974]
+Sun 10 Dec 2023 18:26:29 INFO epoch 19 evaluating [time: 8.54s, valid_score: 0.081800]
+Sun 10 Dec 2023 18:26:29 INFO valid result: 
+recall@5: 0.0325    recall@10: 0.0508    recall@20: 0.0818    recall@50: 0.1462    ndcg@5: 0.0218    ndcg@10: 0.0277    ndcg@20: 0.0356    ndcg@50: 0.0484    precision@5: 0.0068    precision@10: 0.0054    precision@20: 0.0043    precision@50: 0.0031    map@5: 0.0179    map@10: 0.0203    map@20: 0.0225    map@50: 0.0245    
+Sun 10 Dec 2023 18:26:29 INFO topu result: 
+recall@5: 0.0288    recall@10: 0.0703    recall@20: 0.1000    recall@50: 0.2061    ndcg@5: 0.0447    ndcg@10: 0.0631    ndcg@20: 0.0760    ndcg@50: 0.1143    precision@5: 0.0370    precision@10: 0.0481    precision@20: 0.0333    precision@50: 0.0274    map@5: 0.0228    map@10: 0.0234    map@20: 0.0252    map@50: 0.0308    
+Sun 10 Dec 2023 18:26:29 INFO bottomu result: 
+recall@5: 0.0329    recall@10: 0.0544    recall@20: 0.0852    recall@50: 0.1454    ndcg@5: 0.0215    ndcg@10: 0.0284    ndcg@20: 0.0361    ndcg@50: 0.0480    precision@5: 0.0066    precision@10: 0.0054    precision@20: 0.0043    precision@50: 0.0029    map@5: 0.0177    map@10: 0.0205    map@20: 0.0226    map@50: 0.0245    
+Sun 10 Dec 2023 18:26:29 INFO ██ LightGCN--Best validation results updated!!!
+Sun 10 Dec 2023 18:26:31 INFO epoch 20 training [time: 2.08s, train loss: 3.5790]
+Sun 10 Dec 2023 18:26:47 INFO epoch 20 evaluating [time: 7.12s, valid_score: 0.082300]
+Sun 10 Dec 2023 18:26:47 INFO valid result: 
+recall@5: 0.0327    recall@10: 0.0513    recall@20: 0.0823    recall@50: 0.1474    ndcg@5: 0.0218    ndcg@10: 0.0278    ndcg@20: 0.0357    ndcg@50: 0.0487    precision@5: 0.0069    precision@10: 0.0054    precision@20: 0.0044    precision@50: 0.0031    map@5: 0.0179    map@10: 0.0203    map@20: 0.0225    map@50: 0.0245    
+Sun 10 Dec 2023 18:26:47 INFO topu result: 
+recall@5: 0.0288    recall@10: 0.0642    recall@20: 0.1000    recall@50: 0.2015    ndcg@5: 0.0401    ndcg@10: 0.0560    ndcg@20: 0.0720    ndcg@50: 0.1084    precision@5: 0.0370    precision@10: 0.0444    precision@20: 0.0333    precision@50: 0.0267    map@5: 0.0191    map@10: 0.0195    map@20: 0.0224    map@50: 0.0276    
+Sun 10 Dec 2023 18:26:47 INFO bottomu result: 
+recall@5: 0.0337    recall@10: 0.0544    recall@20: 0.0861    recall@50: 0.1465    ndcg@5: 0.0218    ndcg@10: 0.0285    ndcg@20: 0.0365    ndcg@50: 0.0484    precision@5: 0.0067    precision@10: 0.0054    precision@20: 0.0043    precision@50: 0.0029    map@5: 0.0180    map@10: 0.0207    map@20: 0.0228    map@50: 0.0247    
+Sun 10 Dec 2023 18:26:47 INFO ██ LightGCN--Best validation results updated!!!
+Sun 10 Dec 2023 18:26:50 INFO epoch 21 training [time: 2.56s, train loss: 3.4816]
+Sun 10 Dec 2023 18:27:06 INFO epoch 21 evaluating [time: 6.41s, valid_score: 0.083500]
+Sun 10 Dec 2023 18:27:06 INFO valid result: 
+recall@5: 0.0331    recall@10: 0.0514    recall@20: 0.0835    recall@50: 0.1475    ndcg@5: 0.0220    ndcg@10: 0.0280    ndcg@20: 0.0362    ndcg@50: 0.0489    precision@5: 0.0070    precision@10: 0.0054    precision@20: 0.0044    precision@50: 0.0031    map@5: 0.0181    map@10: 0.0205    map@20: 0.0227    map@50: 0.0247    
+Sun 10 Dec 2023 18:27:06 INFO topu result: 
+recall@5: 0.0350    recall@10: 0.0642    recall@20: 0.1000    recall@50: 0.1987    ndcg@5: 0.0450    ndcg@10: 0.0567    ndcg@20: 0.0729    ndcg@50: 0.1091    precision@5: 0.0444    precision@10: 0.0444    precision@20: 0.0333    precision@50: 0.0267    map@5: 0.0206    map@10: 0.0200    map@20: 0.0229    map@50: 0.0283    
+Sun 10 Dec 2023 18:27:06 INFO bottomu result: 
+recall@5: 0.0335    recall@10: 0.0552    recall@20: 0.0854    recall@50: 0.1468    ndcg@5: 0.0218    ndcg@10: 0.0288    ndcg@20: 0.0364    ndcg@50: 0.0485    precision@5: 0.0067    precision@10: 0.0055    precision@20: 0.0043    precision@50: 0.0029    map@5: 0.0179    map@10: 0.0208    map@20: 0.0229    map@50: 0.0248    
+Sun 10 Dec 2023 18:27:06 INFO ██ LightGCN--Best validation results updated!!!
+Sun 10 Dec 2023 18:27:08 INFO epoch 22 training [time: 2.11s, train loss: 3.3376]
+Sun 10 Dec 2023 18:27:25 INFO epoch 22 evaluating [time: 7.39s, valid_score: 0.083100]
+Sun 10 Dec 2023 18:27:25 INFO valid result: 
+recall@5: 0.0332    recall@10: 0.0524    recall@20: 0.0831    recall@50: 0.1478    ndcg@5: 0.0220    ndcg@10: 0.0282    ndcg@20: 0.0361    ndcg@50: 0.0490    precision@5: 0.0070    precision@10: 0.0055    precision@20: 0.0044    precision@50: 0.0031    map@5: 0.0181    map@10: 0.0206    map@20: 0.0227    map@50: 0.0247    
+Sun 10 Dec 2023 18:27:25 INFO topu result: 
+recall@5: 0.0424    recall@10: 0.0642    recall@20: 0.1127    recall@50: 0.2061    ndcg@5: 0.0547    ndcg@10: 0.0572    ndcg@20: 0.0790    ndcg@50: 0.1126    precision@5: 0.0593    precision@10: 0.0444    precision@20: 0.0370    precision@50: 0.0274    map@5: 0.0236    map@10: 0.0203    map@20: 0.0243    map@50: 0.0291    
+Sun 10 Dec 2023 18:27:25 INFO bottomu result: 
+recall@5: 0.0342    recall@10: 0.0549    recall@20: 0.0870    recall@50: 0.1472    ndcg@5: 0.0221    ndcg@10: 0.0288    ndcg@20: 0.0368    ndcg@50: 0.0487    precision@5: 0.0068    precision@10: 0.0055    precision@20: 0.0043    precision@50: 0.0029    map@5: 0.0182    map@10: 0.0209    map@20: 0.0231    map@50: 0.0250    
+Sun 10 Dec 2023 18:27:27 INFO epoch 23 training [time: 2.04s, train loss: 3.2519]
+Sun 10 Dec 2023 18:27:50 INFO epoch 23 evaluating [time: 9.85s, valid_score: 0.083200]
+Sun 10 Dec 2023 18:27:50 INFO valid result: 
+recall@5: 0.0335    recall@10: 0.0523    recall@20: 0.0832    recall@50: 0.1480    ndcg@5: 0.0222    ndcg@10: 0.0283    ndcg@20: 0.0362    ndcg@50: 0.0492    precision@5: 0.0070    precision@10: 0.0055    precision@20: 0.0044    precision@50: 0.0031    map@5: 0.0183    map@10: 0.0207    map@20: 0.0228    map@50: 0.0249    
+Sun 10 Dec 2023 18:27:50 INFO topu result: 
+recall@5: 0.0424    recall@10: 0.0703    recall@20: 0.1127    recall@50: 0.1987    ndcg@5: 0.0552    ndcg@10: 0.0608    ndcg@20: 0.0797    ndcg@50: 0.1113    precision@5: 0.0593    precision@10: 0.0481    precision@20: 0.0370    precision@50: 0.0267    map@5: 0.0240    map@10: 0.0217    map@20: 0.0247    map@50: 0.0295    
+Sun 10 Dec 2023 18:27:50 INFO bottomu result: 
+recall@5: 0.0343    recall@10: 0.0550    recall@20: 0.0875    recall@50: 0.1473    ndcg@5: 0.0222    ndcg@10: 0.0289    ndcg@20: 0.0371    ndcg@50: 0.0489    precision@5: 0.0069    precision@10: 0.0055    precision@20: 0.0044    precision@50: 0.0029    map@5: 0.0183    map@10: 0.0210    map@20: 0.0232    map@50: 0.0251    
+Sun 10 Dec 2023 18:27:53 INFO epoch 24 training [time: 2.09s, train loss: 3.1422]
+Sun 10 Dec 2023 18:28:16 INFO epoch 24 evaluating [time: 10.18s, valid_score: 0.083500]
+Sun 10 Dec 2023 18:28:16 INFO valid result: 
+recall@5: 0.0335    recall@10: 0.0525    recall@20: 0.0835    recall@50: 0.1489    ndcg@5: 0.0222    ndcg@10: 0.0284    ndcg@20: 0.0363    ndcg@50: 0.0494    precision@5: 0.0070    precision@10: 0.0055    precision@20: 0.0044    precision@50: 0.0032    map@5: 0.0182    map@10: 0.0207    map@20: 0.0229    map@50: 0.0249    
+Sun 10 Dec 2023 18:28:16 INFO topu result: 
+recall@5: 0.0391    recall@10: 0.0749    recall@20: 0.1127    recall@50: 0.2061    ndcg@5: 0.0504    ndcg@10: 0.0619    ndcg@20: 0.0801    ndcg@50: 0.1141    precision@5: 0.0519    precision@10: 0.0481    precision@20: 0.0370    precision@50: 0.0274    map@5: 0.0225    map@10: 0.0220    map@20: 0.0250    map@50: 0.0300    
+Sun 10 Dec 2023 18:28:16 INFO bottomu result: 
+recall@5: 0.0348    recall@10: 0.0556    recall@20: 0.0876    recall@50: 0.1485    ndcg@5: 0.0226    ndcg@10: 0.0293    ndcg@20: 0.0373    ndcg@50: 0.0493    precision@5: 0.0070    precision@10: 0.0056    precision@20: 0.0044    precision@50: 0.0030    map@5: 0.0186    map@10: 0.0213    map@20: 0.0235    map@50: 0.0254    
+Sun 10 Dec 2023 18:28:18 INFO epoch 25 training [time: 2.06s, train loss: 3.0457]
+Sun 10 Dec 2023 18:28:41 INFO epoch 25 evaluating [time: 10.40s, valid_score: 0.084100]
+Sun 10 Dec 2023 18:28:41 INFO valid result: 
+recall@5: 0.0336    recall@10: 0.0534    recall@20: 0.0841    recall@50: 0.1495    ndcg@5: 0.0223    ndcg@10: 0.0288    ndcg@20: 0.0366    ndcg@50: 0.0497    precision@5: 0.0071    precision@10: 0.0056    precision@20: 0.0045    precision@50: 0.0032    map@5: 0.0183    map@10: 0.0209    map@20: 0.0230    map@50: 0.0251    
+Sun 10 Dec 2023 18:28:41 INFO topu result: 
+recall@5: 0.0424    recall@10: 0.0601    recall@20: 0.1161    recall@50: 0.2008    ndcg@5: 0.0599    ndcg@10: 0.0588    ndcg@20: 0.0860    ndcg@50: 0.1168    precision@5: 0.0593    precision@10: 0.0407    precision@20: 0.0389    precision@50: 0.0267    map@5: 0.0277    map@10: 0.0233    map@20: 0.0280    map@50: 0.0328    
+Sun 10 Dec 2023 18:28:41 INFO bottomu result: 
+recall@5: 0.0348    recall@10: 0.0560    recall@20: 0.0877    recall@50: 0.1495    ndcg@5: 0.0227    ndcg@10: 0.0295    ndcg@20: 0.0375    ndcg@50: 0.0497    precision@5: 0.0070    precision@10: 0.0056    precision@20: 0.0044    precision@50: 0.0030    map@5: 0.0188    map@10: 0.0216    map@20: 0.0237    map@50: 0.0257    
+Sun 10 Dec 2023 18:28:41 INFO ██ LightGCN--Best validation results updated!!!
+Sun 10 Dec 2023 18:28:43 INFO epoch 26 training [time: 2.17s, train loss: 2.9654]
+Sun 10 Dec 2023 18:29:06 INFO epoch 26 evaluating [time: 11.12s, valid_score: 0.084900]
+Sun 10 Dec 2023 18:29:06 INFO valid result: 
+recall@5: 0.0336    recall@10: 0.0537    recall@20: 0.0849    recall@50: 0.1502    ndcg@5: 0.0224    ndcg@10: 0.0289    ndcg@20: 0.0368    ndcg@50: 0.0499    precision@5: 0.0071    precision@10: 0.0057    precision@20: 0.0045    precision@50: 0.0032    map@5: 0.0184    map@10: 0.0210    map@20: 0.0231    map@50: 0.0252    
+Sun 10 Dec 2023 18:29:06 INFO topu result: 
+recall@5: 0.0363    recall@10: 0.0663    recall@20: 0.1161    recall@50: 0.2008    ndcg@5: 0.0504    ndcg@10: 0.0583    ndcg@20: 0.0825    ndcg@50: 0.1133    precision@5: 0.0519    precision@10: 0.0444    precision@20: 0.0389    precision@50: 0.0267    map@5: 0.0225    map@10: 0.0214    map@20: 0.0256    map@50: 0.0304    
+Sun 10 Dec 2023 18:29:06 INFO bottomu result: 
+recall@5: 0.0354    recall@10: 0.0566    recall@20: 0.0884    recall@50: 0.1501    ndcg@5: 0.0230    ndcg@10: 0.0298    ndcg@20: 0.0378    ndcg@50: 0.0500    precision@5: 0.0071    precision@10: 0.0057    precision@20: 0.0044    precision@50: 0.0030    map@5: 0.0190    map@10: 0.0218    map@20: 0.0240    map@50: 0.0259    
+Sun 10 Dec 2023 18:29:06 INFO ██ LightGCN--Best validation results updated!!!
+Sun 10 Dec 2023 18:29:08 INFO epoch 27 training [time: 2.22s, train loss: 2.8730]
+Sun 10 Dec 2023 18:29:27 INFO epoch 27 evaluating [time: 8.08s, valid_score: 0.085500]
+Sun 10 Dec 2023 18:29:27 INFO valid result: 
+recall@5: 0.0341    recall@10: 0.0535    recall@20: 0.0855    recall@50: 0.1504    ndcg@5: 0.0227    ndcg@10: 0.0290    ndcg@20: 0.0371    ndcg@50: 0.0501    precision@5: 0.0072    precision@10: 0.0057    precision@20: 0.0045    precision@50: 0.0032    map@5: 0.0187    map@10: 0.0212    map@20: 0.0234    map@50: 0.0255    
+Sun 10 Dec 2023 18:29:27 INFO topu result: 
+recall@5: 0.0453    recall@10: 0.0737    recall@20: 0.1207    recall@50: 0.2008    ndcg@5: 0.0552    ndcg@10: 0.0630    ndcg@20: 0.0858    ndcg@50: 0.1144    precision@5: 0.0593    precision@10: 0.0481    precision@20: 0.0407    precision@50: 0.0267    map@5: 0.0240    map@10: 0.0228    map@20: 0.0266    map@50: 0.0311    
+Sun 10 Dec 2023 18:29:27 INFO bottomu result: 
+recall@5: 0.0351    recall@10: 0.0572    recall@20: 0.0892    recall@50: 0.1512    ndcg@5: 0.0231    ndcg@10: 0.0302    ndcg@20: 0.0382    ndcg@50: 0.0504    precision@5: 0.0070    precision@10: 0.0057    precision@20: 0.0045    precision@50: 0.0030    map@5: 0.0191    map@10: 0.0220    map@20: 0.0242    map@50: 0.0261    
+Sun 10 Dec 2023 18:29:27 INFO ██ LightGCN--Best validation results updated!!!
+Sun 10 Dec 2023 18:29:30 INFO epoch 28 training [time: 2.99s, train loss: 2.7854]
+Sun 10 Dec 2023 18:29:48 INFO epoch 28 evaluating [time: 6.96s, valid_score: 0.086300]
+Sun 10 Dec 2023 18:29:48 INFO valid result: 
+recall@5: 0.0344    recall@10: 0.0538    recall@20: 0.0863    recall@50: 0.1522    ndcg@5: 0.0228    ndcg@10: 0.0291    ndcg@20: 0.0374    ndcg@50: 0.0506    precision@5: 0.0072    precision@10: 0.0057    precision@20: 0.0046    precision@50: 0.0032    map@5: 0.0187    map@10: 0.0213    map@20: 0.0235    map@50: 0.0256    
+Sun 10 Dec 2023 18:29:48 INFO topu result: 
+recall@5: 0.0453    recall@10: 0.0737    recall@20: 0.1207    recall@50: 0.2070    ndcg@5: 0.0552    ndcg@10: 0.0634    ndcg@20: 0.0861    ndcg@50: 0.1167    precision@5: 0.0593    precision@10: 0.0481    precision@20: 0.0407    precision@50: 0.0274    map@5: 0.0240    map@10: 0.0230    map@20: 0.0268    map@50: 0.0317    
+Sun 10 Dec 2023 18:29:48 INFO bottomu result: 
+recall@5: 0.0355    recall@10: 0.0581    recall@20: 0.0904    recall@50: 0.1520    ndcg@5: 0.0231    ndcg@10: 0.0304    ndcg@20: 0.0385    ndcg@50: 0.0506    precision@5: 0.0071    precision@10: 0.0058    precision@20: 0.0045    precision@50: 0.0030    map@5: 0.0191    map@10: 0.0221    map@20: 0.0242    map@50: 0.0261    
+Sun 10 Dec 2023 18:29:48 INFO ██ LightGCN--Best validation results updated!!!
+Sun 10 Dec 2023 18:29:50 INFO epoch 29 training [time: 2.23s, train loss: 2.7074]
+Sun 10 Dec 2023 18:30:15 INFO epoch 29 evaluating [time: 8.15s, valid_score: 0.086300]
+Sun 10 Dec 2023 18:30:15 INFO valid result: 
+recall@5: 0.0346    recall@10: 0.0543    recall@20: 0.0863    recall@50: 0.1525    ndcg@5: 0.0230    ndcg@10: 0.0294    ndcg@20: 0.0375    ndcg@50: 0.0508    precision@5: 0.0073    precision@10: 0.0057    precision@20: 0.0046    precision@50: 0.0032    map@5: 0.0189    map@10: 0.0214    map@20: 0.0236    map@50: 0.0257    
+Sun 10 Dec 2023 18:30:15 INFO topu result: 
+recall@5: 0.0453    recall@10: 0.0737    recall@20: 0.1161    recall@50: 0.2042    ndcg@5: 0.0607    ndcg@10: 0.0672    ndcg@20: 0.0877    ndcg@50: 0.1199    precision@5: 0.0593    precision@10: 0.0481    precision@20: 0.0389    precision@50: 0.0274    map@5: 0.0283    map@10: 0.0255    map@20: 0.0291    map@50: 0.0340    
+Sun 10 Dec 2023 18:30:15 INFO bottomu result: 
+recall@5: 0.0356    recall@10: 0.0584    recall@20: 0.0904    recall@50: 0.1523    ndcg@5: 0.0233    ndcg@10: 0.0306    ndcg@20: 0.0386    ndcg@50: 0.0508    precision@5: 0.0071    precision@10: 0.0058    precision@20: 0.0045    precision@50: 0.0030    map@5: 0.0192    map@10: 0.0223    map@20: 0.0244    map@50: 0.0263    
+Sun 10 Dec 2023 18:30:19 INFO epoch 30 training [time: 3.90s, train loss: 2.6524]
+Sun 10 Dec 2023 18:30:38 INFO epoch 30 evaluating [time: 9.05s, valid_score: 0.087200]
+Sun 10 Dec 2023 18:30:38 INFO valid result: 
+recall@5: 0.0343    recall@10: 0.0544    recall@20: 0.0872    recall@50: 0.1529    ndcg@5: 0.0229    ndcg@10: 0.0294    ndcg@20: 0.0377    ndcg@50: 0.0509    precision@5: 0.0072    precision@10: 0.0057    precision@20: 0.0046    precision@50: 0.0032    map@5: 0.0188    map@10: 0.0215    map@20: 0.0237    map@50: 0.0258    
+Sun 10 Dec 2023 18:30:38 INFO topu result: 
+recall@5: 0.0391    recall@10: 0.0811    recall@20: 0.1161    recall@50: 0.2042    ndcg@5: 0.0559    ndcg@10: 0.0706    ndcg@20: 0.0877    ndcg@50: 0.1197    precision@5: 0.0519    precision@10: 0.0519    precision@20: 0.0389    precision@50: 0.0274    map@5: 0.0268    map@10: 0.0261    map@20: 0.0291    map@50: 0.0339    
+Sun 10 Dec 2023 18:30:38 INFO bottomu result: 
+recall@5: 0.0361    recall@10: 0.0587    recall@20: 0.0908    recall@50: 0.1536    ndcg@5: 0.0237    ndcg@10: 0.0309    ndcg@20: 0.0389    ndcg@50: 0.0513    precision@5: 0.0072    precision@10: 0.0059    precision@20: 0.0045    precision@50: 0.0031    map@5: 0.0196    map@10: 0.0225    map@20: 0.0247    map@50: 0.0266    
+Sun 10 Dec 2023 18:30:38 INFO ██ LightGCN--Best validation results updated!!!
+Sun 10 Dec 2023 18:30:41 INFO epoch 31 training [time: 3.11s, train loss: 2.5310]
+Sun 10 Dec 2023 18:30:58 INFO epoch 31 evaluating [time: 5.35s, valid_score: 0.087700]
+Sun 10 Dec 2023 18:30:58 INFO valid result: 
+recall@5: 0.0340    recall@10: 0.0545    recall@20: 0.0877    recall@50: 0.1532    ndcg@5: 0.0229    ndcg@10: 0.0296    ndcg@20: 0.0380    ndcg@50: 0.0511    precision@5: 0.0072    precision@10: 0.0057    precision@20: 0.0046    precision@50: 0.0032    map@5: 0.0190    map@10: 0.0217    map@20: 0.0239    map@50: 0.0260    
+Sun 10 Dec 2023 18:30:58 INFO topu result: 
+recall@5: 0.0453    recall@10: 0.0737    recall@20: 0.1161    recall@50: 0.2042    ndcg@5: 0.0561    ndcg@10: 0.0638    ndcg@20: 0.0844    ndcg@50: 0.1165    precision@5: 0.0593    precision@10: 0.0481    precision@20: 0.0389    precision@50: 0.0274    map@5: 0.0246    map@10: 0.0233    map@20: 0.0269    map@50: 0.0318    
+Sun 10 Dec 2023 18:30:58 INFO bottomu result: 
+recall@5: 0.0362    recall@10: 0.0588    recall@20: 0.0905    recall@50: 0.1535    ndcg@5: 0.0236    ndcg@10: 0.0309    ndcg@20: 0.0388    ndcg@50: 0.0512    precision@5: 0.0072    precision@10: 0.0059    precision@20: 0.0045    precision@50: 0.0031    map@5: 0.0195    map@10: 0.0224    map@20: 0.0246    map@50: 0.0265    
+Sun 10 Dec 2023 18:30:58 INFO ██ LightGCN--Best validation results updated!!!
+Sun 10 Dec 2023 18:31:01 INFO epoch 32 training [time: 2.80s, train loss: 2.4830]
+Sun 10 Dec 2023 18:31:18 INFO epoch 32 evaluating [time: 7.43s, valid_score: 0.088600]
+Sun 10 Dec 2023 18:31:18 INFO valid result: 
+recall@5: 0.0341    recall@10: 0.0543    recall@20: 0.0886    recall@50: 0.1540    ndcg@5: 0.0230    ndcg@10: 0.0295    ndcg@20: 0.0383    ndcg@50: 0.0513    precision@5: 0.0072    precision@10: 0.0057    precision@20: 0.0047    precision@50: 0.0033    map@5: 0.0190    map@10: 0.0217    map@20: 0.0240    map@50: 0.0261    
+Sun 10 Dec 2023 18:31:18 INFO topu result: 
+recall@5: 0.0453    recall@10: 0.0737    recall@20: 0.1114    recall@50: 0.2042    ndcg@5: 0.0607    ndcg@10: 0.0677    ndcg@20: 0.0862    ndcg@50: 0.1203    precision@5: 0.0593    precision@10: 0.0481    precision@20: 0.0370    precision@50: 0.0274    map@5: 0.0283    map@10: 0.0260    map@20: 0.0294    map@50: 0.0344    
+Sun 10 Dec 2023 18:31:18 INFO bottomu result: 
+recall@5: 0.0364    recall@10: 0.0586    recall@20: 0.0912    recall@50: 0.1540    ndcg@5: 0.0237    ndcg@10: 0.0309    ndcg@20: 0.0391    ndcg@50: 0.0515    precision@5: 0.0073    precision@10: 0.0059    precision@20: 0.0046    precision@50: 0.0031    map@5: 0.0196    map@10: 0.0225    map@20: 0.0247    map@50: 0.0267    
+Sun 10 Dec 2023 18:31:18 INFO ██ LightGCN--Best validation results updated!!!
+Sun 10 Dec 2023 18:31:20 INFO epoch 33 training [time: 2.17s, train loss: 2.4039]
+Sun 10 Dec 2023 18:31:35 INFO epoch 33 evaluating [time: 5.43s, valid_score: 0.088400]
+Sun 10 Dec 2023 18:31:35 INFO valid result: 
+recall@5: 0.0340    recall@10: 0.0551    recall@20: 0.0884    recall@50: 0.1537    ndcg@5: 0.0229    ndcg@10: 0.0298    ndcg@20: 0.0383    ndcg@50: 0.0513    precision@5: 0.0072    precision@10: 0.0058    precision@20: 0.0047    precision@50: 0.0033    map@5: 0.0190    map@10: 0.0217    map@20: 0.0240    map@50: 0.0261    
+Sun 10 Dec 2023 18:31:35 INFO topu result: 
+recall@5: 0.0329    recall@10: 0.0675    recall@20: 0.1223    recall@50: 0.2088    ndcg@5: 0.0505    ndcg@10: 0.0629    ndcg@20: 0.0891    ndcg@50: 0.1203    precision@5: 0.0444    precision@10: 0.0444    precision@20: 0.0407    precision@50: 0.0281    map@5: 0.0249    map@10: 0.0236    map@20: 0.0289    map@50: 0.0333    
+Sun 10 Dec 2023 18:31:35 INFO bottomu result: 
+recall@5: 0.0367    recall@10: 0.0588    recall@20: 0.0917    recall@50: 0.1539    ndcg@5: 0.0238    ndcg@10: 0.0310    ndcg@20: 0.0392    ndcg@50: 0.0515    precision@5: 0.0073    precision@10: 0.0059    precision@20: 0.0046    precision@50: 0.0031    map@5: 0.0196    map@10: 0.0225    map@20: 0.0248    map@50: 0.0267    
+Sun 10 Dec 2023 18:31:37 INFO epoch 34 training [time: 1.81s, train loss: 2.3611]
+Sun 10 Dec 2023 18:31:53 INFO epoch 34 evaluating [time: 7.26s, valid_score: 0.088800]
+Sun 10 Dec 2023 18:31:53 INFO valid result: 
+recall@5: 0.0346    recall@10: 0.0551    recall@20: 0.0888    recall@50: 0.1545    ndcg@5: 0.0232    ndcg@10: 0.0298    ndcg@20: 0.0384    ndcg@50: 0.0516    precision@5: 0.0073    precision@10: 0.0058    precision@20: 0.0047    precision@50: 0.0033    map@5: 0.0191    map@10: 0.0218    map@20: 0.0241    map@50: 0.0262    
+Sun 10 Dec 2023 18:31:53 INFO topu result: 
+recall@5: 0.0329    recall@10: 0.0675    recall@20: 0.1176    recall@50: 0.2088    ndcg@5: 0.0510    ndcg@10: 0.0635    ndcg@20: 0.0875    ndcg@50: 0.1208    precision@5: 0.0444    precision@10: 0.0444    precision@20: 0.0389    precision@50: 0.0281    map@5: 0.0253    map@10: 0.0240    map@20: 0.0291    map@50: 0.0337    
+Sun 10 Dec 2023 18:31:53 INFO bottomu result: 
+recall@5: 0.0368    recall@10: 0.0593    recall@20: 0.0923    recall@50: 0.1544    ndcg@5: 0.0238    ndcg@10: 0.0311    ndcg@20: 0.0394    ndcg@50: 0.0516    precision@5: 0.0074    precision@10: 0.0059    precision@20: 0.0046    precision@50: 0.0031    map@5: 0.0196    map@10: 0.0226    map@20: 0.0248    map@50: 0.0267    
+Sun 10 Dec 2023 18:31:53 INFO ██ LightGCN--Best validation results updated!!!
+Sun 10 Dec 2023 18:31:55 INFO epoch 35 training [time: 2.02s, train loss: 2.2804]
+Sun 10 Dec 2023 18:32:11 INFO epoch 35 evaluating [time: 7.16s, valid_score: 0.089200]
+Sun 10 Dec 2023 18:32:11 INFO valid result: 
+recall@5: 0.0349    recall@10: 0.0551    recall@20: 0.0892    recall@50: 0.1553    ndcg@5: 0.0233    ndcg@10: 0.0298    ndcg@20: 0.0385    ndcg@50: 0.0517    precision@5: 0.0074    precision@10: 0.0058    precision@20: 0.0047    precision@50: 0.0033    map@5: 0.0192    map@10: 0.0218    map@20: 0.0241    map@50: 0.0262    
+Sun 10 Dec 2023 18:32:11 INFO topu result: 
+recall@5: 0.0391    recall@10: 0.0709    recall@20: 0.1223    recall@50: 0.2035    ndcg@5: 0.0559    ndcg@10: 0.0662    ndcg@20: 0.0900    ndcg@50: 0.1193    precision@5: 0.0519    precision@10: 0.0481    precision@20: 0.0407    precision@50: 0.0274    map@5: 0.0268    map@10: 0.0249    map@20: 0.0295    map@50: 0.0334    
+Sun 10 Dec 2023 18:32:11 INFO bottomu result: 
+recall@5: 0.0372    recall@10: 0.0599    recall@20: 0.0926    recall@50: 0.1552    ndcg@5: 0.0241    ndcg@10: 0.0314    ndcg@20: 0.0395    ndcg@50: 0.0519    precision@5: 0.0074    precision@10: 0.0060    precision@20: 0.0046    precision@50: 0.0031    map@5: 0.0198    map@10: 0.0227    map@20: 0.0249    map@50: 0.0269    
+Sun 10 Dec 2023 18:32:11 INFO ██ LightGCN--Best validation results updated!!!
+Sun 10 Dec 2023 18:32:13 INFO epoch 36 training [time: 1.89s, train loss: 2.2275]
+Sun 10 Dec 2023 18:32:29 INFO epoch 36 evaluating [time: 6.66s, valid_score: 0.089200]
+Sun 10 Dec 2023 18:32:29 INFO valid result: 
+recall@5: 0.0352    recall@10: 0.0554    recall@20: 0.0892    recall@50: 0.1553    ndcg@5: 0.0235    ndcg@10: 0.0300    ndcg@20: 0.0386    ndcg@50: 0.0518    precision@5: 0.0074    precision@10: 0.0059    precision@20: 0.0047    precision@50: 0.0033    map@5: 0.0193    map@10: 0.0219    map@20: 0.0242    map@50: 0.0263    
+Sun 10 Dec 2023 18:32:29 INFO topu result: 
+recall@5: 0.0391    recall@10: 0.0783    recall@20: 0.1176    recall@50: 0.2035    ndcg@5: 0.0575    ndcg@10: 0.0708    ndcg@20: 0.0888    ndcg@50: 0.1202    precision@5: 0.0519    precision@10: 0.0519    precision@20: 0.0389    precision@50: 0.0274    map@5: 0.0280    map@10: 0.0263    map@20: 0.0300    map@50: 0.0339    
+Sun 10 Dec 2023 18:32:29 INFO bottomu result: 
+recall@5: 0.0374    recall@10: 0.0597    recall@20: 0.0924    recall@50: 0.1559    ndcg@5: 0.0242    ndcg@10: 0.0314    ndcg@20: 0.0396    ndcg@50: 0.0521    precision@5: 0.0075    precision@10: 0.0060    precision@20: 0.0046    precision@50: 0.0031    map@5: 0.0199    map@10: 0.0228    map@20: 0.0250    map@50: 0.0270    
+Sun 10 Dec 2023 18:32:31 INFO epoch 37 training [time: 1.83s, train loss: 2.1798]
+Sun 10 Dec 2023 18:32:47 INFO epoch 37 evaluating [time: 5.95s, valid_score: 0.089800]
+Sun 10 Dec 2023 18:32:47 INFO valid result: 
+recall@5: 0.0355    recall@10: 0.0553    recall@20: 0.0898    recall@50: 0.1553    ndcg@5: 0.0237    ndcg@10: 0.0301    ndcg@20: 0.0388    ndcg@50: 0.0520    precision@5: 0.0075    precision@10: 0.0059    precision@20: 0.0047    precision@50: 0.0033    map@5: 0.0195    map@10: 0.0220    map@20: 0.0244    map@50: 0.0265    
+Sun 10 Dec 2023 18:32:47 INFO topu result: 
+recall@5: 0.0391    recall@10: 0.0709    recall@20: 0.1176    recall@50: 0.2035    ndcg@5: 0.0575    ndcg@10: 0.0673    ndcg@20: 0.0889    ndcg@50: 0.1203    precision@5: 0.0519    precision@10: 0.0481    precision@20: 0.0389    precision@50: 0.0274    map@5: 0.0280    map@10: 0.0256    map@20: 0.0301    map@50: 0.0341    
+Sun 10 Dec 2023 18:32:47 INFO bottomu result: 
+recall@5: 0.0374    recall@10: 0.0601    recall@20: 0.0932    recall@50: 0.1565    ndcg@5: 0.0243    ndcg@10: 0.0316    ndcg@20: 0.0399    ndcg@50: 0.0524    precision@5: 0.0075    precision@10: 0.0060    precision@20: 0.0047    precision@50: 0.0031    map@5: 0.0200    map@10: 0.0230    map@20: 0.0252    map@50: 0.0272    
+Sun 10 Dec 2023 18:32:47 INFO ██ LightGCN--Best validation results updated!!!
+Sun 10 Dec 2023 18:32:49 INFO epoch 38 training [time: 2.05s, train loss: 2.1305]
+Sun 10 Dec 2023 18:33:05 INFO epoch 38 evaluating [time: 5.66s, valid_score: 0.089900]
+Sun 10 Dec 2023 18:33:05 INFO valid result: 
+recall@5: 0.0353    recall@10: 0.0553    recall@20: 0.0899    recall@50: 0.1558    ndcg@5: 0.0236    ndcg@10: 0.0301    ndcg@20: 0.0389    ndcg@50: 0.0521    precision@5: 0.0075    precision@10: 0.0059    precision@20: 0.0047    precision@50: 0.0033    map@5: 0.0194    map@10: 0.0221    map@20: 0.0244    map@50: 0.0265    
+Sun 10 Dec 2023 18:33:05 INFO topu result: 
+recall@5: 0.0453    recall@10: 0.0783    recall@20: 0.1176    recall@50: 0.2035    ndcg@5: 0.0624    ndcg@10: 0.0714    ndcg@20: 0.0893    ndcg@50: 0.1208    precision@5: 0.0593    precision@10: 0.0519    precision@20: 0.0389    precision@50: 0.0274    map@5: 0.0295    map@10: 0.0266    map@20: 0.0303    map@50: 0.0343    
+Sun 10 Dec 2023 18:33:05 INFO bottomu result: 
+recall@5: 0.0380    recall@10: 0.0605    recall@20: 0.0934    recall@50: 0.1573    ndcg@5: 0.0246    ndcg@10: 0.0317    ndcg@20: 0.0400    ndcg@50: 0.0526    precision@5: 0.0076    precision@10: 0.0060    precision@20: 0.0047    precision@50: 0.0031    map@5: 0.0202    map@10: 0.0231    map@20: 0.0253    map@50: 0.0273    
+Sun 10 Dec 2023 18:33:05 INFO ██ LightGCN--Best validation results updated!!!
+Sun 10 Dec 2023 18:33:07 INFO epoch 39 training [time: 1.94s, train loss: 2.0727]
+Sun 10 Dec 2023 18:33:23 INFO epoch 39 evaluating [time: 7.50s, valid_score: 0.090100]
+Sun 10 Dec 2023 18:33:23 INFO valid result: 
+recall@5: 0.0356    recall@10: 0.0559    recall@20: 0.0901    recall@50: 0.1564    ndcg@5: 0.0237    ndcg@10: 0.0303    ndcg@20: 0.0390    ndcg@50: 0.0523    precision@5: 0.0075    precision@10: 0.0059    precision@20: 0.0048    precision@50: 0.0033    map@5: 0.0195    map@10: 0.0221    map@20: 0.0245    map@50: 0.0266    
+Sun 10 Dec 2023 18:33:23 INFO topu result: 
+recall@5: 0.0453    recall@10: 0.0783    recall@20: 0.1176    recall@50: 0.2035    ndcg@5: 0.0624    ndcg@10: 0.0719    ndcg@20: 0.0898    ndcg@50: 0.1213    precision@5: 0.0593    precision@10: 0.0519    precision@20: 0.0389    precision@50: 0.0274    map@5: 0.0295    map@10: 0.0270    map@20: 0.0308    map@50: 0.0348    
+Sun 10 Dec 2023 18:33:23 INFO bottomu result: 
+recall@5: 0.0379    recall@10: 0.0603    recall@20: 0.0931    recall@50: 0.1571    ndcg@5: 0.0245    ndcg@10: 0.0317    ndcg@20: 0.0399    ndcg@50: 0.0526    precision@5: 0.0076    precision@10: 0.0060    precision@20: 0.0047    precision@50: 0.0031    map@5: 0.0201    map@10: 0.0230    map@20: 0.0253    map@50: 0.0273    
+Sun 10 Dec 2023 18:33:23 INFO ██ LightGCN--Best validation results updated!!!
+Sun 10 Dec 2023 18:33:25 INFO epoch 40 training [time: 1.85s, train loss: 2.0145]
+Sun 10 Dec 2023 18:33:41 INFO epoch 40 evaluating [time: 7.28s, valid_score: 0.090000]
+Sun 10 Dec 2023 18:33:41 INFO valid result: 
+recall@5: 0.0357    recall@10: 0.0559    recall@20: 0.0900    recall@50: 0.1567    ndcg@5: 0.0238    ndcg@10: 0.0303    ndcg@20: 0.0390    ndcg@50: 0.0524    precision@5: 0.0075    precision@10: 0.0059    precision@20: 0.0048    precision@50: 0.0033    map@5: 0.0196    map@10: 0.0222    map@20: 0.0245    map@50: 0.0266    
+Sun 10 Dec 2023 18:33:41 INFO topu result: 
+recall@5: 0.0391    recall@10: 0.0749    recall@20: 0.1148    recall@50: 0.2035    ndcg@5: 0.0575    ndcg@10: 0.0690    ndcg@20: 0.0877    ndcg@50: 0.1207    precision@5: 0.0519    precision@10: 0.0481    precision@20: 0.0370    precision@50: 0.0274    map@5: 0.0280    map@10: 0.0260    map@20: 0.0303    map@50: 0.0345    
+Sun 10 Dec 2023 18:33:41 INFO bottomu result: 
+recall@5: 0.0380    recall@10: 0.0600    recall@20: 0.0931    recall@50: 0.1568    ndcg@5: 0.0246    ndcg@10: 0.0317    ndcg@20: 0.0400    ndcg@50: 0.0526    precision@5: 0.0076    precision@10: 0.0060    precision@20: 0.0047    precision@50: 0.0031    map@5: 0.0202    map@10: 0.0231    map@20: 0.0254    map@50: 0.0274    
+Sun 10 Dec 2023 18:33:44 INFO epoch 41 training [time: 3.06s, train loss: 1.9699]
+Sun 10 Dec 2023 18:34:01 INFO epoch 41 evaluating [time: 7.52s, valid_score: 0.090100]
+Sun 10 Dec 2023 18:34:01 INFO valid result: 
+recall@5: 0.0358    recall@10: 0.0563    recall@20: 0.0901    recall@50: 0.1576    ndcg@5: 0.0239    ndcg@10: 0.0306    ndcg@20: 0.0392    ndcg@50: 0.0526    precision@5: 0.0076    precision@10: 0.0060    precision@20: 0.0048    precision@50: 0.0033    map@5: 0.0197    map@10: 0.0224    map@20: 0.0247    map@50: 0.0268    
+Sun 10 Dec 2023 18:34:01 INFO topu result: 
+recall@5: 0.0391    recall@10: 0.0783    recall@20: 0.1176    recall@50: 0.2081    ndcg@5: 0.0575    ndcg@10: 0.0713    ndcg@20: 0.0892    ndcg@50: 0.1224    precision@5: 0.0519    precision@10: 0.0519    precision@20: 0.0389    precision@50: 0.0281    map@5: 0.0280    map@10: 0.0267    map@20: 0.0304    map@50: 0.0347    
+Sun 10 Dec 2023 18:34:01 INFO bottomu result: 
+recall@5: 0.0383    recall@10: 0.0603    recall@20: 0.0935    recall@50: 0.1570    ndcg@5: 0.0247    ndcg@10: 0.0318    ndcg@20: 0.0401    ndcg@50: 0.0526    precision@5: 0.0077    precision@10: 0.0060    precision@20: 0.0047    precision@50: 0.0031    map@5: 0.0203    map@10: 0.0231    map@20: 0.0254    map@50: 0.0274    
+Sun 10 Dec 2023 18:34:04 INFO epoch 42 training [time: 3.16s, train loss: 1.9145]
+Sun 10 Dec 2023 18:34:20 INFO epoch 42 evaluating [time: 6.15s, valid_score: 0.089900]
+Sun 10 Dec 2023 18:34:20 INFO valid result: 
+recall@5: 0.0358    recall@10: 0.0566    recall@20: 0.0899    recall@50: 0.1569    ndcg@5: 0.0240    ndcg@10: 0.0308    ndcg@20: 0.0392    ndcg@50: 0.0526    precision@5: 0.0076    precision@10: 0.0060    precision@20: 0.0047    precision@50: 0.0033    map@5: 0.0198    map@10: 0.0225    map@20: 0.0248    map@50: 0.0269    
+Sun 10 Dec 2023 18:34:20 INFO topu result: 
+recall@5: 0.0465    recall@10: 0.0709    recall@20: 0.1148    recall@50: 0.1989    ndcg@5: 0.0624    ndcg@10: 0.0679    ndcg@20: 0.0879    ndcg@50: 0.1193    precision@5: 0.0593    precision@10: 0.0481    precision@20: 0.0370    precision@50: 0.0267    map@5: 0.0295    map@10: 0.0261    map@20: 0.0305    map@50: 0.0345    
+Sun 10 Dec 2023 18:34:20 INFO bottomu result: 
+recall@5: 0.0381    recall@10: 0.0607    recall@20: 0.0935    recall@50: 0.1569    ndcg@5: 0.0246    ndcg@10: 0.0319    ndcg@20: 0.0401    ndcg@50: 0.0527    precision@5: 0.0076    precision@10: 0.0061    precision@20: 0.0047    precision@50: 0.0031    map@5: 0.0202    map@10: 0.0232    map@20: 0.0254    map@50: 0.0274    
+Sun 10 Dec 2023 18:34:22 INFO epoch 43 training [time: 1.94s, train loss: 1.8683]
+Sun 10 Dec 2023 18:34:38 INFO epoch 43 evaluating [time: 6.80s, valid_score: 0.090100]
+Sun 10 Dec 2023 18:34:38 INFO valid result: 
+recall@5: 0.0355    recall@10: 0.0569    recall@20: 0.0901    recall@50: 0.1572    ndcg@5: 0.0239    ndcg@10: 0.0309    ndcg@20: 0.0393    ndcg@50: 0.0528    precision@5: 0.0075    precision@10: 0.0060    precision@20: 0.0048    precision@50: 0.0033    map@5: 0.0198    map@10: 0.0226    map@20: 0.0249    map@50: 0.0270    
+Sun 10 Dec 2023 18:34:38 INFO topu result: 
+recall@5: 0.0465    recall@10: 0.0783    recall@20: 0.1074    recall@50: 0.2035    ndcg@5: 0.0624    ndcg@10: 0.0713    ndcg@20: 0.0850    ndcg@50: 0.1208    precision@5: 0.0593    precision@10: 0.0519    precision@20: 0.0352    precision@50: 0.0274    map@5: 0.0295    map@10: 0.0267    map@20: 0.0301    map@50: 0.0347    
+Sun 10 Dec 2023 18:34:38 INFO bottomu result: 
+recall@5: 0.0380    recall@10: 0.0607    recall@20: 0.0942    recall@50: 0.1575    ndcg@5: 0.0247    ndcg@10: 0.0320    ndcg@20: 0.0404    ndcg@50: 0.0529    precision@5: 0.0076    precision@10: 0.0061    precision@20: 0.0047    precision@50: 0.0031    map@5: 0.0203    map@10: 0.0233    map@20: 0.0256    map@50: 0.0276    
+Sun 10 Dec 2023 18:34:40 INFO epoch 44 training [time: 2.01s, train loss: 1.8202]
+Sun 10 Dec 2023 18:34:59 INFO epoch 44 evaluating [time: 7.16s, valid_score: 0.090100]
+Sun 10 Dec 2023 18:34:59 INFO valid result: 
+recall@5: 0.0358    recall@10: 0.0570    recall@20: 0.0901    recall@50: 0.1583    ndcg@5: 0.0241    ndcg@10: 0.0309    ndcg@20: 0.0393    ndcg@50: 0.0530    precision@5: 0.0076    precision@10: 0.0060    precision@20: 0.0048    precision@50: 0.0034    map@5: 0.0198    map@10: 0.0226    map@20: 0.0249    map@50: 0.0270    
+Sun 10 Dec 2023 18:34:59 INFO topu result: 
+recall@5: 0.0465    recall@10: 0.0709    recall@20: 0.1074    recall@50: 0.2035    ndcg@5: 0.0615    ndcg@10: 0.0673    ndcg@20: 0.0841    ndcg@50: 0.1200    precision@5: 0.0593    precision@10: 0.0481    precision@20: 0.0352    precision@50: 0.0274    map@5: 0.0289    map@10: 0.0256    map@20: 0.0295    map@50: 0.0341    
+Sun 10 Dec 2023 18:34:59 INFO bottomu result: 
+recall@5: 0.0384    recall@10: 0.0610    recall@20: 0.0940    recall@50: 0.1574    ndcg@5: 0.0248    ndcg@10: 0.0321    ndcg@20: 0.0403    ndcg@50: 0.0529    precision@5: 0.0077    precision@10: 0.0061    precision@20: 0.0047    precision@50: 0.0031    map@5: 0.0204    map@10: 0.0233    map@20: 0.0256    map@50: 0.0276    
+Sun 10 Dec 2023 18:35:01 INFO epoch 45 training [time: 1.89s, train loss: 1.7752]
+Sun 10 Dec 2023 18:35:16 INFO epoch 45 evaluating [time: 6.15s, valid_score: 0.090400]
+Sun 10 Dec 2023 18:35:16 INFO valid result: 
+recall@5: 0.0359    recall@10: 0.0574    recall@20: 0.0904    recall@50: 0.1580    ndcg@5: 0.0242    ndcg@10: 0.0312    ndcg@20: 0.0396    ndcg@50: 0.0531    precision@5: 0.0076    precision@10: 0.0061    precision@20: 0.0048    precision@50: 0.0033    map@5: 0.0200    map@10: 0.0228    map@20: 0.0251    map@50: 0.0272    
+Sun 10 Dec 2023 18:35:16 INFO topu result: 
+recall@5: 0.0465    recall@10: 0.0709    recall@20: 0.1120    recall@50: 0.2051    ndcg@5: 0.0615    ndcg@10: 0.0668    ndcg@20: 0.0859    ndcg@50: 0.1202    precision@5: 0.0593    precision@10: 0.0481    precision@20: 0.0370    precision@50: 0.0274    map@5: 0.0289    map@10: 0.0254    map@20: 0.0296    map@50: 0.0344    
+Sun 10 Dec 2023 18:35:16 INFO bottomu result: 
+recall@5: 0.0383    recall@10: 0.0607    recall@20: 0.0949    recall@50: 0.1583    ndcg@5: 0.0248    ndcg@10: 0.0320    ndcg@20: 0.0406    ndcg@50: 0.0531    precision@5: 0.0077    precision@10: 0.0061    precision@20: 0.0047    precision@50: 0.0032    map@5: 0.0204    map@10: 0.0233    map@20: 0.0257    map@50: 0.0276    
+Sun 10 Dec 2023 18:35:16 INFO ██ LightGCN--Best validation results updated!!!
+Sun 10 Dec 2023 18:35:18 INFO epoch 46 training [time: 1.94s, train loss: 1.7432]
+Sun 10 Dec 2023 18:35:35 INFO epoch 46 evaluating [time: 8.06s, valid_score: 0.090600]
+Sun 10 Dec 2023 18:35:35 INFO valid result: 
+recall@5: 0.0359    recall@10: 0.0578    recall@20: 0.0906    recall@50: 0.1578    ndcg@5: 0.0242    ndcg@10: 0.0312    ndcg@20: 0.0396    ndcg@50: 0.0531    precision@5: 0.0076    precision@10: 0.0061    precision@20: 0.0048    precision@50: 0.0033    map@5: 0.0199    map@10: 0.0228    map@20: 0.0250    map@50: 0.0272    
+Sun 10 Dec 2023 18:35:35 INFO topu result: 
+recall@5: 0.0465    recall@10: 0.0709    recall@20: 0.1120    recall@50: 0.2103    ndcg@5: 0.0633    ndcg@10: 0.0682    ndcg@20: 0.0872    ndcg@50: 0.1235    precision@5: 0.0593    precision@10: 0.0481    precision@20: 0.0370    precision@50: 0.0281    map@5: 0.0301    map@10: 0.0262    map@20: 0.0303    map@50: 0.0355    
+Sun 10 Dec 2023 18:35:35 INFO bottomu result: 
+recall@5: 0.0389    recall@10: 0.0609    recall@20: 0.0955    recall@50: 0.1584    ndcg@5: 0.0251    ndcg@10: 0.0322    ndcg@20: 0.0408    ndcg@50: 0.0532    precision@5: 0.0078    precision@10: 0.0061    precision@20: 0.0048    precision@50: 0.0032    map@5: 0.0206    map@10: 0.0235    map@20: 0.0258    map@50: 0.0278    
+Sun 10 Dec 2023 18:35:35 INFO ██ LightGCN--Best validation results updated!!!
+Sun 10 Dec 2023 18:35:37 INFO epoch 47 training [time: 2.08s, train loss: 1.7028]
+Sun 10 Dec 2023 18:35:51 INFO epoch 47 evaluating [time: 5.34s, valid_score: 0.090500]
+Sun 10 Dec 2023 18:35:51 INFO valid result: 
+recall@5: 0.0362    recall@10: 0.0580    recall@20: 0.0905    recall@50: 0.1582    ndcg@5: 0.0243    ndcg@10: 0.0313    ndcg@20: 0.0396    ndcg@50: 0.0532    precision@5: 0.0077    precision@10: 0.0062    precision@20: 0.0048    precision@50: 0.0034    map@5: 0.0200    map@10: 0.0228    map@20: 0.0251    map@50: 0.0272    
+Sun 10 Dec 2023 18:35:51 INFO topu result: 
+recall@5: 0.0465    recall@10: 0.0709    recall@20: 0.1120    recall@50: 0.2103    ndcg@5: 0.0638    ndcg@10: 0.0691    ndcg@20: 0.0882    ndcg@50: 0.1246    precision@5: 0.0593    precision@10: 0.0481    precision@20: 0.0370    precision@50: 0.0281    map@5: 0.0305    map@10: 0.0269    map@20: 0.0311    map@50: 0.0363    
+Sun 10 Dec 2023 18:35:51 INFO bottomu result: 
+recall@5: 0.0386    recall@10: 0.0606    recall@20: 0.0948    recall@50: 0.1591    ndcg@5: 0.0248    ndcg@10: 0.0319    ndcg@20: 0.0405    ndcg@50: 0.0532    precision@5: 0.0077    precision@10: 0.0061    precision@20: 0.0047    precision@50: 0.0032    map@5: 0.0203    map@10: 0.0232    map@20: 0.0255    map@50: 0.0275    
+Sun 10 Dec 2023 18:35:53 INFO epoch 48 training [time: 2.05s, train loss: 1.6808]
+Sun 10 Dec 2023 18:36:10 INFO epoch 48 evaluating [time: 7.30s, valid_score: 0.090900]
+Sun 10 Dec 2023 18:36:10 INFO valid result: 
+recall@5: 0.0365    recall@10: 0.0579    recall@20: 0.0909    recall@50: 0.1586    ndcg@5: 0.0245    ndcg@10: 0.0314    ndcg@20: 0.0398    ndcg@50: 0.0534    precision@5: 0.0078    precision@10: 0.0061    precision@20: 0.0048    precision@50: 0.0034    map@5: 0.0202    map@10: 0.0230    map@20: 0.0252    map@50: 0.0274    
+Sun 10 Dec 2023 18:36:10 INFO topu result: 
+recall@5: 0.0391    recall@10: 0.0709    recall@20: 0.1194    recall@50: 0.2075    ndcg@5: 0.0589    ndcg@10: 0.0687    ndcg@20: 0.0909    ndcg@50: 0.1232    precision@5: 0.0519    precision@10: 0.0481    precision@20: 0.0389    precision@50: 0.0274    map@5: 0.0290    map@10: 0.0267    map@20: 0.0314    map@50: 0.0362    
+Sun 10 Dec 2023 18:36:10 INFO bottomu result: 
+recall@5: 0.0386    recall@10: 0.0613    recall@20: 0.0947    recall@50: 0.1587    ndcg@5: 0.0247    ndcg@10: 0.0321    ndcg@20: 0.0404    ndcg@50: 0.0531    precision@5: 0.0077    precision@10: 0.0061    precision@20: 0.0047    precision@50: 0.0032    map@5: 0.0202    map@10: 0.0232    map@20: 0.0255    map@50: 0.0275    
+Sun 10 Dec 2023 18:36:10 INFO ██ LightGCN--Best validation results updated!!!
+Sun 10 Dec 2023 18:36:12 INFO epoch 49 training [time: 2.17s, train loss: 1.6360]
+Sun 10 Dec 2023 18:36:31 INFO epoch 49 evaluating [time: 5.18s, valid_score: 0.090600]
+Sun 10 Dec 2023 18:36:31 INFO valid result: 
+recall@5: 0.0366    recall@10: 0.0578    recall@20: 0.0906    recall@50: 0.1584    ndcg@5: 0.0247    ndcg@10: 0.0316    ndcg@20: 0.0399    ndcg@50: 0.0535    precision@5: 0.0078    precision@10: 0.0061    precision@20: 0.0048    precision@50: 0.0034    map@5: 0.0204    map@10: 0.0232    map@20: 0.0254    map@50: 0.0276    
+Sun 10 Dec 2023 18:36:31 INFO topu result: 
+recall@5: 0.0391    recall@10: 0.0709    recall@20: 0.1120    recall@50: 0.2121    ndcg@5: 0.0606    ndcg@10: 0.0703    ndcg@20: 0.0891    ndcg@50: 0.1260    precision@5: 0.0519    precision@10: 0.0481    precision@20: 0.0370    precision@50: 0.0281    map@5: 0.0302    map@10: 0.0277    map@20: 0.0317    map@50: 0.0373    
+Sun 10 Dec 2023 18:36:31 INFO bottomu result: 
+recall@5: 0.0383    recall@10: 0.0611    recall@20: 0.0950    recall@50: 0.1592    ndcg@5: 0.0246    ndcg@10: 0.0319    ndcg@20: 0.0405    ndcg@50: 0.0531    precision@5: 0.0077    precision@10: 0.0061    precision@20: 0.0048    precision@50: 0.0032    map@5: 0.0201    map@10: 0.0231    map@20: 0.0254    map@50: 0.0274    
+Sun 10 Dec 2023 18:36:33 INFO epoch 50 training [time: 1.91s, train loss: 1.6121]
+Sun 10 Dec 2023 18:36:51 INFO epoch 50 evaluating [time: 5.66s, valid_score: 0.091100]
+Sun 10 Dec 2023 18:36:51 INFO valid result: 
+recall@5: 0.0366    recall@10: 0.0582    recall@20: 0.0911    recall@50: 0.1586    ndcg@5: 0.0247    ndcg@10: 0.0317    ndcg@20: 0.0401    ndcg@50: 0.0536    precision@5: 0.0078    precision@10: 0.0062    precision@20: 0.0048    precision@50: 0.0034    map@5: 0.0205    map@10: 0.0233    map@20: 0.0255    map@50: 0.0277    
+Sun 10 Dec 2023 18:36:51 INFO topu result: 
+recall@5: 0.0391    recall@10: 0.0709    recall@20: 0.1120    recall@50: 0.2121    ndcg@5: 0.0606    ndcg@10: 0.0703    ndcg@20: 0.0892    ndcg@50: 0.1259    precision@5: 0.0519    precision@10: 0.0481    precision@20: 0.0370    precision@50: 0.0281    map@5: 0.0302    map@10: 0.0277    map@20: 0.0318    map@50: 0.0373    
+Sun 10 Dec 2023 18:36:51 INFO bottomu result: 
+recall@5: 0.0380    recall@10: 0.0615    recall@20: 0.0955    recall@50: 0.1593    ndcg@5: 0.0246    ndcg@10: 0.0322    ndcg@20: 0.0408    ndcg@50: 0.0534    precision@5: 0.0076    precision@10: 0.0062    precision@20: 0.0048    precision@50: 0.0032    map@5: 0.0202    map@10: 0.0234    map@20: 0.0257    map@50: 0.0277    
+Sun 10 Dec 2023 18:36:51 INFO ██ LightGCN--Best validation results updated!!!
+Sun 10 Dec 2023 18:36:54 INFO epoch 51 training [time: 3.18s, train loss: 1.5746]
+Sun 10 Dec 2023 18:37:10 INFO epoch 51 evaluating [time: 5.47s, valid_score: 0.090800]
+Sun 10 Dec 2023 18:37:10 INFO valid result: 
+recall@5: 0.0368    recall@10: 0.0584    recall@20: 0.0908    recall@50: 0.1586    ndcg@5: 0.0249    ndcg@10: 0.0318    ndcg@20: 0.0401    ndcg@50: 0.0537    precision@5: 0.0078    precision@10: 0.0062    precision@20: 0.0048    precision@50: 0.0034    map@5: 0.0206    map@10: 0.0234    map@20: 0.0256    map@50: 0.0278    
+Sun 10 Dec 2023 18:37:10 INFO topu result: 
+recall@5: 0.0391    recall@10: 0.0709    recall@20: 0.1120    recall@50: 0.2121    ndcg@5: 0.0589    ndcg@10: 0.0686    ndcg@20: 0.0877    ndcg@50: 0.1244    precision@5: 0.0519    precision@10: 0.0481    precision@20: 0.0370    precision@50: 0.0281    map@5: 0.0290    map@10: 0.0265    map@20: 0.0307    map@50: 0.0362    
+Sun 10 Dec 2023 18:37:10 INFO bottomu result: 
+recall@5: 0.0384    recall@10: 0.0615    recall@20: 0.0956    recall@50: 0.1590    ndcg@5: 0.0248    ndcg@10: 0.0323    ndcg@20: 0.0409    ndcg@50: 0.0534    precision@5: 0.0077    precision@10: 0.0062    precision@20: 0.0048    precision@50: 0.0032    map@5: 0.0204    map@10: 0.0235    map@20: 0.0258    map@50: 0.0278    
+Sun 10 Dec 2023 18:37:13 INFO epoch 52 training [time: 2.65s, train loss: 1.5352]
+Sun 10 Dec 2023 18:37:32 INFO epoch 52 evaluating [time: 7.89s, valid_score: 0.091400]
+Sun 10 Dec 2023 18:37:32 INFO valid result: 
+recall@5: 0.0368    recall@10: 0.0583    recall@20: 0.0914    recall@50: 0.1587    ndcg@5: 0.0249    ndcg@10: 0.0319    ndcg@20: 0.0403    ndcg@50: 0.0538    precision@5: 0.0078    precision@10: 0.0062    precision@20: 0.0048    precision@50: 0.0034    map@5: 0.0207    map@10: 0.0235    map@20: 0.0258    map@50: 0.0279    
+Sun 10 Dec 2023 18:37:32 INFO topu result: 
+recall@5: 0.0465    recall@10: 0.0709    recall@20: 0.1120    recall@50: 0.2121    ndcg@5: 0.0654    ndcg@10: 0.0703    ndcg@20: 0.0895    ndcg@50: 0.1263    precision@5: 0.0593    precision@10: 0.0481    precision@20: 0.0370    precision@50: 0.0281    map@5: 0.0317    map@10: 0.0277    map@20: 0.0320    map@50: 0.0376    
+Sun 10 Dec 2023 18:37:32 INFO bottomu result: 
+recall@5: 0.0387    recall@10: 0.0618    recall@20: 0.0955    recall@50: 0.1592    ndcg@5: 0.0250    ndcg@10: 0.0324    ndcg@20: 0.0409    ndcg@50: 0.0535    precision@5: 0.0077    precision@10: 0.0062    precision@20: 0.0048    precision@50: 0.0032    map@5: 0.0205    map@10: 0.0235    map@20: 0.0258    map@50: 0.0278    
+Sun 10 Dec 2023 18:37:32 INFO ██ LightGCN--Best validation results updated!!!
+Sun 10 Dec 2023 18:37:34 INFO epoch 53 training [time: 2.36s, train loss: 1.5072]
+Sun 10 Dec 2023 18:37:50 INFO epoch 53 evaluating [time: 6.45s, valid_score: 0.091200]
+Sun 10 Dec 2023 18:37:50 INFO valid result: 
+recall@5: 0.0367    recall@10: 0.0586    recall@20: 0.0912    recall@50: 0.1584    ndcg@5: 0.0250    ndcg@10: 0.0321    ndcg@20: 0.0404    ndcg@50: 0.0539    precision@5: 0.0078    precision@10: 0.0062    precision@20: 0.0048    precision@50: 0.0034    map@5: 0.0208    map@10: 0.0236    map@20: 0.0259    map@50: 0.0280    
+Sun 10 Dec 2023 18:37:50 INFO topu result: 
+recall@5: 0.0465    recall@10: 0.0709    recall@20: 0.1120    recall@50: 0.2121    ndcg@5: 0.0638    ndcg@10: 0.0686    ndcg@20: 0.0876    ndcg@50: 0.1243    precision@5: 0.0593    precision@10: 0.0481    precision@20: 0.0370    precision@50: 0.0281    map@5: 0.0305    map@10: 0.0265    map@20: 0.0307    map@50: 0.0363    
+Sun 10 Dec 2023 18:37:50 INFO bottomu result: 
+recall@5: 0.0385    recall@10: 0.0615    recall@20: 0.0958    recall@50: 0.1601    ndcg@5: 0.0250    ndcg@10: 0.0324    ndcg@20: 0.0410    ndcg@50: 0.0537    precision@5: 0.0077    precision@10: 0.0062    precision@20: 0.0048    precision@50: 0.0032    map@5: 0.0205    map@10: 0.0236    map@20: 0.0259    map@50: 0.0279    
+Sun 10 Dec 2023 18:37:52 INFO epoch 54 training [time: 1.89s, train loss: 1.4727]
+Sun 10 Dec 2023 18:38:10 INFO epoch 54 evaluating [time: 7.81s, valid_score: 0.091500]
+Sun 10 Dec 2023 18:38:10 INFO valid result: 
+recall@5: 0.0368    recall@10: 0.0584    recall@20: 0.0915    recall@50: 0.1593    ndcg@5: 0.0250    ndcg@10: 0.0320    ndcg@20: 0.0404    ndcg@50: 0.0540    precision@5: 0.0078    precision@10: 0.0062    precision@20: 0.0048    precision@50: 0.0034    map@5: 0.0207    map@10: 0.0235    map@20: 0.0258    map@50: 0.0280    
+Sun 10 Dec 2023 18:38:10 INFO topu result: 
+recall@5: 0.0391    recall@10: 0.0709    recall@20: 0.1120    recall@50: 0.2121    ndcg@5: 0.0589    ndcg@10: 0.0686    ndcg@20: 0.0876    ndcg@50: 0.1244    precision@5: 0.0519    precision@10: 0.0481    precision@20: 0.0370    precision@50: 0.0281    map@5: 0.0290    map@10: 0.0266    map@20: 0.0308    map@50: 0.0364    
+Sun 10 Dec 2023 18:38:10 INFO bottomu result: 
+recall@5: 0.0385    recall@10: 0.0621    recall@20: 0.0959    recall@50: 0.1593    ndcg@5: 0.0249    ndcg@10: 0.0325    ndcg@20: 0.0410    ndcg@50: 0.0535    precision@5: 0.0077    precision@10: 0.0062    precision@20: 0.0048    precision@50: 0.0032    map@5: 0.0204    map@10: 0.0235    map@20: 0.0258    map@50: 0.0278    
+Sun 10 Dec 2023 18:38:10 INFO ██ LightGCN--Best validation results updated!!!
+Sun 10 Dec 2023 18:38:12 INFO epoch 55 training [time: 2.00s, train loss: 1.4519]
+Sun 10 Dec 2023 18:38:28 INFO epoch 55 evaluating [time: 6.98s, valid_score: 0.091900]
+Sun 10 Dec 2023 18:38:28 INFO valid result: 
+recall@5: 0.0368    recall@10: 0.0586    recall@20: 0.0919    recall@50: 0.1596    ndcg@5: 0.0250    ndcg@10: 0.0320    ndcg@20: 0.0405    ndcg@50: 0.0541    precision@5: 0.0078    precision@10: 0.0062    precision@20: 0.0048    precision@50: 0.0034    map@5: 0.0207    map@10: 0.0236    map@20: 0.0259    map@50: 0.0280    
+Sun 10 Dec 2023 18:38:28 INFO topu result: 
+recall@5: 0.0391    recall@10: 0.0709    recall@20: 0.1120    recall@50: 0.2121    ndcg@5: 0.0584    ndcg@10: 0.0679    ndcg@20: 0.0868    ndcg@50: 0.1236    precision@5: 0.0519    precision@10: 0.0481    precision@20: 0.0370    precision@50: 0.0281    map@5: 0.0286    map@10: 0.0261    map@20: 0.0303    map@50: 0.0359    
+Sun 10 Dec 2023 18:38:28 INFO bottomu result: 
+recall@5: 0.0388    recall@10: 0.0622    recall@20: 0.0965    recall@50: 0.1595    ndcg@5: 0.0251    ndcg@10: 0.0326    ndcg@20: 0.0412    ndcg@50: 0.0536    precision@5: 0.0078    precision@10: 0.0062    precision@20: 0.0048    precision@50: 0.0032    map@5: 0.0205    map@10: 0.0236    map@20: 0.0260    map@50: 0.0279    
+Sun 10 Dec 2023 18:38:28 INFO ██ LightGCN--Best validation results updated!!!
+Sun 10 Dec 2023 18:38:30 INFO epoch 56 training [time: 2.14s, train loss: 1.4223]
+Sun 10 Dec 2023 18:38:45 INFO epoch 56 evaluating [time: 5.32s, valid_score: 0.091800]
+Sun 10 Dec 2023 18:38:45 INFO valid result: 
+recall@5: 0.0368    recall@10: 0.0589    recall@20: 0.0918    recall@50: 0.1595    ndcg@5: 0.0250    ndcg@10: 0.0322    ndcg@20: 0.0405    ndcg@50: 0.0541    precision@5: 0.0078    precision@10: 0.0062    precision@20: 0.0048    precision@50: 0.0034    map@5: 0.0208    map@10: 0.0237    map@20: 0.0259    map@50: 0.0281    
+Sun 10 Dec 2023 18:38:45 INFO topu result: 
+recall@5: 0.0391    recall@10: 0.0709    recall@20: 0.1120    recall@50: 0.2150    ndcg@5: 0.0589    ndcg@10: 0.0682    ndcg@20: 0.0874    ndcg@50: 0.1254    precision@5: 0.0519    precision@10: 0.0481    precision@20: 0.0370    precision@50: 0.0289    map@5: 0.0290    map@10: 0.0264    map@20: 0.0307    map@50: 0.0365    
+Sun 10 Dec 2023 18:38:45 INFO bottomu result: 
+recall@5: 0.0391    recall@10: 0.0619    recall@20: 0.0966    recall@50: 0.1605    ndcg@5: 0.0252    ndcg@10: 0.0325    ndcg@20: 0.0413    ndcg@50: 0.0539    precision@5: 0.0078    precision@10: 0.0062    precision@20: 0.0048    precision@50: 0.0032    map@5: 0.0207    map@10: 0.0237    map@20: 0.0260    map@50: 0.0280    
+Sun 10 Dec 2023 18:38:47 INFO epoch 57 training [time: 2.00s, train loss: 1.3826]
+Sun 10 Dec 2023 18:39:04 INFO epoch 57 evaluating [time: 5.97s, valid_score: 0.091900]
+Sun 10 Dec 2023 18:39:04 INFO valid result: 
+recall@5: 0.0373    recall@10: 0.0593    recall@20: 0.0919    recall@50: 0.1596    ndcg@5: 0.0253    ndcg@10: 0.0323    ndcg@20: 0.0406    ndcg@50: 0.0542    precision@5: 0.0079    precision@10: 0.0063    precision@20: 0.0048    precision@50: 0.0034    map@5: 0.0209    map@10: 0.0238    map@20: 0.0260    map@50: 0.0282    
+Sun 10 Dec 2023 18:39:04 INFO topu result: 
+recall@5: 0.0391    recall@10: 0.0709    recall@20: 0.1120    recall@50: 0.2150    ndcg@5: 0.0560    ndcg@10: 0.0663    ndcg@20: 0.0853    ndcg@50: 0.1232    precision@5: 0.0519    precision@10: 0.0481    precision@20: 0.0370    precision@50: 0.0289    map@5: 0.0265    map@10: 0.0252    map@20: 0.0294    map@50: 0.0351    
+Sun 10 Dec 2023 18:39:04 INFO bottomu result: 
+recall@5: 0.0394    recall@10: 0.0627    recall@20: 0.0963    recall@50: 0.1605    ndcg@5: 0.0253    ndcg@10: 0.0328    ndcg@20: 0.0412    ndcg@50: 0.0539    precision@5: 0.0079    precision@10: 0.0063    precision@20: 0.0048    precision@50: 0.0032    map@5: 0.0207    map@10: 0.0237    map@20: 0.0260    map@50: 0.0280    
+Sun 10 Dec 2023 18:39:06 INFO epoch 58 training [time: 2.00s, train loss: 1.3718]
+Sun 10 Dec 2023 18:39:28 INFO epoch 58 evaluating [time: 6.97s, valid_score: 0.092300]
+Sun 10 Dec 2023 18:39:28 INFO valid result: 
+recall@5: 0.0375    recall@10: 0.0597    recall@20: 0.0923    recall@50: 0.1600    ndcg@5: 0.0254    ndcg@10: 0.0326    ndcg@20: 0.0408    ndcg@50: 0.0544    precision@5: 0.0080    precision@10: 0.0063    precision@20: 0.0049    precision@50: 0.0034    map@5: 0.0211    map@10: 0.0239    map@20: 0.0262    map@50: 0.0284    
+Sun 10 Dec 2023 18:39:28 INFO topu result: 
+recall@5: 0.0391    recall@10: 0.0770    recall@20: 0.1120    recall@50: 0.2150    ndcg@5: 0.0554    ndcg@10: 0.0689    ndcg@20: 0.0845    ndcg@50: 0.1226    precision@5: 0.0519    precision@10: 0.0519    precision@20: 0.0370    precision@50: 0.0289    map@5: 0.0262    map@10: 0.0259    map@20: 0.0289    map@50: 0.0348    
+Sun 10 Dec 2023 18:39:28 INFO bottomu result: 
+recall@5: 0.0392    recall@10: 0.0627    recall@20: 0.0968    recall@50: 0.1601    ndcg@5: 0.0252    ndcg@10: 0.0327    ndcg@20: 0.0413    ndcg@50: 0.0538    precision@5: 0.0078    precision@10: 0.0063    precision@20: 0.0048    precision@50: 0.0032    map@5: 0.0206    map@10: 0.0237    map@20: 0.0260    map@50: 0.0280    
+Sun 10 Dec 2023 18:39:28 INFO ██ LightGCN--Best validation results updated!!!
+Sun 10 Dec 2023 18:39:30 INFO epoch 59 training [time: 2.13s, train loss: 1.3492]
+Sun 10 Dec 2023 18:39:46 INFO epoch 59 evaluating [time: 5.64s, valid_score: 0.092000]
+Sun 10 Dec 2023 18:39:46 INFO valid result: 
+recall@5: 0.0374    recall@10: 0.0594    recall@20: 0.0920    recall@50: 0.1602    ndcg@5: 0.0254    ndcg@10: 0.0325    ndcg@20: 0.0408    ndcg@50: 0.0545    precision@5: 0.0079    precision@10: 0.0063    precision@20: 0.0048    precision@50: 0.0034    map@5: 0.0211    map@10: 0.0240    map@20: 0.0262    map@50: 0.0284    
+Sun 10 Dec 2023 18:39:46 INFO topu result: 
+recall@5: 0.0391    recall@10: 0.0761    recall@20: 0.1120    recall@50: 0.2150    ndcg@5: 0.0570    ndcg@10: 0.0701    ndcg@20: 0.0860    ndcg@50: 0.1242    precision@5: 0.0519    precision@10: 0.0519    precision@20: 0.0370    precision@50: 0.0289    map@5: 0.0274    map@10: 0.0268    map@20: 0.0299    map@50: 0.0360    
+Sun 10 Dec 2023 18:39:46 INFO bottomu result: 
+recall@5: 0.0390    recall@10: 0.0625    recall@20: 0.0965    recall@50: 0.1601    ndcg@5: 0.0253    ndcg@10: 0.0328    ndcg@20: 0.0414    ndcg@50: 0.0539    precision@5: 0.0078    precision@10: 0.0062    precision@20: 0.0048    precision@50: 0.0032    map@5: 0.0208    map@10: 0.0238    map@20: 0.0262    map@50: 0.0282    
+Sun 10 Dec 2023 18:39:48 INFO epoch 60 training [time: 1.95s, train loss: 1.3203]
+Sun 10 Dec 2023 18:40:05 INFO epoch 60 evaluating [time: 7.08s, valid_score: 0.092400]
+Sun 10 Dec 2023 18:40:05 INFO valid result: 
+recall@5: 0.0374    recall@10: 0.0594    recall@20: 0.0924    recall@50: 0.1598    ndcg@5: 0.0255    ndcg@10: 0.0325    ndcg@20: 0.0409    ndcg@50: 0.0545    precision@5: 0.0080    precision@10: 0.0063    precision@20: 0.0049    precision@50: 0.0034    map@5: 0.0211    map@10: 0.0240    map@20: 0.0262    map@50: 0.0284    
+Sun 10 Dec 2023 18:40:05 INFO topu result: 
+recall@5: 0.0391    recall@10: 0.0761    recall@20: 0.1120    recall@50: 0.2150    ndcg@5: 0.0570    ndcg@10: 0.0701    ndcg@20: 0.0860    ndcg@50: 0.1244    precision@5: 0.0519    precision@10: 0.0519    precision@20: 0.0370    precision@50: 0.0289    map@5: 0.0274    map@10: 0.0268    map@20: 0.0300    map@50: 0.0361    
+Sun 10 Dec 2023 18:40:05 INFO bottomu result: 
+recall@5: 0.0392    recall@10: 0.0627    recall@20: 0.0963    recall@50: 0.1601    ndcg@5: 0.0253    ndcg@10: 0.0328    ndcg@20: 0.0413    ndcg@50: 0.0539    precision@5: 0.0078    precision@10: 0.0063    precision@20: 0.0048    precision@50: 0.0032    map@5: 0.0208    map@10: 0.0238    map@20: 0.0262    map@50: 0.0282    
+Sun 10 Dec 2023 18:40:05 INFO ██ LightGCN--Best validation results updated!!!
+Sun 10 Dec 2023 18:40:07 INFO epoch 61 training [time: 1.96s, train loss: 1.2935]
+Sun 10 Dec 2023 18:40:23 INFO epoch 61 evaluating [time: 7.19s, valid_score: 0.092600]
+Sun 10 Dec 2023 18:40:23 INFO valid result: 
+recall@5: 0.0373    recall@10: 0.0595    recall@20: 0.0926    recall@50: 0.1602    ndcg@5: 0.0254    ndcg@10: 0.0326    ndcg@20: 0.0410    ndcg@50: 0.0546    precision@5: 0.0079    precision@10: 0.0063    precision@20: 0.0049    precision@50: 0.0034    map@5: 0.0211    map@10: 0.0240    map@20: 0.0263    map@50: 0.0285    
+Sun 10 Dec 2023 18:40:23 INFO topu result: 
+recall@5: 0.0391    recall@10: 0.0770    recall@20: 0.1120    recall@50: 0.2183    ndcg@5: 0.0570    ndcg@10: 0.0699    ndcg@20: 0.0855    ndcg@50: 0.1246    precision@5: 0.0519    precision@10: 0.0519    precision@20: 0.0370    precision@50: 0.0289    map@5: 0.0274    map@10: 0.0267    map@20: 0.0297    map@50: 0.0359    
+Sun 10 Dec 2023 18:40:23 INFO bottomu result: 
+recall@5: 0.0391    recall@10: 0.0629    recall@20: 0.0972    recall@50: 0.1601    ndcg@5: 0.0254    ndcg@10: 0.0330    ndcg@20: 0.0416    ndcg@50: 0.0540    precision@5: 0.0078    precision@10: 0.0063    precision@20: 0.0049    precision@50: 0.0032    map@5: 0.0209    map@10: 0.0239    map@20: 0.0263    map@50: 0.0283    
+Sun 10 Dec 2023 18:40:23 INFO ██ LightGCN--Best validation results updated!!!
+Sun 10 Dec 2023 18:40:26 INFO epoch 62 training [time: 3.29s, train loss: 1.2695]
+Sun 10 Dec 2023 18:40:42 INFO epoch 62 evaluating [time: 7.17s, valid_score: 0.092500]
+Sun 10 Dec 2023 18:40:42 INFO valid result: 
+recall@5: 0.0375    recall@10: 0.0594    recall@20: 0.0925    recall@50: 0.1607    ndcg@5: 0.0255    ndcg@10: 0.0326    ndcg@20: 0.0410    ndcg@50: 0.0547    precision@5: 0.0079    precision@10: 0.0063    precision@20: 0.0049    precision@50: 0.0034    map@5: 0.0212    map@10: 0.0241    map@20: 0.0264    map@50: 0.0285    
+Sun 10 Dec 2023 18:40:42 INFO topu result: 
+recall@5: 0.0391    recall@10: 0.0709    recall@20: 0.1120    recall@50: 0.2183    ndcg@5: 0.0570    ndcg@10: 0.0666    ndcg@20: 0.0852    ndcg@50: 0.1243    precision@5: 0.0519    precision@10: 0.0481    precision@20: 0.0370    precision@50: 0.0289    map@5: 0.0274    map@10: 0.0254    map@20: 0.0295    map@50: 0.0357    
+Sun 10 Dec 2023 18:40:42 INFO bottomu result: 
+recall@5: 0.0389    recall@10: 0.0625    recall@20: 0.0973    recall@50: 0.1606    ndcg@5: 0.0253    ndcg@10: 0.0329    ndcg@20: 0.0417    ndcg@50: 0.0541    precision@5: 0.0078    precision@10: 0.0063    precision@20: 0.0049    precision@50: 0.0032    map@5: 0.0209    map@10: 0.0240    map@20: 0.0264    map@50: 0.0283    
+Sun 10 Dec 2023 18:40:45 INFO epoch 63 training [time: 3.38s, train loss: 1.2529]
+Sun 10 Dec 2023 18:41:01 INFO epoch 63 evaluating [time: 5.70s, valid_score: 0.092800]
+Sun 10 Dec 2023 18:41:01 INFO valid result: 
+recall@5: 0.0373    recall@10: 0.0594    recall@20: 0.0928    recall@50: 0.1606    ndcg@5: 0.0256    ndcg@10: 0.0327    ndcg@20: 0.0413    ndcg@50: 0.0548    precision@5: 0.0079    precision@10: 0.0063    precision@20: 0.0049    precision@50: 0.0034    map@5: 0.0214    map@10: 0.0243    map@20: 0.0266    map@50: 0.0287    
+Sun 10 Dec 2023 18:41:01 INFO topu result: 
+recall@5: 0.0391    recall@10: 0.0728    recall@20: 0.1046    recall@50: 0.2137    ndcg@5: 0.0570    ndcg@10: 0.0673    ndcg@20: 0.0825    ndcg@50: 0.1227    precision@5: 0.0519    precision@10: 0.0481    precision@20: 0.0352    precision@50: 0.0281    map@5: 0.0274    map@10: 0.0258    map@20: 0.0292    map@50: 0.0357    
+Sun 10 Dec 2023 18:41:01 INFO bottomu result: 
+recall@5: 0.0388    recall@10: 0.0629    recall@20: 0.0974    recall@50: 0.1610    ndcg@5: 0.0253    ndcg@10: 0.0330    ndcg@20: 0.0417    ndcg@50: 0.0542    precision@5: 0.0078    precision@10: 0.0063    precision@20: 0.0049    precision@50: 0.0032    map@5: 0.0209    map@10: 0.0240    map@20: 0.0264    map@50: 0.0284    
+Sun 10 Dec 2023 18:41:01 INFO ██ LightGCN--Best validation results updated!!!
+Sun 10 Dec 2023 18:41:03 INFO epoch 64 training [time: 2.14s, train loss: 1.2357]
+Sun 10 Dec 2023 18:41:19 INFO epoch 64 evaluating [time: 6.47s, valid_score: 0.092800]
+Sun 10 Dec 2023 18:41:19 INFO valid result: 
+recall@5: 0.0373    recall@10: 0.0599    recall@20: 0.0928    recall@50: 0.1606    ndcg@5: 0.0256    ndcg@10: 0.0329    ndcg@20: 0.0413    ndcg@50: 0.0549    precision@5: 0.0079    precision@10: 0.0063    precision@20: 0.0049    precision@50: 0.0034    map@5: 0.0214    map@10: 0.0243    map@20: 0.0266    map@50: 0.0287    
+Sun 10 Dec 2023 18:41:19 INFO topu result: 
+recall@5: 0.0391    recall@10: 0.0700    recall@20: 0.1046    recall@50: 0.2137    ndcg@5: 0.0524    ndcg@10: 0.0628    ndcg@20: 0.0785    ndcg@50: 0.1187    precision@5: 0.0519    precision@10: 0.0481    precision@20: 0.0352    precision@50: 0.0281    map@5: 0.0237    map@10: 0.0234    map@20: 0.0265    map@50: 0.0330    
+Sun 10 Dec 2023 18:41:19 INFO bottomu result: 
+recall@5: 0.0390    recall@10: 0.0633    recall@20: 0.0980    recall@50: 0.1610    ndcg@5: 0.0253    ndcg@10: 0.0331    ndcg@20: 0.0418    ndcg@50: 0.0542    precision@5: 0.0078    precision@10: 0.0063    precision@20: 0.0049    precision@50: 0.0032    map@5: 0.0208    map@10: 0.0240    map@20: 0.0264    map@50: 0.0283    
+Sun 10 Dec 2023 18:41:21 INFO epoch 65 training [time: 1.87s, train loss: 1.2113]
+Sun 10 Dec 2023 18:41:40 INFO epoch 65 evaluating [time: 7.50s, valid_score: 0.093500]
+Sun 10 Dec 2023 18:41:40 INFO valid result: 
+recall@5: 0.0374    recall@10: 0.0600    recall@20: 0.0935    recall@50: 0.1607    ndcg@5: 0.0257    ndcg@10: 0.0330    ndcg@20: 0.0415    ndcg@50: 0.0550    precision@5: 0.0079    precision@10: 0.0063    precision@20: 0.0049    precision@50: 0.0034    map@5: 0.0215    map@10: 0.0244    map@20: 0.0267    map@50: 0.0288    
+Sun 10 Dec 2023 18:41:40 INFO topu result: 
+recall@5: 0.0391    recall@10: 0.0700    recall@20: 0.1046    recall@50: 0.2183    ndcg@5: 0.0524    ndcg@10: 0.0626    ndcg@20: 0.0781    ndcg@50: 0.1200    precision@5: 0.0519    precision@10: 0.0481    precision@20: 0.0352    precision@50: 0.0289    map@5: 0.0237    map@10: 0.0231    map@20: 0.0260    map@50: 0.0328    
+Sun 10 Dec 2023 18:41:40 INFO bottomu result: 
+recall@5: 0.0390    recall@10: 0.0632    recall@20: 0.0977    recall@50: 0.1610    ndcg@5: 0.0253    ndcg@10: 0.0331    ndcg@20: 0.0417    ndcg@50: 0.0542    precision@5: 0.0078    precision@10: 0.0063    precision@20: 0.0049    precision@50: 0.0032    map@5: 0.0208    map@10: 0.0240    map@20: 0.0263    map@50: 0.0283    
+Sun 10 Dec 2023 18:41:40 INFO ██ LightGCN--Best validation results updated!!!
+Sun 10 Dec 2023 18:41:42 INFO epoch 66 training [time: 2.01s, train loss: 1.1837]
+Sun 10 Dec 2023 18:41:58 INFO epoch 66 evaluating [time: 7.08s, valid_score: 0.093500]
+Sun 10 Dec 2023 18:41:58 INFO valid result: 
+recall@5: 0.0373    recall@10: 0.0601    recall@20: 0.0935    recall@50: 0.1609    ndcg@5: 0.0256    ndcg@10: 0.0330    ndcg@20: 0.0415    ndcg@50: 0.0550    precision@5: 0.0079    precision@10: 0.0063    precision@20: 0.0049    precision@50: 0.0034    map@5: 0.0214    map@10: 0.0244    map@20: 0.0267    map@50: 0.0288    
+Sun 10 Dec 2023 18:41:58 INFO topu result: 
+recall@5: 0.0391    recall@10: 0.0700    recall@20: 0.1046    recall@50: 0.2137    ndcg@5: 0.0508    ndcg@10: 0.0612    ndcg@20: 0.0769    ndcg@50: 0.1173    precision@5: 0.0519    precision@10: 0.0481    precision@20: 0.0352    precision@50: 0.0281    map@5: 0.0225    map@10: 0.0222    map@20: 0.0252    map@50: 0.0319    
+Sun 10 Dec 2023 18:41:58 INFO bottomu result: 
+recall@5: 0.0390    recall@10: 0.0634    recall@20: 0.0978    recall@50: 0.1617    ndcg@5: 0.0252    ndcg@10: 0.0330    ndcg@20: 0.0417    ndcg@50: 0.0543    precision@5: 0.0078    precision@10: 0.0063    precision@20: 0.0049    precision@50: 0.0032    map@5: 0.0207    map@10: 0.0239    map@20: 0.0262    map@50: 0.0282    
+Sun 10 Dec 2023 18:42:00 INFO epoch 67 training [time: 2.01s, train loss: 1.1596]
+Sun 10 Dec 2023 18:42:15 INFO epoch 67 evaluating [time: 6.00s, valid_score: 0.093600]
+Sun 10 Dec 2023 18:42:15 INFO valid result: 
+recall@5: 0.0375    recall@10: 0.0602    recall@20: 0.0936    recall@50: 0.1604    ndcg@5: 0.0257    ndcg@10: 0.0330    ndcg@20: 0.0415    ndcg@50: 0.0549    precision@5: 0.0080    precision@10: 0.0064    precision@20: 0.0049    precision@50: 0.0034    map@5: 0.0215    map@10: 0.0244    map@20: 0.0267    map@50: 0.0288    
+Sun 10 Dec 2023 18:42:15 INFO topu result: 
+recall@5: 0.0391    recall@10: 0.0666    recall@20: 0.1092    recall@50: 0.2137    ndcg@5: 0.0508    ndcg@10: 0.0588    ndcg@20: 0.0788    ndcg@50: 0.1172    precision@5: 0.0519    precision@10: 0.0444    precision@20: 0.0370    precision@50: 0.0281    map@5: 0.0225    map@10: 0.0214    map@20: 0.0252    map@50: 0.0317    
+Sun 10 Dec 2023 18:42:15 INFO bottomu result: 
+recall@5: 0.0390    recall@10: 0.0632    recall@20: 0.0977    recall@50: 0.1614    ndcg@5: 0.0252    ndcg@10: 0.0329    ndcg@20: 0.0416    ndcg@50: 0.0542    precision@5: 0.0078    precision@10: 0.0063    precision@20: 0.0049    precision@50: 0.0032    map@5: 0.0207    map@10: 0.0238    map@20: 0.0262    map@50: 0.0281    
+Sun 10 Dec 2023 18:42:15 INFO ██ LightGCN--Best validation results updated!!!
+Sun 10 Dec 2023 18:42:17 INFO epoch 68 training [time: 2.07s, train loss: 1.1552]
+Sun 10 Dec 2023 18:42:33 INFO epoch 68 evaluating [time: 5.03s, valid_score: 0.093700]
+Sun 10 Dec 2023 18:42:33 INFO valid result: 
+recall@5: 0.0378    recall@10: 0.0596    recall@20: 0.0937    recall@50: 0.1605    ndcg@5: 0.0258    ndcg@10: 0.0329    ndcg@20: 0.0415    ndcg@50: 0.0550    precision@5: 0.0080    precision@10: 0.0063    precision@20: 0.0049    precision@50: 0.0034    map@5: 0.0215    map@10: 0.0243    map@20: 0.0267    map@50: 0.0288    
+Sun 10 Dec 2023 18:42:33 INFO topu result: 
+recall@5: 0.0391    recall@10: 0.0666    recall@20: 0.1166    recall@50: 0.2137    ndcg@5: 0.0499    ndcg@10: 0.0580    ndcg@20: 0.0808    ndcg@50: 0.1165    precision@5: 0.0519    precision@10: 0.0444    precision@20: 0.0389    precision@50: 0.0281    map@5: 0.0219    map@10: 0.0209    map@20: 0.0250    map@50: 0.0312    
+Sun 10 Dec 2023 18:42:33 INFO bottomu result: 
+recall@5: 0.0386    recall@10: 0.0636    recall@20: 0.0974    recall@50: 0.1616    ndcg@5: 0.0252    ndcg@10: 0.0331    ndcg@20: 0.0416    ndcg@50: 0.0543    precision@5: 0.0077    precision@10: 0.0064    precision@20: 0.0049    precision@50: 0.0032    map@5: 0.0207    map@10: 0.0240    map@20: 0.0263    map@50: 0.0283    
+Sun 10 Dec 2023 18:42:33 INFO ██ LightGCN--Best validation results updated!!!
+Sun 10 Dec 2023 18:42:35 INFO epoch 69 training [time: 2.13s, train loss: 1.1484]
+Sun 10 Dec 2023 18:42:52 INFO epoch 69 evaluating [time: 7.73s, valid_score: 0.094000]
+Sun 10 Dec 2023 18:42:52 INFO valid result: 
+recall@5: 0.0380    recall@10: 0.0596    recall@20: 0.0940    recall@50: 0.1602    ndcg@5: 0.0258    ndcg@10: 0.0329    ndcg@20: 0.0416    ndcg@50: 0.0549    precision@5: 0.0080    precision@10: 0.0063    precision@20: 0.0050    precision@50: 0.0034    map@5: 0.0215    map@10: 0.0243    map@20: 0.0267    map@50: 0.0288    
+Sun 10 Dec 2023 18:42:52 INFO topu result: 
+recall@5: 0.0391    recall@10: 0.0666    recall@20: 0.1092    recall@50: 0.2137    ndcg@5: 0.0508    ndcg@10: 0.0584    ndcg@20: 0.0783    ndcg@50: 0.1170    precision@5: 0.0519    precision@10: 0.0444    precision@20: 0.0370    precision@50: 0.0281    map@5: 0.0225    map@10: 0.0212    map@20: 0.0249    map@50: 0.0315    
+Sun 10 Dec 2023 18:42:52 INFO bottomu result: 
+recall@5: 0.0390    recall@10: 0.0640    recall@20: 0.0972    recall@50: 0.1611    ndcg@5: 0.0253    ndcg@10: 0.0333    ndcg@20: 0.0416    ndcg@50: 0.0542    precision@5: 0.0078    precision@10: 0.0064    precision@20: 0.0049    precision@50: 0.0032    map@5: 0.0208    map@10: 0.0240    map@20: 0.0263    map@50: 0.0283    
+Sun 10 Dec 2023 18:42:52 INFO ██ LightGCN--Best validation results updated!!!
+Sun 10 Dec 2023 18:42:54 INFO epoch 70 training [time: 2.01s, train loss: 1.1253]
+Sun 10 Dec 2023 18:43:08 INFO epoch 70 evaluating [time: 5.56s, valid_score: 0.094100]
+Sun 10 Dec 2023 18:43:08 INFO valid result: 
+recall@5: 0.0378    recall@10: 0.0598    recall@20: 0.0941    recall@50: 0.1599    ndcg@5: 0.0259    ndcg@10: 0.0330    ndcg@20: 0.0417    ndcg@50: 0.0549    precision@5: 0.0080    precision@10: 0.0063    precision@20: 0.0050    precision@50: 0.0034    map@5: 0.0216    map@10: 0.0245    map@20: 0.0268    map@50: 0.0289    
+Sun 10 Dec 2023 18:43:08 INFO topu result: 
+recall@5: 0.0391    recall@10: 0.0666    recall@20: 0.1228    recall@50: 0.2137    ndcg@5: 0.0513    ndcg@10: 0.0592    ndcg@20: 0.0844    ndcg@50: 0.1177    precision@5: 0.0519    precision@10: 0.0444    precision@20: 0.0407    precision@50: 0.0281    map@5: 0.0228    map@10: 0.0218    map@20: 0.0268    map@50: 0.0322    
+Sun 10 Dec 2023 18:43:08 INFO bottomu result: 
+recall@5: 0.0390    recall@10: 0.0638    recall@20: 0.0974    recall@50: 0.1606    ndcg@5: 0.0254    ndcg@10: 0.0333    ndcg@20: 0.0418    ndcg@50: 0.0543    precision@5: 0.0078    precision@10: 0.0064    precision@20: 0.0049    precision@50: 0.0032    map@5: 0.0209    map@10: 0.0241    map@20: 0.0264    map@50: 0.0284    
+Sun 10 Dec 2023 18:43:08 INFO ██ LightGCN--Best validation results updated!!!
+Sun 10 Dec 2023 18:43:10 INFO epoch 71 training [time: 2.13s, train loss: 1.1002]
+Sun 10 Dec 2023 18:43:28 INFO epoch 71 evaluating [time: 7.80s, valid_score: 0.094600]
+Sun 10 Dec 2023 18:43:28 INFO valid result: 
+recall@5: 0.0379    recall@10: 0.0597    recall@20: 0.0946    recall@50: 0.1600    ndcg@5: 0.0259    ndcg@10: 0.0329    ndcg@20: 0.0418    ndcg@50: 0.0549    precision@5: 0.0080    precision@10: 0.0063    precision@20: 0.0050    precision@50: 0.0034    map@5: 0.0215    map@10: 0.0244    map@20: 0.0268    map@50: 0.0288    
+Sun 10 Dec 2023 18:43:28 INFO topu result: 
+recall@5: 0.0391    recall@10: 0.0666    recall@20: 0.1228    recall@50: 0.2137    ndcg@5: 0.0513    ndcg@10: 0.0594    ndcg@20: 0.0846    ndcg@50: 0.1179    precision@5: 0.0519    precision@10: 0.0444    precision@20: 0.0407    precision@50: 0.0281    map@5: 0.0228    map@10: 0.0220    map@20: 0.0269    map@50: 0.0323    
+Sun 10 Dec 2023 18:43:28 INFO bottomu result: 
+recall@5: 0.0387    recall@10: 0.0637    recall@20: 0.0977    recall@50: 0.1611    ndcg@5: 0.0252    ndcg@10: 0.0332    ndcg@20: 0.0417    ndcg@50: 0.0543    precision@5: 0.0077    precision@10: 0.0064    precision@20: 0.0049    precision@50: 0.0032    map@5: 0.0207    map@10: 0.0240    map@20: 0.0263    map@50: 0.0283    
+Sun 10 Dec 2023 18:43:28 INFO ██ LightGCN--Best validation results updated!!!
+Sun 10 Dec 2023 18:43:32 INFO epoch 72 training [time: 3.39s, train loss: 1.0827]
+Sun 10 Dec 2023 18:43:47 INFO epoch 72 evaluating [time: 5.46s, valid_score: 0.094700]
+Sun 10 Dec 2023 18:43:47 INFO valid result: 
+recall@5: 0.0378    recall@10: 0.0603    recall@20: 0.0947    recall@50: 0.1599    ndcg@5: 0.0259    ndcg@10: 0.0331    ndcg@20: 0.0418    ndcg@50: 0.0549    precision@5: 0.0080    precision@10: 0.0064    precision@20: 0.0050    precision@50: 0.0034    map@5: 0.0216    map@10: 0.0245    map@20: 0.0268    map@50: 0.0289    
+Sun 10 Dec 2023 18:43:47 INFO topu result: 
+recall@5: 0.0391    recall@10: 0.0666    recall@20: 0.1175    recall@50: 0.2137    ndcg@5: 0.0524    ndcg@10: 0.0601    ndcg@20: 0.0829    ndcg@50: 0.1185    precision@5: 0.0519    precision@10: 0.0444    precision@20: 0.0389    precision@50: 0.0281    map@5: 0.0237    map@10: 0.0225    map@20: 0.0272    map@50: 0.0329    
+Sun 10 Dec 2023 18:43:47 INFO bottomu result: 
+recall@5: 0.0388    recall@10: 0.0639    recall@20: 0.0974    recall@50: 0.1615    ndcg@5: 0.0252    ndcg@10: 0.0333    ndcg@20: 0.0417    ndcg@50: 0.0544    precision@5: 0.0078    precision@10: 0.0064    precision@20: 0.0049    precision@50: 0.0032    map@5: 0.0208    map@10: 0.0241    map@20: 0.0263    map@50: 0.0284    
+Sun 10 Dec 2023 18:43:47 INFO ██ LightGCN--Best validation results updated!!!
+Sun 10 Dec 2023 18:43:50 INFO epoch 73 training [time: 3.07s, train loss: 1.0679]
+Sun 10 Dec 2023 18:44:05 INFO epoch 73 evaluating [time: 5.71s, valid_score: 0.094800]
+Sun 10 Dec 2023 18:44:05 INFO valid result: 
+recall@5: 0.0378    recall@10: 0.0607    recall@20: 0.0948    recall@50: 0.1598    ndcg@5: 0.0259    ndcg@10: 0.0333    ndcg@20: 0.0419    ndcg@50: 0.0549    precision@5: 0.0080    precision@10: 0.0064    precision@20: 0.0050    precision@50: 0.0034    map@5: 0.0216    map@10: 0.0246    map@20: 0.0269    map@50: 0.0289    
+Sun 10 Dec 2023 18:44:05 INFO topu result: 
+recall@5: 0.0391    recall@10: 0.0666    recall@20: 0.1249    recall@50: 0.2137    ndcg@5: 0.0524    ndcg@10: 0.0599    ndcg@20: 0.0857    ndcg@50: 0.1185    precision@5: 0.0519    precision@10: 0.0444    precision@20: 0.0407    precision@50: 0.0281    map@5: 0.0237    map@10: 0.0225    map@20: 0.0276    map@50: 0.0329    
+Sun 10 Dec 2023 18:44:05 INFO bottomu result: 
+recall@5: 0.0388    recall@10: 0.0637    recall@20: 0.0980    recall@50: 0.1611    ndcg@5: 0.0252    ndcg@10: 0.0332    ndcg@20: 0.0419    ndcg@50: 0.0543    precision@5: 0.0078    precision@10: 0.0064    precision@20: 0.0049    precision@50: 0.0032    map@5: 0.0208    map@10: 0.0240    map@20: 0.0264    map@50: 0.0284    
+Sun 10 Dec 2023 18:44:05 INFO ██ LightGCN--Best validation results updated!!!
+Sun 10 Dec 2023 18:44:07 INFO epoch 74 training [time: 1.99s, train loss: 1.0439]
+Sun 10 Dec 2023 18:44:24 INFO epoch 74 evaluating [time: 6.21s, valid_score: 0.095600]
+Sun 10 Dec 2023 18:44:24 INFO valid result: 
+recall@5: 0.0379    recall@10: 0.0609    recall@20: 0.0956    recall@50: 0.1598    ndcg@5: 0.0260    ndcg@10: 0.0334    ndcg@20: 0.0421    ndcg@50: 0.0550    precision@5: 0.0080    precision@10: 0.0064    precision@20: 0.0050    precision@50: 0.0034    map@5: 0.0217    map@10: 0.0247    map@20: 0.0270    map@50: 0.0290    
+Sun 10 Dec 2023 18:44:24 INFO topu result: 
+recall@5: 0.0391    recall@10: 0.0604    recall@20: 0.1175    recall@50: 0.2183    ndcg@5: 0.0530    ndcg@10: 0.0567    ndcg@20: 0.0829    ndcg@50: 0.1201    precision@5: 0.0519    precision@10: 0.0407    precision@20: 0.0389    precision@50: 0.0289    map@5: 0.0241    map@10: 0.0218    map@20: 0.0272    map@50: 0.0330    
+Sun 10 Dec 2023 18:44:24 INFO bottomu result: 
+recall@5: 0.0388    recall@10: 0.0634    recall@20: 0.0987    recall@50: 0.1607    ndcg@5: 0.0253    ndcg@10: 0.0332    ndcg@20: 0.0420    ndcg@50: 0.0543    precision@5: 0.0078    precision@10: 0.0063    precision@20: 0.0049    precision@50: 0.0032    map@5: 0.0208    map@10: 0.0241    map@20: 0.0265    map@50: 0.0284    
+Sun 10 Dec 2023 18:44:24 INFO ██ LightGCN--Best validation results updated!!!
+Sun 10 Dec 2023 18:44:26 INFO epoch 75 training [time: 1.88s, train loss: 1.0383]
+Sun 10 Dec 2023 18:44:43 INFO epoch 75 evaluating [time: 6.90s, valid_score: 0.095300]
+Sun 10 Dec 2023 18:44:43 INFO valid result: 
+recall@5: 0.0382    recall@10: 0.0610    recall@20: 0.0953    recall@50: 0.1598    ndcg@5: 0.0261    ndcg@10: 0.0334    ndcg@20: 0.0421    ndcg@50: 0.0550    precision@5: 0.0081    precision@10: 0.0064    precision@20: 0.0050    precision@50: 0.0034    map@5: 0.0217    map@10: 0.0247    map@20: 0.0270    map@50: 0.0290    
+Sun 10 Dec 2023 18:44:43 INFO topu result: 
+recall@5: 0.0391    recall@10: 0.0571    recall@20: 0.1101    recall@50: 0.2183    ndcg@5: 0.0530    ndcg@10: 0.0546    ndcg@20: 0.0804    ndcg@50: 0.1205    precision@5: 0.0519    precision@10: 0.0370    precision@20: 0.0370    precision@50: 0.0289    map@5: 0.0241    map@10: 0.0217    map@20: 0.0273    map@50: 0.0334    
+Sun 10 Dec 2023 18:44:43 INFO bottomu result: 
+recall@5: 0.0386    recall@10: 0.0639    recall@20: 0.0988    recall@50: 0.1609    ndcg@5: 0.0253    ndcg@10: 0.0334    ndcg@20: 0.0422    ndcg@50: 0.0544    precision@5: 0.0077    precision@10: 0.0064    precision@20: 0.0049    precision@50: 0.0032    map@5: 0.0209    map@10: 0.0242    map@20: 0.0266    map@50: 0.0285    
+Sun 10 Dec 2023 18:44:45 INFO epoch 76 training [time: 1.84s, train loss: 1.0231]
+Sun 10 Dec 2023 18:44:59 INFO epoch 76 evaluating [time: 5.13s, valid_score: 0.095000]
+Sun 10 Dec 2023 18:44:59 INFO valid result: 
+recall@5: 0.0384    recall@10: 0.0608    recall@20: 0.0950    recall@50: 0.1597    ndcg@5: 0.0262    ndcg@10: 0.0334    ndcg@20: 0.0421    ndcg@50: 0.0551    precision@5: 0.0081    precision@10: 0.0064    precision@20: 0.0050    precision@50: 0.0034    map@5: 0.0218    map@10: 0.0247    map@20: 0.0270    map@50: 0.0291    
+Sun 10 Dec 2023 18:44:59 INFO topu result: 
+recall@5: 0.0391    recall@10: 0.0632    recall@20: 0.1175    recall@50: 0.2217    ndcg@5: 0.0530    ndcg@10: 0.0580    ndcg@20: 0.0835    ndcg@50: 0.1220    precision@5: 0.0519    precision@10: 0.0407    precision@20: 0.0389    precision@50: 0.0296    map@5: 0.0241    map@10: 0.0231    map@20: 0.0280    map@50: 0.0340    
+Sun 10 Dec 2023 18:44:59 INFO bottomu result: 
+recall@5: 0.0388    recall@10: 0.0635    recall@20: 0.0987    recall@50: 0.1607    ndcg@5: 0.0254    ndcg@10: 0.0333    ndcg@20: 0.0422    ndcg@50: 0.0544    precision@5: 0.0078    precision@10: 0.0064    precision@20: 0.0049    precision@50: 0.0032    map@5: 0.0210    map@10: 0.0242    map@20: 0.0266    map@50: 0.0285    
+Sun 10 Dec 2023 18:45:01 INFO epoch 77 training [time: 1.87s, train loss: 1.0046]
+Sun 10 Dec 2023 18:45:16 INFO epoch 77 evaluating [time: 5.99s, valid_score: 0.095300]
+Sun 10 Dec 2023 18:45:16 INFO valid result: 
+recall@5: 0.0385    recall@10: 0.0612    recall@20: 0.0953    recall@50: 0.1596    ndcg@5: 0.0263    ndcg@10: 0.0336    ndcg@20: 0.0422    ndcg@50: 0.0551    precision@5: 0.0081    precision@10: 0.0065    precision@20: 0.0050    precision@50: 0.0034    map@5: 0.0219    map@10: 0.0249    map@20: 0.0271    map@50: 0.0292    
+Sun 10 Dec 2023 18:45:16 INFO topu result: 
+recall@5: 0.0391    recall@10: 0.0571    recall@20: 0.1175    recall@50: 0.2170    ndcg@5: 0.0530    ndcg@10: 0.0542    ndcg@20: 0.0827    ndcg@50: 0.1196    precision@5: 0.0519    precision@10: 0.0370    precision@20: 0.0389    precision@50: 0.0289    map@5: 0.0241    map@10: 0.0213    map@20: 0.0271    map@50: 0.0329    
+Sun 10 Dec 2023 18:45:16 INFO bottomu result: 
+recall@5: 0.0389    recall@10: 0.0635    recall@20: 0.0986    recall@50: 0.1605    ndcg@5: 0.0254    ndcg@10: 0.0333    ndcg@20: 0.0421    ndcg@50: 0.0544    precision@5: 0.0078    precision@10: 0.0064    precision@20: 0.0049    precision@50: 0.0032    map@5: 0.0210    map@10: 0.0242    map@20: 0.0266    map@50: 0.0285    
+Sun 10 Dec 2023 18:45:18 INFO epoch 78 training [time: 1.97s, train loss: 0.9898]
+Sun 10 Dec 2023 18:45:33 INFO epoch 78 evaluating [time: 6.46s, valid_score: 0.095100]
+Sun 10 Dec 2023 18:45:33 INFO valid result: 
+recall@5: 0.0385    recall@10: 0.0613    recall@20: 0.0951    recall@50: 0.1593    ndcg@5: 0.0263    ndcg@10: 0.0337    ndcg@20: 0.0422    ndcg@50: 0.0551    precision@5: 0.0081    precision@10: 0.0065    precision@20: 0.0050    precision@50: 0.0034    map@5: 0.0219    map@10: 0.0249    map@20: 0.0272    map@50: 0.0292    
+Sun 10 Dec 2023 18:45:33 INFO topu result: 
+recall@5: 0.0391    recall@10: 0.0571    recall@20: 0.1249    recall@50: 0.2170    ndcg@5: 0.0513    ndcg@10: 0.0528    ndcg@20: 0.0838    ndcg@50: 0.1180    precision@5: 0.0519    precision@10: 0.0370    precision@20: 0.0407    precision@50: 0.0289    map@5: 0.0228    map@10: 0.0203    map@20: 0.0263    map@50: 0.0319    
+Sun 10 Dec 2023 18:45:33 INFO bottomu result: 
+recall@5: 0.0388    recall@10: 0.0633    recall@20: 0.0983    recall@50: 0.1609    ndcg@5: 0.0254    ndcg@10: 0.0333    ndcg@20: 0.0421    ndcg@50: 0.0544    precision@5: 0.0078    precision@10: 0.0063    precision@20: 0.0049    precision@50: 0.0032    map@5: 0.0210    map@10: 0.0242    map@20: 0.0266    map@50: 0.0286    
+Sun 10 Dec 2023 18:45:35 INFO epoch 79 training [time: 2.01s, train loss: 0.9679]
+Sun 10 Dec 2023 18:45:51 INFO epoch 79 evaluating [time: 7.43s, valid_score: 0.095200]
+Sun 10 Dec 2023 18:45:51 INFO valid result: 
+recall@5: 0.0383    recall@10: 0.0614    recall@20: 0.0952    recall@50: 0.1599    ndcg@5: 0.0262    ndcg@10: 0.0336    ndcg@20: 0.0422    ndcg@50: 0.0552    precision@5: 0.0081    precision@10: 0.0065    precision@20: 0.0050    precision@50: 0.0034    map@5: 0.0219    map@10: 0.0248    map@20: 0.0271    map@50: 0.0292    
+Sun 10 Dec 2023 18:45:51 INFO topu result: 
+recall@5: 0.0391    recall@10: 0.0571    recall@20: 0.1175    recall@50: 0.2170    ndcg@5: 0.0497    ndcg@10: 0.0514    ndcg@20: 0.0797    ndcg@50: 0.1166    precision@5: 0.0519    precision@10: 0.0370    precision@20: 0.0389    precision@50: 0.0289    map@5: 0.0216    map@10: 0.0194    map@20: 0.0251    map@50: 0.0310    
+Sun 10 Dec 2023 18:45:51 INFO bottomu result: 
+recall@5: 0.0392    recall@10: 0.0635    recall@20: 0.0987    recall@50: 0.1604    ndcg@5: 0.0255    ndcg@10: 0.0334    ndcg@20: 0.0422    ndcg@50: 0.0544    precision@5: 0.0078    precision@10: 0.0064    precision@20: 0.0049    precision@50: 0.0032    map@5: 0.0210    map@10: 0.0242    map@20: 0.0266    map@50: 0.0286    
+Sun 10 Dec 2023 18:45:54 INFO epoch 80 training [time: 3.09s, train loss: 0.9564]
+Sun 10 Dec 2023 18:46:13 INFO epoch 80 evaluating [time: 7.25s, valid_score: 0.095300]
+Sun 10 Dec 2023 18:46:13 INFO valid result: 
+recall@5: 0.0381    recall@10: 0.0617    recall@20: 0.0953    recall@50: 0.1599    ndcg@5: 0.0262    ndcg@10: 0.0338    ndcg@20: 0.0423    ndcg@50: 0.0552    precision@5: 0.0081    precision@10: 0.0065    precision@20: 0.0050    precision@50: 0.0034    map@5: 0.0219    map@10: 0.0250    map@20: 0.0272    map@50: 0.0293    
+Sun 10 Dec 2023 18:46:13 INFO topu result: 
+recall@5: 0.0391    recall@10: 0.0571    recall@20: 0.1175    recall@50: 0.2170    ndcg@5: 0.0497    ndcg@10: 0.0513    ndcg@20: 0.0794    ndcg@50: 0.1163    precision@5: 0.0519    precision@10: 0.0370    precision@20: 0.0389    precision@50: 0.0289    map@5: 0.0216    map@10: 0.0192    map@20: 0.0249    map@50: 0.0308    
+Sun 10 Dec 2023 18:46:13 INFO bottomu result: 
+recall@5: 0.0392    recall@10: 0.0637    recall@20: 0.0985    recall@50: 0.1601    ndcg@5: 0.0255    ndcg@10: 0.0334    ndcg@20: 0.0421    ndcg@50: 0.0543    precision@5: 0.0078    precision@10: 0.0064    precision@20: 0.0049    precision@50: 0.0032    map@5: 0.0210    map@10: 0.0242    map@20: 0.0266    map@50: 0.0285    
+Sun 10 Dec 2023 18:46:16 INFO epoch 81 training [time: 3.35s, train loss: 0.9527]
+Sun 10 Dec 2023 18:46:33 INFO epoch 81 evaluating [time: 6.46s, valid_score: 0.095500]
+Sun 10 Dec 2023 18:46:33 INFO valid result: 
+recall@5: 0.0383    recall@10: 0.0612    recall@20: 0.0955    recall@50: 0.1598    ndcg@5: 0.0263    ndcg@10: 0.0337    ndcg@20: 0.0424    ndcg@50: 0.0553    precision@5: 0.0081    precision@10: 0.0065    precision@20: 0.0050    precision@50: 0.0034    map@5: 0.0220    map@10: 0.0250    map@20: 0.0273    map@50: 0.0294    
+Sun 10 Dec 2023 18:46:33 INFO topu result: 
+recall@5: 0.0391    recall@10: 0.0632    recall@20: 0.1175    recall@50: 0.2124    ndcg@5: 0.0513    ndcg@10: 0.0561    ndcg@20: 0.0811    ndcg@50: 0.1163    precision@5: 0.0519    precision@10: 0.0407    precision@20: 0.0389    precision@50: 0.0281    map@5: 0.0228    map@10: 0.0210    map@20: 0.0261    map@50: 0.0318    
+Sun 10 Dec 2023 18:46:33 INFO bottomu result: 
+recall@5: 0.0393    recall@10: 0.0634    recall@20: 0.0981    recall@50: 0.1599    ndcg@5: 0.0254    ndcg@10: 0.0332    ndcg@20: 0.0419    ndcg@50: 0.0541    precision@5: 0.0079    precision@10: 0.0063    precision@20: 0.0049    precision@50: 0.0032    map@5: 0.0209    map@10: 0.0241    map@20: 0.0265    map@50: 0.0284    
+Sun 10 Dec 2023 18:46:35 INFO epoch 82 training [time: 2.38s, train loss: 0.9370]
+Sun 10 Dec 2023 18:46:51 INFO epoch 82 evaluating [time: 7.30s, valid_score: 0.095900]
+Sun 10 Dec 2023 18:46:51 INFO valid result: 
+recall@5: 0.0382    recall@10: 0.0611    recall@20: 0.0959    recall@50: 0.1595    ndcg@5: 0.0263    ndcg@10: 0.0337    ndcg@20: 0.0425    ndcg@50: 0.0552    precision@5: 0.0081    precision@10: 0.0064    precision@20: 0.0051    precision@50: 0.0034    map@5: 0.0220    map@10: 0.0250    map@20: 0.0274    map@50: 0.0294    
+Sun 10 Dec 2023 18:46:51 INFO topu result: 
+recall@5: 0.0391    recall@10: 0.0632    recall@20: 0.1175    recall@50: 0.2177    ndcg@5: 0.0491    ndcg@10: 0.0541    ndcg@20: 0.0789    ndcg@50: 0.1158    precision@5: 0.0519    precision@10: 0.0407    precision@20: 0.0389    precision@50: 0.0289    map@5: 0.0212    map@10: 0.0196    map@20: 0.0246    map@50: 0.0306    
+Sun 10 Dec 2023 18:46:51 INFO bottomu result: 
+recall@5: 0.0392    recall@10: 0.0632    recall@20: 0.0979    recall@50: 0.1609    ndcg@5: 0.0254    ndcg@10: 0.0332    ndcg@20: 0.0419    ndcg@50: 0.0544    precision@5: 0.0078    precision@10: 0.0063    precision@20: 0.0049    precision@50: 0.0032    map@5: 0.0209    map@10: 0.0241    map@20: 0.0265    map@50: 0.0285    
+Sun 10 Dec 2023 18:46:51 INFO ██ LightGCN--Best validation results updated!!!
+Sun 10 Dec 2023 18:46:53 INFO epoch 83 training [time: 1.92s, train loss: 0.9207]
+Sun 10 Dec 2023 18:47:09 INFO epoch 83 evaluating [time: 5.71s, valid_score: 0.095700]
+Sun 10 Dec 2023 18:47:09 INFO valid result: 
+recall@5: 0.0380    recall@10: 0.0611    recall@20: 0.0957    recall@50: 0.1597    ndcg@5: 0.0262    ndcg@10: 0.0336    ndcg@20: 0.0424    ndcg@50: 0.0552    precision@5: 0.0080    precision@10: 0.0064    precision@20: 0.0050    precision@50: 0.0034    map@5: 0.0219    map@10: 0.0250    map@20: 0.0273    map@50: 0.0293    
+Sun 10 Dec 2023 18:47:09 INFO topu result: 
+recall@5: 0.0391    recall@10: 0.0632    recall@20: 0.1101    recall@50: 0.2131    ndcg@5: 0.0491    ndcg@10: 0.0543    ndcg@20: 0.0762    ndcg@50: 0.1144    precision@5: 0.0519    precision@10: 0.0407    precision@20: 0.0370    precision@50: 0.0281    map@5: 0.0212    map@10: 0.0197    map@20: 0.0244    map@50: 0.0306    
+Sun 10 Dec 2023 18:47:09 INFO bottomu result: 
+recall@5: 0.0392    recall@10: 0.0638    recall@20: 0.0979    recall@50: 0.1603    ndcg@5: 0.0254    ndcg@10: 0.0333    ndcg@20: 0.0419    ndcg@50: 0.0542    precision@5: 0.0078    precision@10: 0.0064    precision@20: 0.0049    precision@50: 0.0032    map@5: 0.0208    map@10: 0.0241    map@20: 0.0264    map@50: 0.0284    
+Sun 10 Dec 2023 18:47:11 INFO epoch 84 training [time: 2.33s, train loss: 0.9009]
+Sun 10 Dec 2023 18:47:27 INFO epoch 84 evaluating [time: 6.92s, valid_score: 0.095600]
+Sun 10 Dec 2023 18:47:27 INFO valid result: 
+recall@5: 0.0380    recall@10: 0.0617    recall@20: 0.0956    recall@50: 0.1600    ndcg@5: 0.0262    ndcg@10: 0.0338    ndcg@20: 0.0424    ndcg@50: 0.0553    precision@5: 0.0080    precision@10: 0.0065    precision@20: 0.0050    precision@50: 0.0034    map@5: 0.0219    map@10: 0.0250    map@20: 0.0273    map@50: 0.0293    
+Sun 10 Dec 2023 18:47:27 INFO topu result: 
+recall@5: 0.0391    recall@10: 0.0632    recall@20: 0.1290    recall@50: 0.2177    ndcg@5: 0.0483    ndcg@10: 0.0533    ndcg@20: 0.0825    ndcg@50: 0.1148    precision@5: 0.0519    precision@10: 0.0407    precision@20: 0.0426    precision@50: 0.0289    map@5: 0.0206    map@10: 0.0191    map@20: 0.0252    map@50: 0.0299    
+Sun 10 Dec 2023 18:47:27 INFO bottomu result: 
+recall@5: 0.0392    recall@10: 0.0635    recall@20: 0.0980    recall@50: 0.1598    ndcg@5: 0.0254    ndcg@10: 0.0333    ndcg@20: 0.0419    ndcg@50: 0.0542    precision@5: 0.0078    precision@10: 0.0064    precision@20: 0.0049    precision@50: 0.0032    map@5: 0.0209    map@10: 0.0241    map@20: 0.0265    map@50: 0.0284    
+Sun 10 Dec 2023 18:47:29 INFO epoch 85 training [time: 2.19s, train loss: 0.8970]
+Sun 10 Dec 2023 18:47:44 INFO epoch 85 evaluating [time: 5.57s, valid_score: 0.095400]
+Sun 10 Dec 2023 18:47:44 INFO valid result: 
+recall@5: 0.0380    recall@10: 0.0612    recall@20: 0.0954    recall@50: 0.1595    ndcg@5: 0.0261    ndcg@10: 0.0337    ndcg@20: 0.0423    ndcg@50: 0.0552    precision@5: 0.0080    precision@10: 0.0064    precision@20: 0.0050    precision@50: 0.0034    map@5: 0.0219    map@10: 0.0249    map@20: 0.0273    map@50: 0.0293    
+Sun 10 Dec 2023 18:47:44 INFO topu result: 
+recall@5: 0.0391    recall@10: 0.0632    recall@20: 0.1145    recall@50: 0.2177    ndcg@5: 0.0512    ndcg@10: 0.0559    ndcg@20: 0.0797    ndcg@50: 0.1175    precision@5: 0.0519    precision@10: 0.0407    precision@20: 0.0389    precision@50: 0.0289    map@5: 0.0231    map@10: 0.0210    map@20: 0.0259    map@50: 0.0318    
+Sun 10 Dec 2023 18:47:44 INFO bottomu result: 
+recall@5: 0.0392    recall@10: 0.0639    recall@20: 0.0980    recall@50: 0.1599    ndcg@5: 0.0253    ndcg@10: 0.0332    ndcg@20: 0.0418    ndcg@50: 0.0541    precision@5: 0.0078    precision@10: 0.0064    precision@20: 0.0049    precision@50: 0.0032    map@5: 0.0208    map@10: 0.0240    map@20: 0.0263    map@50: 0.0283    
+Sun 10 Dec 2023 18:47:47 INFO epoch 86 training [time: 3.15s, train loss: 0.8812]
+Sun 10 Dec 2023 18:48:02 INFO epoch 86 evaluating [time: 6.39s, valid_score: 0.095400]
+Sun 10 Dec 2023 18:48:02 INFO valid result: 
+recall@5: 0.0380    recall@10: 0.0612    recall@20: 0.0954    recall@50: 0.1595    ndcg@5: 0.0262    ndcg@10: 0.0337    ndcg@20: 0.0424    ndcg@50: 0.0552    precision@5: 0.0080    precision@10: 0.0064    precision@20: 0.0050    precision@50: 0.0034    map@5: 0.0219    map@10: 0.0250    map@20: 0.0273    map@50: 0.0293    
+Sun 10 Dec 2023 18:48:02 INFO topu result: 
+recall@5: 0.0391    recall@10: 0.0632    recall@20: 0.1154    recall@50: 0.2143    ndcg@5: 0.0538    ndcg@10: 0.0585    ndcg@20: 0.0827    ndcg@50: 0.1189    precision@5: 0.0519    precision@10: 0.0407    precision@20: 0.0389    precision@50: 0.0281    map@5: 0.0249    map@10: 0.0228    map@20: 0.0279    map@50: 0.0335    
+Sun 10 Dec 2023 18:48:02 INFO bottomu result: 
+recall@5: 0.0392    recall@10: 0.0637    recall@20: 0.0983    recall@50: 0.1594    ndcg@5: 0.0253    ndcg@10: 0.0332    ndcg@20: 0.0419    ndcg@50: 0.0540    precision@5: 0.0078    precision@10: 0.0064    precision@20: 0.0049    precision@50: 0.0032    map@5: 0.0208    map@10: 0.0240    map@20: 0.0264    map@50: 0.0283    
+Sun 10 Dec 2023 18:48:05 INFO epoch 87 training [time: 2.91s, train loss: 0.8746]
+Sun 10 Dec 2023 18:48:21 INFO epoch 87 evaluating [time: 6.40s, valid_score: 0.095400]
+Sun 10 Dec 2023 18:48:21 INFO valid result: 
+recall@5: 0.0382    recall@10: 0.0611    recall@20: 0.0954    recall@50: 0.1597    ndcg@5: 0.0262    ndcg@10: 0.0337    ndcg@20: 0.0424    ndcg@50: 0.0553    precision@5: 0.0081    precision@10: 0.0064    precision@20: 0.0050    precision@50: 0.0034    map@5: 0.0220    map@10: 0.0250    map@20: 0.0273    map@50: 0.0293    
+Sun 10 Dec 2023 18:48:21 INFO topu result: 
+recall@5: 0.0391    recall@10: 0.0632    recall@20: 0.1182    recall@50: 0.2143    ndcg@5: 0.0529    ndcg@10: 0.0581    ndcg@20: 0.0839    ndcg@50: 0.1184    precision@5: 0.0519    precision@10: 0.0407    precision@20: 0.0407    precision@50: 0.0281    map@5: 0.0243    map@10: 0.0226    map@20: 0.0285    map@50: 0.0334    
+Sun 10 Dec 2023 18:48:21 INFO bottomu result: 
+recall@5: 0.0392    recall@10: 0.0638    recall@20: 0.0981    recall@50: 0.1598    ndcg@5: 0.0253    ndcg@10: 0.0332    ndcg@20: 0.0419    ndcg@50: 0.0541    precision@5: 0.0078    precision@10: 0.0064    precision@20: 0.0049    precision@50: 0.0032    map@5: 0.0208    map@10: 0.0240    map@20: 0.0264    map@50: 0.0283    
+Sun 10 Dec 2023 18:48:24 INFO epoch 88 training [time: 2.03s, train loss: 0.8455]
+Sun 10 Dec 2023 18:48:40 INFO epoch 88 evaluating [time: 7.35s, valid_score: 0.095100]
+Sun 10 Dec 2023 18:48:40 INFO valid result: 
+recall@5: 0.0381    recall@10: 0.0612    recall@20: 0.0951    recall@50: 0.1596    ndcg@5: 0.0263    ndcg@10: 0.0338    ndcg@20: 0.0424    ndcg@50: 0.0554    precision@5: 0.0080    precision@10: 0.0064    precision@20: 0.0050    precision@50: 0.0034    map@5: 0.0221    map@10: 0.0251    map@20: 0.0274    map@50: 0.0295    
+Sun 10 Dec 2023 18:48:40 INFO topu result: 
+recall@5: 0.0391    recall@10: 0.0632    recall@20: 0.1182    recall@50: 0.2090    ndcg@5: 0.0529    ndcg@10: 0.0583    ndcg@20: 0.0843    ndcg@50: 0.1171    precision@5: 0.0519    precision@10: 0.0407    precision@20: 0.0407    precision@50: 0.0274    map@5: 0.0243    map@10: 0.0230    map@20: 0.0290    map@50: 0.0336    
+Sun 10 Dec 2023 18:48:40 INFO bottomu result: 
+recall@5: 0.0394    recall@10: 0.0641    recall@20: 0.0985    recall@50: 0.1593    ndcg@5: 0.0253    ndcg@10: 0.0333    ndcg@20: 0.0419    ndcg@50: 0.0539    precision@5: 0.0079    precision@10: 0.0064    precision@20: 0.0049    precision@50: 0.0032    map@5: 0.0207    map@10: 0.0240    map@20: 0.0263    map@50: 0.0282    
+Sun 10 Dec 2023 18:48:42 INFO epoch 89 training [time: 2.09s, train loss: 0.8495]
+Sun 10 Dec 2023 18:48:57 INFO epoch 89 evaluating [time: 5.65s, valid_score: 0.095600]
+Sun 10 Dec 2023 18:48:57 INFO valid result: 
+recall@5: 0.0383    recall@10: 0.0611    recall@20: 0.0956    recall@50: 0.1592    ndcg@5: 0.0263    ndcg@10: 0.0337    ndcg@20: 0.0424    ndcg@50: 0.0552    precision@5: 0.0081    precision@10: 0.0064    precision@20: 0.0050    precision@50: 0.0034    map@5: 0.0220    map@10: 0.0250    map@20: 0.0274    map@50: 0.0294    
+Sun 10 Dec 2023 18:48:57 INFO topu result: 
+recall@5: 0.0391    recall@10: 0.0632    recall@20: 0.1121    recall@50: 0.2090    ndcg@5: 0.0538    ndcg@10: 0.0592    ndcg@20: 0.0827    ndcg@50: 0.1181    precision@5: 0.0519    precision@10: 0.0407    precision@20: 0.0389    precision@50: 0.0274    map@5: 0.0249    map@10: 0.0236    map@20: 0.0293    map@50: 0.0343    
+Sun 10 Dec 2023 18:48:57 INFO bottomu result: 
+recall@5: 0.0396    recall@10: 0.0645    recall@20: 0.0983    recall@50: 0.1594    ndcg@5: 0.0255    ndcg@10: 0.0334    ndcg@20: 0.0419    ndcg@50: 0.0540    precision@5: 0.0079    precision@10: 0.0064    precision@20: 0.0049    precision@50: 0.0032    map@5: 0.0209    map@10: 0.0241    map@20: 0.0264    map@50: 0.0283    
+Sun 10 Dec 2023 18:48:58 INFO epoch 90 training [time: 1.91s, train loss: 0.8534]
+Sun 10 Dec 2023 18:49:15 INFO epoch 90 evaluating [time: 7.37s, valid_score: 0.095300]
+Sun 10 Dec 2023 18:49:15 INFO valid result: 
+recall@5: 0.0386    recall@10: 0.0614    recall@20: 0.0953    recall@50: 0.1591    ndcg@5: 0.0264    ndcg@10: 0.0338    ndcg@20: 0.0424    ndcg@50: 0.0552    precision@5: 0.0081    precision@10: 0.0065    precision@20: 0.0050    precision@50: 0.0034    map@5: 0.0221    map@10: 0.0251    map@20: 0.0274    map@50: 0.0294    
+Sun 10 Dec 2023 18:49:15 INFO topu result: 
+recall@5: 0.0391    recall@10: 0.0632    recall@20: 0.1154    recall@50: 0.2037    ndcg@5: 0.0538    ndcg@10: 0.0591    ndcg@20: 0.0837    ndcg@50: 0.1162    precision@5: 0.0519    precision@10: 0.0407    precision@20: 0.0389    precision@50: 0.0267    map@5: 0.0249    map@10: 0.0234    map@20: 0.0294    map@50: 0.0340    
+Sun 10 Dec 2023 18:49:15 INFO bottomu result: 
+recall@5: 0.0392    recall@10: 0.0643    recall@20: 0.0975    recall@50: 0.1590    ndcg@5: 0.0253    ndcg@10: 0.0334    ndcg@20: 0.0417    ndcg@50: 0.0539    precision@5: 0.0078    precision@10: 0.0064    precision@20: 0.0049    precision@50: 0.0032    map@5: 0.0207    map@10: 0.0240    map@20: 0.0263    map@50: 0.0282    
+Sun 10 Dec 2023 18:49:17 INFO epoch 91 training [time: 1.96s, train loss: 0.8355]
+Sun 10 Dec 2023 18:49:32 INFO epoch 91 evaluating [time: 6.10s, valid_score: 0.095600]
+Sun 10 Dec 2023 18:49:32 INFO valid result: 
+recall@5: 0.0383    recall@10: 0.0617    recall@20: 0.0956    recall@50: 0.1589    ndcg@5: 0.0263    ndcg@10: 0.0339    ndcg@20: 0.0425    ndcg@50: 0.0552    precision@5: 0.0081    precision@10: 0.0065    precision@20: 0.0050    precision@50: 0.0034    map@5: 0.0220    map@10: 0.0251    map@20: 0.0274    map@50: 0.0294    
+Sun 10 Dec 2023 18:49:32 INFO topu result: 
+recall@5: 0.0391    recall@10: 0.0632    recall@20: 0.1182    recall@50: 0.1997    ndcg@5: 0.0538    ndcg@10: 0.0590    ndcg@20: 0.0852    ndcg@50: 0.1151    precision@5: 0.0519    precision@10: 0.0407    precision@20: 0.0407    precision@50: 0.0267    map@5: 0.0249    map@10: 0.0233    map@20: 0.0294    map@50: 0.0339    
+Sun 10 Dec 2023 18:49:32 INFO bottomu result: 
+recall@5: 0.0391    recall@10: 0.0643    recall@20: 0.0975    recall@50: 0.1593    ndcg@5: 0.0253    ndcg@10: 0.0334    ndcg@20: 0.0417    ndcg@50: 0.0539    precision@5: 0.0078    precision@10: 0.0064    precision@20: 0.0049    precision@50: 0.0032    map@5: 0.0207    map@10: 0.0241    map@20: 0.0263    map@50: 0.0283    
+Sun 10 Dec 2023 18:49:34 INFO epoch 92 training [time: 1.99s, train loss: 0.8137]
+Sun 10 Dec 2023 18:49:49 INFO epoch 92 evaluating [time: 5.87s, valid_score: 0.095500]
+Sun 10 Dec 2023 18:49:49 INFO valid result: 
+recall@5: 0.0385    recall@10: 0.0615    recall@20: 0.0955    recall@50: 0.1590    ndcg@5: 0.0264    ndcg@10: 0.0338    ndcg@20: 0.0425    ndcg@50: 0.0552    precision@5: 0.0081    precision@10: 0.0065    precision@20: 0.0050    precision@50: 0.0034    map@5: 0.0220    map@10: 0.0251    map@20: 0.0274    map@50: 0.0294    
+Sun 10 Dec 2023 18:49:49 INFO topu result: 
+recall@5: 0.0391    recall@10: 0.0571    recall@20: 0.1059    recall@50: 0.2037    ndcg@5: 0.0538    ndcg@10: 0.0556    ndcg@20: 0.0798    ndcg@50: 0.1156    precision@5: 0.0519    precision@10: 0.0370    precision@20: 0.0370    precision@50: 0.0267    map@5: 0.0249    map@10: 0.0226    map@20: 0.0281    map@50: 0.0337    
+Sun 10 Dec 2023 18:49:49 INFO bottomu result: 
+recall@5: 0.0398    recall@10: 0.0641    recall@20: 0.0981    recall@50: 0.1593    ndcg@5: 0.0255    ndcg@10: 0.0334    ndcg@20: 0.0419    ndcg@50: 0.0540    precision@5: 0.0080    precision@10: 0.0064    precision@20: 0.0049    precision@50: 0.0032    map@5: 0.0209    map@10: 0.0241    map@20: 0.0264    map@50: 0.0283    
+Sun 10 Dec 2023 18:49:52 INFO epoch 93 training [time: 3.04s, train loss: 0.8136]
+Sun 10 Dec 2023 18:50:09 INFO epoch 93 evaluating [time: 6.28s, valid_score: 0.096000]
+Sun 10 Dec 2023 18:50:09 INFO valid result: 
+recall@5: 0.0385    recall@10: 0.0617    recall@20: 0.0960    recall@50: 0.1590    ndcg@5: 0.0264    ndcg@10: 0.0339    ndcg@20: 0.0426    ndcg@50: 0.0552    precision@5: 0.0081    precision@10: 0.0065    precision@20: 0.0051    precision@50: 0.0034    map@5: 0.0221    map@10: 0.0251    map@20: 0.0274    map@50: 0.0294    
+Sun 10 Dec 2023 18:50:09 INFO topu result: 
+recall@5: 0.0391    recall@10: 0.0632    recall@20: 0.1121    recall@50: 0.1963    ndcg@5: 0.0538    ndcg@10: 0.0590    ndcg@20: 0.0828    ndcg@50: 0.1139    precision@5: 0.0519    precision@10: 0.0407    precision@20: 0.0389    precision@50: 0.0259    map@5: 0.0249    map@10: 0.0233    map@20: 0.0286    map@50: 0.0336    
+Sun 10 Dec 2023 18:50:09 INFO bottomu result: 
+recall@5: 0.0398    recall@10: 0.0645    recall@20: 0.0982    recall@50: 0.1599    ndcg@5: 0.0255    ndcg@10: 0.0334    ndcg@20: 0.0418    ndcg@50: 0.0540    precision@5: 0.0080    precision@10: 0.0065    precision@20: 0.0049    precision@50: 0.0032    map@5: 0.0208    map@10: 0.0240    map@20: 0.0263    map@50: 0.0282    
+Sun 10 Dec 2023 18:50:09 INFO ██ LightGCN--Best validation results updated!!!
+Sun 10 Dec 2023 18:50:13 INFO epoch 94 training [time: 3.87s, train loss: 0.8057]
+Sun 10 Dec 2023 18:50:30 INFO epoch 94 evaluating [time: 6.87s, valid_score: 0.096300]
+Sun 10 Dec 2023 18:50:30 INFO valid result: 
+recall@5: 0.0384    recall@10: 0.0616    recall@20: 0.0963    recall@50: 0.1589    ndcg@5: 0.0264    ndcg@10: 0.0339    ndcg@20: 0.0427    ndcg@50: 0.0553    precision@5: 0.0081    precision@10: 0.0065    precision@20: 0.0051    precision@50: 0.0034    map@5: 0.0221    map@10: 0.0252    map@20: 0.0275    map@50: 0.0295    
+Sun 10 Dec 2023 18:50:30 INFO topu result: 
+recall@5: 0.0391    recall@10: 0.0694    recall@20: 0.1121    recall@50: 0.1963    ndcg@5: 0.0538    ndcg@10: 0.0622    ndcg@20: 0.0831    ndcg@50: 0.1141    precision@5: 0.0519    precision@10: 0.0444    precision@20: 0.0389    precision@50: 0.0259    map@5: 0.0249    map@10: 0.0246    map@20: 0.0289    map@50: 0.0339    
+Sun 10 Dec 2023 18:50:30 INFO bottomu result: 
+recall@5: 0.0402    recall@10: 0.0644    recall@20: 0.0987    recall@50: 0.1601    ndcg@5: 0.0256    ndcg@10: 0.0334    ndcg@20: 0.0420    ndcg@50: 0.0541    precision@5: 0.0080    precision@10: 0.0064    precision@20: 0.0049    precision@50: 0.0032    map@5: 0.0208    map@10: 0.0240    map@20: 0.0263    map@50: 0.0282    
+Sun 10 Dec 2023 18:50:30 INFO ██ LightGCN--Best validation results updated!!!
+Sun 10 Dec 2023 18:50:33 INFO epoch 95 training [time: 2.94s, train loss: 0.7880]
+Sun 10 Dec 2023 18:50:47 INFO epoch 95 evaluating [time: 5.43s, valid_score: 0.095900]
+Sun 10 Dec 2023 18:50:47 INFO valid result: 
+recall@5: 0.0389    recall@10: 0.0613    recall@20: 0.0959    recall@50: 0.1590    ndcg@5: 0.0266    ndcg@10: 0.0339    ndcg@20: 0.0427    ndcg@50: 0.0553    precision@5: 0.0082    precision@10: 0.0064    precision@20: 0.0051    precision@50: 0.0034    map@5: 0.0223    map@10: 0.0252    map@20: 0.0276    map@50: 0.0296    
+Sun 10 Dec 2023 18:50:47 INFO topu result: 
+recall@5: 0.0391    recall@10: 0.0694    recall@20: 0.1087    recall@50: 0.2090    ndcg@5: 0.0529    ndcg@10: 0.0614    ndcg@20: 0.0805    ndcg@50: 0.1174    precision@5: 0.0519    precision@10: 0.0444    precision@20: 0.0370    precision@50: 0.0274    map@5: 0.0243    map@10: 0.0241    map@20: 0.0280    map@50: 0.0341    
+Sun 10 Dec 2023 18:50:47 INFO bottomu result: 
+recall@5: 0.0402    recall@10: 0.0641    recall@20: 0.0985    recall@50: 0.1601    ndcg@5: 0.0255    ndcg@10: 0.0332    ndcg@20: 0.0419    ndcg@50: 0.0540    precision@5: 0.0080    precision@10: 0.0064    precision@20: 0.0049    precision@50: 0.0032    map@5: 0.0208    map@10: 0.0239    map@20: 0.0263    map@50: 0.0282    
+Sun 10 Dec 2023 18:50:49 INFO epoch 96 training [time: 1.84s, train loss: 0.7921]
+Sun 10 Dec 2023 18:51:09 INFO epoch 96 evaluating [time: 5.92s, valid_score: 0.096200]
+Sun 10 Dec 2023 18:51:09 INFO valid result: 
+recall@5: 0.0387    recall@10: 0.0608    recall@20: 0.0962    recall@50: 0.1590    ndcg@5: 0.0267    ndcg@10: 0.0338    ndcg@20: 0.0428    ndcg@50: 0.0554    precision@5: 0.0082    precision@10: 0.0064    precision@20: 0.0051    precision@50: 0.0034    map@5: 0.0223    map@10: 0.0252    map@20: 0.0277    map@50: 0.0296    
+Sun 10 Dec 2023 18:51:09 INFO topu result: 
+recall@5: 0.0350    recall@10: 0.0679    recall@20: 0.1121    recall@50: 0.1917    ndcg@5: 0.0489    ndcg@10: 0.0614    ndcg@20: 0.0826    ndcg@50: 0.1122    precision@5: 0.0444    precision@10: 0.0444    precision@20: 0.0389    precision@50: 0.0252    map@5: 0.0235    map@10: 0.0243    map@20: 0.0286    map@50: 0.0336    
+Sun 10 Dec 2023 18:51:09 INFO bottomu result: 
+recall@5: 0.0400    recall@10: 0.0638    recall@20: 0.0978    recall@50: 0.1597    ndcg@5: 0.0255    ndcg@10: 0.0332    ndcg@20: 0.0417    ndcg@50: 0.0540    precision@5: 0.0080    precision@10: 0.0064    precision@20: 0.0049    precision@50: 0.0032    map@5: 0.0208    map@10: 0.0239    map@20: 0.0262    map@50: 0.0282    
+Sun 10 Dec 2023 18:51:11 INFO epoch 97 training [time: 1.99s, train loss: 0.7874]
+Sun 10 Dec 2023 18:51:26 INFO epoch 97 evaluating [time: 5.50s, valid_score: 0.096300]
+Sun 10 Dec 2023 18:51:26 INFO valid result: 
+recall@5: 0.0388    recall@10: 0.0609    recall@20: 0.0963    recall@50: 0.1591    ndcg@5: 0.0268    ndcg@10: 0.0340    ndcg@20: 0.0430    ndcg@50: 0.0555    precision@5: 0.0082    precision@10: 0.0064    precision@20: 0.0051    precision@50: 0.0034    map@5: 0.0225    map@10: 0.0254    map@20: 0.0278    map@50: 0.0298    
+Sun 10 Dec 2023 18:51:26 INFO topu result: 
+recall@5: 0.0350    recall@10: 0.0679    recall@20: 0.1149    recall@50: 0.2010    ndcg@5: 0.0480    ndcg@10: 0.0606    ndcg@20: 0.0826    ndcg@50: 0.1147    precision@5: 0.0444    precision@10: 0.0444    precision@20: 0.0389    precision@50: 0.0267    map@5: 0.0228    map@10: 0.0238    map@20: 0.0287    map@50: 0.0335    
+Sun 10 Dec 2023 18:51:26 INFO bottomu result: 
+recall@5: 0.0400    recall@10: 0.0640    recall@20: 0.0975    recall@50: 0.1590    ndcg@5: 0.0255    ndcg@10: 0.0332    ndcg@20: 0.0417    ndcg@50: 0.0538    precision@5: 0.0080    precision@10: 0.0064    precision@20: 0.0049    precision@50: 0.0032    map@5: 0.0208    map@10: 0.0239    map@20: 0.0262    map@50: 0.0282    
+Sun 10 Dec 2023 18:51:28 INFO epoch 98 training [time: 1.96s, train loss: 0.7661]
+Sun 10 Dec 2023 18:51:43 INFO epoch 98 evaluating [time: 6.41s, valid_score: 0.096100]
+Sun 10 Dec 2023 18:51:43 INFO valid result: 
+recall@5: 0.0389    recall@10: 0.0610    recall@20: 0.0961    recall@50: 0.1594    ndcg@5: 0.0267    ndcg@10: 0.0339    ndcg@20: 0.0428    ndcg@50: 0.0555    precision@5: 0.0082    precision@10: 0.0064    precision@20: 0.0051    precision@50: 0.0034    map@5: 0.0223    map@10: 0.0253    map@20: 0.0277    map@50: 0.0297    
+Sun 10 Dec 2023 18:51:43 INFO topu result: 
+recall@5: 0.0350    recall@10: 0.0679    recall@20: 0.1087    recall@50: 0.2010    ndcg@5: 0.0434    ndcg@10: 0.0567    ndcg@20: 0.0760    ndcg@50: 0.1106    precision@5: 0.0444    precision@10: 0.0444    precision@20: 0.0370    precision@50: 0.0267    map@5: 0.0191    map@10: 0.0211    map@20: 0.0256    map@50: 0.0307    
+Sun 10 Dec 2023 18:51:43 INFO bottomu result: 
+recall@5: 0.0399    recall@10: 0.0642    recall@20: 0.0973    recall@50: 0.1593    ndcg@5: 0.0255    ndcg@10: 0.0333    ndcg@20: 0.0416    ndcg@50: 0.0539    precision@5: 0.0080    precision@10: 0.0064    precision@20: 0.0049    precision@50: 0.0032    map@5: 0.0207    map@10: 0.0239    map@20: 0.0262    map@50: 0.0282    
+Sun 10 Dec 2023 18:51:45 INFO epoch 99 training [time: 1.94s, train loss: 0.7595]
+Sun 10 Dec 2023 18:52:03 INFO epoch 99 evaluating [time: 7.59s, valid_score: 0.096400]
+Sun 10 Dec 2023 18:52:03 INFO valid result: 
+recall@5: 0.0392    recall@10: 0.0610    recall@20: 0.0964    recall@50: 0.1593    ndcg@5: 0.0269    ndcg@10: 0.0340    ndcg@20: 0.0430    ndcg@50: 0.0556    precision@5: 0.0082    precision@10: 0.0064    precision@20: 0.0051    precision@50: 0.0034    map@5: 0.0226    map@10: 0.0254    map@20: 0.0278    map@50: 0.0298    
+Sun 10 Dec 2023 18:52:03 INFO topu result: 
+recall@5: 0.0350    recall@10: 0.0707    recall@20: 0.1025    recall@50: 0.2010    ndcg@5: 0.0443    ndcg@10: 0.0596    ndcg@20: 0.0743    ndcg@50: 0.1113    precision@5: 0.0444    precision@10: 0.0481    precision@20: 0.0352    precision@50: 0.0267    map@5: 0.0198    map@10: 0.0219    map@20: 0.0253    map@50: 0.0312    
+Sun 10 Dec 2023 18:52:03 INFO bottomu result: 
+recall@5: 0.0404    recall@10: 0.0643    recall@20: 0.0971    recall@50: 0.1591    ndcg@5: 0.0257    ndcg@10: 0.0334    ndcg@20: 0.0416    ndcg@50: 0.0539    precision@5: 0.0081    precision@10: 0.0064    precision@20: 0.0049    precision@50: 0.0032    map@5: 0.0209    map@10: 0.0240    map@20: 0.0263    map@50: 0.0282    
+Sun 10 Dec 2023 18:52:03 INFO ██ LightGCN--Best validation results updated!!!
+Sun 10 Dec 2023 18:52:05 INFO epoch 100 training [time: 2.01s, train loss: 0.7543]
+Sun 10 Dec 2023 18:52:22 INFO epoch 100 evaluating [time: 7.55s, valid_score: 0.096200]
+Sun 10 Dec 2023 18:52:22 INFO valid result: 
+recall@5: 0.0389    recall@10: 0.0611    recall@20: 0.0962    recall@50: 0.1595    ndcg@5: 0.0268    ndcg@10: 0.0340    ndcg@20: 0.0429    ndcg@50: 0.0556    precision@5: 0.0082    precision@10: 0.0064    precision@20: 0.0051    precision@50: 0.0034    map@5: 0.0225    map@10: 0.0254    map@20: 0.0278    map@50: 0.0298    
+Sun 10 Dec 2023 18:52:22 INFO topu result: 
+recall@5: 0.0350    recall@10: 0.0707    recall@20: 0.1059    recall@50: 0.2056    ndcg@5: 0.0473    ndcg@10: 0.0621    ndcg@20: 0.0785    ndcg@50: 0.1155    precision@5: 0.0444    precision@10: 0.0481    precision@20: 0.0370    precision@50: 0.0274    map@5: 0.0222    map@10: 0.0236    map@20: 0.0273    map@50: 0.0331    
+Sun 10 Dec 2023 18:52:22 INFO bottomu result: 
+recall@5: 0.0398    recall@10: 0.0644    recall@20: 0.0970    recall@50: 0.1593    ndcg@5: 0.0254    ndcg@10: 0.0334    ndcg@20: 0.0416    ndcg@50: 0.0539    precision@5: 0.0080    precision@10: 0.0064    precision@20: 0.0048    precision@50: 0.0032    map@5: 0.0208    map@10: 0.0240    map@20: 0.0262    map@50: 0.0282    
+Sun 10 Dec 2023 18:52:25 INFO epoch 101 training [time: 2.52s, train loss: 0.7277]
+Sun 10 Dec 2023 18:52:41 INFO epoch 101 evaluating [time: 7.47s, valid_score: 0.096200]
+Sun 10 Dec 2023 18:52:41 INFO valid result: 
+recall@5: 0.0390    recall@10: 0.0609    recall@20: 0.0962    recall@50: 0.1592    ndcg@5: 0.0269    ndcg@10: 0.0340    ndcg@20: 0.0430    ndcg@50: 0.0556    precision@5: 0.0082    precision@10: 0.0064    precision@20: 0.0051    precision@50: 0.0034    map@5: 0.0226    map@10: 0.0255    map@20: 0.0278    map@50: 0.0298    
+Sun 10 Dec 2023 18:52:41 INFO topu result: 
+recall@5: 0.0350    recall@10: 0.0645    recall@20: 0.1025    recall@50: 0.2056    ndcg@5: 0.0426    ndcg@10: 0.0550    ndcg@20: 0.0729    ndcg@50: 0.1116    precision@5: 0.0444    precision@10: 0.0444    precision@20: 0.0352    precision@50: 0.0274    map@5: 0.0185    map@10: 0.0196    map@20: 0.0241    map@50: 0.0303    
+Sun 10 Dec 2023 18:52:41 INFO bottomu result: 
+recall@5: 0.0398    recall@10: 0.0641    recall@20: 0.0972    recall@50: 0.1593    ndcg@5: 0.0256    ndcg@10: 0.0334    ndcg@20: 0.0417    ndcg@50: 0.0540    precision@5: 0.0080    precision@10: 0.0064    precision@20: 0.0049    precision@50: 0.0032    map@5: 0.0209    map@10: 0.0241    map@20: 0.0264    map@50: 0.0283    
+Sun 10 Dec 2023 18:52:44 INFO epoch 102 training [time: 2.92s, train loss: 0.7361]
+Sun 10 Dec 2023 18:52:59 INFO epoch 102 evaluating [time: 5.78s, valid_score: 0.096500]
+Sun 10 Dec 2023 18:52:59 INFO valid result: 
+recall@5: 0.0390    recall@10: 0.0613    recall@20: 0.0965    recall@50: 0.1592    ndcg@5: 0.0269    ndcg@10: 0.0341    ndcg@20: 0.0430    ndcg@50: 0.0556    precision@5: 0.0082    precision@10: 0.0064    precision@20: 0.0051    precision@50: 0.0034    map@5: 0.0226    map@10: 0.0255    map@20: 0.0279    map@50: 0.0299    
+Sun 10 Dec 2023 18:52:59 INFO topu result: 
+recall@5: 0.0350    recall@10: 0.0707    recall@20: 0.1087    recall@50: 0.2056    ndcg@5: 0.0426    ndcg@10: 0.0584    ndcg@20: 0.0756    ndcg@50: 0.1118    precision@5: 0.0444    precision@10: 0.0481    precision@20: 0.0370    precision@50: 0.0274    map@5: 0.0185    map@10: 0.0209    map@20: 0.0245    map@50: 0.0304    
+Sun 10 Dec 2023 18:52:59 INFO bottomu result: 
+recall@5: 0.0400    recall@10: 0.0640    recall@20: 0.0972    recall@50: 0.1594    ndcg@5: 0.0256    ndcg@10: 0.0333    ndcg@20: 0.0417    ndcg@50: 0.0540    precision@5: 0.0080    precision@10: 0.0064    precision@20: 0.0049    precision@50: 0.0032    map@5: 0.0209    map@10: 0.0241    map@20: 0.0263    map@50: 0.0283    
+Sun 10 Dec 2023 18:52:59 INFO ██ LightGCN--Best validation results updated!!!
+Sun 10 Dec 2023 18:53:01 INFO epoch 103 training [time: 1.91s, train loss: 0.7312]
+Sun 10 Dec 2023 18:53:18 INFO epoch 103 evaluating [time: 7.17s, valid_score: 0.096600]
+Sun 10 Dec 2023 18:53:18 INFO valid result: 
+recall@5: 0.0392    recall@10: 0.0611    recall@20: 0.0966    recall@50: 0.1593    ndcg@5: 0.0269    ndcg@10: 0.0340    ndcg@20: 0.0430    ndcg@50: 0.0556    precision@5: 0.0082    precision@10: 0.0064    precision@20: 0.0051    precision@50: 0.0034    map@5: 0.0225    map@10: 0.0254    map@20: 0.0278    map@50: 0.0298    
+Sun 10 Dec 2023 18:53:18 INFO topu result: 
+recall@5: 0.0350    recall@10: 0.0661    recall@20: 0.1025    recall@50: 0.2056    ndcg@5: 0.0426    ndcg@10: 0.0556    ndcg@20: 0.0729    ndcg@50: 0.1115    precision@5: 0.0444    precision@10: 0.0444    precision@20: 0.0352    precision@50: 0.0274    map@5: 0.0185    map@10: 0.0204    map@20: 0.0241    map@50: 0.0302    
+Sun 10 Dec 2023 18:53:18 INFO bottomu result: 
+recall@5: 0.0404    recall@10: 0.0640    recall@20: 0.0972    recall@50: 0.1595    ndcg@5: 0.0258    ndcg@10: 0.0334    ndcg@20: 0.0417    ndcg@50: 0.0541    precision@5: 0.0081    precision@10: 0.0064    precision@20: 0.0049    precision@50: 0.0032    map@5: 0.0210    map@10: 0.0241    map@20: 0.0264    map@50: 0.0284    
+Sun 10 Dec 2023 18:53:18 INFO ██ LightGCN--Best validation results updated!!!
+Sun 10 Dec 2023 18:53:20 INFO epoch 104 training [time: 1.91s, train loss: 0.7256]
+Sun 10 Dec 2023 18:53:37 INFO epoch 104 evaluating [time: 5.92s, valid_score: 0.096700]
+Sun 10 Dec 2023 18:53:37 INFO valid result: 
+recall@5: 0.0391    recall@10: 0.0615    recall@20: 0.0967    recall@50: 0.1591    ndcg@5: 0.0269    ndcg@10: 0.0342    ndcg@20: 0.0431    ndcg@50: 0.0556    precision@5: 0.0082    precision@10: 0.0065    precision@20: 0.0051    precision@50: 0.0034    map@5: 0.0225    map@10: 0.0255    map@20: 0.0279    map@50: 0.0298    
+Sun 10 Dec 2023 18:53:37 INFO topu result: 
+recall@5: 0.0350    recall@10: 0.0661    recall@20: 0.1149    recall@50: 0.2010    ndcg@5: 0.0417    ndcg@10: 0.0543    ndcg@20: 0.0765    ndcg@50: 0.1084    precision@5: 0.0444    precision@10: 0.0444    precision@20: 0.0389    precision@50: 0.0267    map@5: 0.0179    map@10: 0.0194    map@20: 0.0244    map@50: 0.0290    
+Sun 10 Dec 2023 18:53:37 INFO bottomu result: 
+recall@5: 0.0402    recall@10: 0.0635    recall@20: 0.0971    recall@50: 0.1594    ndcg@5: 0.0258    ndcg@10: 0.0334    ndcg@20: 0.0418    ndcg@50: 0.0542    precision@5: 0.0080    precision@10: 0.0064    precision@20: 0.0049    precision@50: 0.0032    map@5: 0.0211    map@10: 0.0242    map@20: 0.0266    map@50: 0.0285    
+Sun 10 Dec 2023 18:53:37 INFO ██ LightGCN--Best validation results updated!!!
+Sun 10 Dec 2023 18:53:39 INFO epoch 105 training [time: 1.79s, train loss: 0.7090]
+Sun 10 Dec 2023 18:53:55 INFO epoch 105 evaluating [time: 7.32s, valid_score: 0.096500]
+Sun 10 Dec 2023 18:53:55 INFO valid result: 
+recall@5: 0.0389    recall@10: 0.0614    recall@20: 0.0965    recall@50: 0.1585    ndcg@5: 0.0269    ndcg@10: 0.0342    ndcg@20: 0.0431    ndcg@50: 0.0555    precision@5: 0.0082    precision@10: 0.0065    precision@20: 0.0051    precision@50: 0.0034    map@5: 0.0226    map@10: 0.0255    map@20: 0.0279    map@50: 0.0299    
+Sun 10 Dec 2023 18:53:55 INFO topu result: 
+recall@5: 0.0350    recall@10: 0.0599    recall@20: 0.1195    recall@50: 0.2010    ndcg@5: 0.0412    ndcg@10: 0.0504    ndcg@20: 0.0779    ndcg@50: 0.1076    precision@5: 0.0444    precision@10: 0.0407    precision@20: 0.0407    precision@50: 0.0267    map@5: 0.0175    map@10: 0.0178    map@20: 0.0241    map@50: 0.0284    
+Sun 10 Dec 2023 18:53:55 INFO bottomu result: 
+recall@5: 0.0399    recall@10: 0.0636    recall@20: 0.0965    recall@50: 0.1594    ndcg@5: 0.0256    ndcg@10: 0.0333    ndcg@20: 0.0416    ndcg@50: 0.0540    precision@5: 0.0080    precision@10: 0.0064    precision@20: 0.0048    precision@50: 0.0032    map@5: 0.0210    map@10: 0.0241    map@20: 0.0264    map@50: 0.0284    
+Sun 10 Dec 2023 18:53:57 INFO epoch 106 training [time: 1.89s, train loss: 0.7101]
+Sun 10 Dec 2023 18:54:12 INFO epoch 106 evaluating [time: 6.15s, valid_score: 0.096900]
+Sun 10 Dec 2023 18:54:12 INFO valid result: 
+recall@5: 0.0392    recall@10: 0.0612    recall@20: 0.0969    recall@50: 0.1587    ndcg@5: 0.0269    ndcg@10: 0.0341    ndcg@20: 0.0431    ndcg@50: 0.0555    precision@5: 0.0082    precision@10: 0.0064    precision@20: 0.0051    precision@50: 0.0034    map@5: 0.0225    map@10: 0.0255    map@20: 0.0279    map@50: 0.0298    
+Sun 10 Dec 2023 18:54:12 INFO topu result: 
+recall@5: 0.0350    recall@10: 0.0599    recall@20: 0.1133    recall@50: 0.1963    ndcg@5: 0.0428    ndcg@10: 0.0519    ndcg@20: 0.0769    ndcg@50: 0.1077    precision@5: 0.0444    precision@10: 0.0407    precision@20: 0.0389    precision@50: 0.0259    map@5: 0.0188    map@10: 0.0188    map@20: 0.0249    map@50: 0.0295    
+Sun 10 Dec 2023 18:54:12 INFO bottomu result: 
+recall@5: 0.0398    recall@10: 0.0636    recall@20: 0.0967    recall@50: 0.1589    ndcg@5: 0.0256    ndcg@10: 0.0333    ndcg@20: 0.0417    ndcg@50: 0.0540    precision@5: 0.0080    precision@10: 0.0064    precision@20: 0.0048    precision@50: 0.0032    map@5: 0.0210    map@10: 0.0242    map@20: 0.0265    map@50: 0.0284    
+Sun 10 Dec 2023 18:54:12 INFO ██ LightGCN--Best validation results updated!!!
+Sun 10 Dec 2023 18:54:14 INFO epoch 107 training [time: 1.89s, train loss: 0.6920]
+Sun 10 Dec 2023 18:54:29 INFO epoch 107 evaluating [time: 5.17s, valid_score: 0.097400]
+Sun 10 Dec 2023 18:54:29 INFO valid result: 
+recall@5: 0.0391    recall@10: 0.0615    recall@20: 0.0974    recall@50: 0.1593    ndcg@5: 0.0269    ndcg@10: 0.0342    ndcg@20: 0.0433    ndcg@50: 0.0556    precision@5: 0.0082    precision@10: 0.0065    precision@20: 0.0051    precision@50: 0.0034    map@5: 0.0225    map@10: 0.0255    map@20: 0.0279    map@50: 0.0299    
+Sun 10 Dec 2023 18:54:29 INFO topu result: 
+recall@5: 0.0350    recall@10: 0.0599    recall@20: 0.1161    recall@50: 0.2010    ndcg@5: 0.0428    ndcg@10: 0.0519    ndcg@20: 0.0776    ndcg@50: 0.1091    precision@5: 0.0444    precision@10: 0.0407    precision@20: 0.0389    precision@50: 0.0267    map@5: 0.0188    map@10: 0.0188    map@20: 0.0249    map@50: 0.0295    
+Sun 10 Dec 2023 18:54:29 INFO bottomu result: 
+recall@5: 0.0396    recall@10: 0.0635    recall@20: 0.0969    recall@50: 0.1585    ndcg@5: 0.0255    ndcg@10: 0.0332    ndcg@20: 0.0417    ndcg@50: 0.0539    precision@5: 0.0079    precision@10: 0.0063    precision@20: 0.0048    precision@50: 0.0032    map@5: 0.0209    map@10: 0.0241    map@20: 0.0264    map@50: 0.0283    
+Sun 10 Dec 2023 18:54:29 INFO ██ LightGCN--Best validation results updated!!!
+Sun 10 Dec 2023 18:54:31 INFO epoch 108 training [time: 1.96s, train loss: 0.6839]
+Sun 10 Dec 2023 18:54:45 INFO epoch 108 evaluating [time: 5.11s, valid_score: 0.097300]
+Sun 10 Dec 2023 18:54:45 INFO valid result: 
+recall@5: 0.0398    recall@10: 0.0618    recall@20: 0.0973    recall@50: 0.1589    ndcg@5: 0.0271    ndcg@10: 0.0342    ndcg@20: 0.0432    ndcg@50: 0.0555    precision@5: 0.0084    precision@10: 0.0065    precision@20: 0.0051    precision@50: 0.0034    map@5: 0.0226    map@10: 0.0255    map@20: 0.0279    map@50: 0.0298    
+Sun 10 Dec 2023 18:54:45 INFO topu result: 
+recall@5: 0.0350    recall@10: 0.0558    recall@20: 0.1100    recall@50: 0.1963    ndcg@5: 0.0445    ndcg@10: 0.0507    ndcg@20: 0.0763    ndcg@50: 0.1087    precision@5: 0.0444    precision@10: 0.0370    precision@20: 0.0370    precision@50: 0.0259    map@5: 0.0200    map@10: 0.0194    map@20: 0.0256    map@50: 0.0303    
+Sun 10 Dec 2023 18:54:45 INFO bottomu result: 
+recall@5: 0.0399    recall@10: 0.0639    recall@20: 0.0965    recall@50: 0.1585    ndcg@5: 0.0256    ndcg@10: 0.0334    ndcg@20: 0.0416    ndcg@50: 0.0539    precision@5: 0.0080    precision@10: 0.0064    precision@20: 0.0048    precision@50: 0.0032    map@5: 0.0210    map@10: 0.0241    map@20: 0.0264    map@50: 0.0283    
+Sun 10 Dec 2023 18:54:48 INFO epoch 109 training [time: 2.68s, train loss: 0.6765]
+Sun 10 Dec 2023 18:55:03 INFO epoch 109 evaluating [time: 6.02s, valid_score: 0.097600]
+Sun 10 Dec 2023 18:55:03 INFO valid result: 
+recall@5: 0.0395    recall@10: 0.0617    recall@20: 0.0976    recall@50: 0.1586    ndcg@5: 0.0270    ndcg@10: 0.0342    ndcg@20: 0.0432    ndcg@50: 0.0554    precision@5: 0.0083    precision@10: 0.0065    precision@20: 0.0051    precision@50: 0.0034    map@5: 0.0225    map@10: 0.0254    map@20: 0.0278    map@50: 0.0298    
+Sun 10 Dec 2023 18:55:03 INFO topu result: 
+recall@5: 0.0350    recall@10: 0.0558    recall@20: 0.1053    recall@50: 0.2010    ndcg@5: 0.0445    ndcg@10: 0.0507    ndcg@20: 0.0741    ndcg@50: 0.1101    precision@5: 0.0444    precision@10: 0.0370    precision@20: 0.0352    precision@50: 0.0267    map@5: 0.0200    map@10: 0.0194    map@20: 0.0253    map@50: 0.0304    
+Sun 10 Dec 2023 18:55:03 INFO bottomu result: 
+recall@5: 0.0400    recall@10: 0.0639    recall@20: 0.0969    recall@50: 0.1586    ndcg@5: 0.0256    ndcg@10: 0.0333    ndcg@20: 0.0416    ndcg@50: 0.0538    precision@5: 0.0080    precision@10: 0.0064    precision@20: 0.0048    precision@50: 0.0032    map@5: 0.0209    map@10: 0.0240    map@20: 0.0263    map@50: 0.0282    
+Sun 10 Dec 2023 18:55:03 INFO ██ LightGCN--Best validation results updated!!!
+Sun 10 Dec 2023 18:55:05 INFO epoch 110 training [time: 2.08s, train loss: 0.6762]
+Sun 10 Dec 2023 18:55:21 INFO epoch 110 evaluating [time: 7.53s, valid_score: 0.097200]
+Sun 10 Dec 2023 18:55:21 INFO valid result: 
+recall@5: 0.0390    recall@10: 0.0615    recall@20: 0.0972    recall@50: 0.1583    ndcg@5: 0.0267    ndcg@10: 0.0340    ndcg@20: 0.0430    ndcg@50: 0.0553    precision@5: 0.0082    precision@10: 0.0065    precision@20: 0.0051    precision@50: 0.0034    map@5: 0.0223    map@10: 0.0253    map@20: 0.0277    map@50: 0.0296    
+Sun 10 Dec 2023 18:55:21 INFO topu result: 
+recall@5: 0.0350    recall@10: 0.0558    recall@20: 0.1053    recall@50: 0.2010    ndcg@5: 0.0445    ndcg@10: 0.0506    ndcg@20: 0.0741    ndcg@50: 0.1102    precision@5: 0.0444    precision@10: 0.0370    precision@20: 0.0352    precision@50: 0.0267    map@5: 0.0200    map@10: 0.0193    map@20: 0.0254    map@50: 0.0306    
+Sun 10 Dec 2023 18:55:21 INFO bottomu result: 
+recall@5: 0.0402    recall@10: 0.0639    recall@20: 0.0967    recall@50: 0.1583    ndcg@5: 0.0256    ndcg@10: 0.0332    ndcg@20: 0.0415    ndcg@50: 0.0537    precision@5: 0.0080    precision@10: 0.0064    precision@20: 0.0048    precision@50: 0.0032    map@5: 0.0209    map@10: 0.0240    map@20: 0.0263    map@50: 0.0282    
+Sun 10 Dec 2023 18:55:23 INFO epoch 111 training [time: 1.90s, train loss: 0.6635]
+Sun 10 Dec 2023 18:55:40 INFO epoch 111 evaluating [time: 6.10s, valid_score: 0.096300]
+Sun 10 Dec 2023 18:55:40 INFO valid result: 
+recall@5: 0.0390    recall@10: 0.0614    recall@20: 0.0963    recall@50: 0.1579    ndcg@5: 0.0267    ndcg@10: 0.0339    ndcg@20: 0.0428    ndcg@50: 0.0552    precision@5: 0.0082    precision@10: 0.0065    precision@20: 0.0051    precision@50: 0.0033    map@5: 0.0223    map@10: 0.0252    map@20: 0.0276    map@50: 0.0296    
+Sun 10 Dec 2023 18:55:40 INFO topu result: 
+recall@5: 0.0276    recall@10: 0.0484    recall@20: 0.1161    recall@50: 0.1963    ndcg@5: 0.0363    ndcg@10: 0.0436    ndcg@20: 0.0750    ndcg@50: 0.1049    precision@5: 0.0370    precision@10: 0.0333    precision@20: 0.0389    precision@50: 0.0259    map@5: 0.0160    map@10: 0.0163    map@20: 0.0234    map@50: 0.0278    
+Sun 10 Dec 2023 18:55:40 INFO bottomu result: 
+recall@5: 0.0401    recall@10: 0.0639    recall@20: 0.0967    recall@50: 0.1582    ndcg@5: 0.0257    ndcg@10: 0.0333    ndcg@20: 0.0416    ndcg@50: 0.0537    precision@5: 0.0080    precision@10: 0.0064    precision@20: 0.0048    precision@50: 0.0032    map@5: 0.0210    map@10: 0.0241    map@20: 0.0263    map@50: 0.0283    
+Sun 10 Dec 2023 18:55:42 INFO epoch 112 training [time: 1.91s, train loss: 0.6573]
+Sun 10 Dec 2023 18:55:59 INFO epoch 112 evaluating [time: 6.44s, valid_score: 0.096100]
+Sun 10 Dec 2023 18:55:59 INFO valid result: 
+recall@5: 0.0391    recall@10: 0.0614    recall@20: 0.0961    recall@50: 0.1579    ndcg@5: 0.0268    ndcg@10: 0.0340    ndcg@20: 0.0428    ndcg@50: 0.0552    precision@5: 0.0082    precision@10: 0.0065    precision@20: 0.0051    precision@50: 0.0033    map@5: 0.0224    map@10: 0.0253    map@20: 0.0277    map@50: 0.0297    
+Sun 10 Dec 2023 18:55:59 INFO topu result: 
+recall@5: 0.0276    recall@10: 0.0484    recall@20: 0.1053    recall@50: 0.2010    ndcg@5: 0.0380    ndcg@10: 0.0451    ndcg@20: 0.0718    ndcg@50: 0.1079    precision@5: 0.0370    precision@10: 0.0333    precision@20: 0.0352    precision@50: 0.0267    map@5: 0.0173    map@10: 0.0173    map@20: 0.0239    map@50: 0.0289    
+Sun 10 Dec 2023 18:55:59 INFO bottomu result: 
+recall@5: 0.0406    recall@10: 0.0642    recall@20: 0.0967    recall@50: 0.1581    ndcg@5: 0.0260    ndcg@10: 0.0335    ndcg@20: 0.0417    ndcg@50: 0.0539    precision@5: 0.0081    precision@10: 0.0064    precision@20: 0.0048    precision@50: 0.0032    map@5: 0.0212    map@10: 0.0243    map@20: 0.0265    map@50: 0.0284    
+Sun 10 Dec 2023 18:56:01 INFO epoch 113 training [time: 1.84s, train loss: 0.6639]
+Sun 10 Dec 2023 18:56:17 INFO epoch 113 evaluating [time: 7.03s, valid_score: 0.096300]
+Sun 10 Dec 2023 18:56:17 INFO valid result: 
+recall@5: 0.0391    recall@10: 0.0614    recall@20: 0.0963    recall@50: 0.1579    ndcg@5: 0.0268    ndcg@10: 0.0340    ndcg@20: 0.0428    ndcg@50: 0.0552    precision@5: 0.0082    precision@10: 0.0065    precision@20: 0.0051    precision@50: 0.0034    map@5: 0.0224    map@10: 0.0253    map@20: 0.0277    map@50: 0.0296    
+Sun 10 Dec 2023 18:56:17 INFO topu result: 
+recall@5: 0.0276    recall@10: 0.0558    recall@20: 0.1053    recall@50: 0.2010    ndcg@5: 0.0363    ndcg@10: 0.0472    ndcg@20: 0.0703    ndcg@50: 0.1064    precision@5: 0.0370    precision@10: 0.0370    precision@20: 0.0352    precision@50: 0.0267    map@5: 0.0160    map@10: 0.0170    map@20: 0.0227    map@50: 0.0278    
+Sun 10 Dec 2023 18:56:17 INFO bottomu result: 
+recall@5: 0.0401    recall@10: 0.0642    recall@20: 0.0970    recall@50: 0.1582    ndcg@5: 0.0257    ndcg@10: 0.0335    ndcg@20: 0.0417    ndcg@50: 0.0538    precision@5: 0.0080    precision@10: 0.0064    precision@20: 0.0048    precision@50: 0.0032    map@5: 0.0210    map@10: 0.0242    map@20: 0.0264    map@50: 0.0284    
+Sun 10 Dec 2023 18:56:19 INFO epoch 114 training [time: 1.94s, train loss: 0.6536]
+Sun 10 Dec 2023 18:56:35 INFO epoch 114 evaluating [time: 6.96s, valid_score: 0.096500]
+Sun 10 Dec 2023 18:56:35 INFO valid result: 
+recall@5: 0.0395    recall@10: 0.0613    recall@20: 0.0965    recall@50: 0.1570    ndcg@5: 0.0269    ndcg@10: 0.0340    ndcg@20: 0.0429    ndcg@50: 0.0551    precision@5: 0.0083    precision@10: 0.0065    precision@20: 0.0051    precision@50: 0.0033    map@5: 0.0225    map@10: 0.0253    map@20: 0.0277    map@50: 0.0296    
+Sun 10 Dec 2023 18:56:35 INFO topu result: 
+recall@5: 0.0276    recall@10: 0.0558    recall@20: 0.1100    recall@50: 0.2010    ndcg@5: 0.0363    ndcg@10: 0.0472    ndcg@20: 0.0724    ndcg@50: 0.1064    precision@5: 0.0370    precision@10: 0.0370    precision@20: 0.0370    precision@50: 0.0267    map@5: 0.0160    map@10: 0.0170    map@20: 0.0229    map@50: 0.0278    
+Sun 10 Dec 2023 18:56:35 INFO bottomu result: 
+recall@5: 0.0398    recall@10: 0.0641    recall@20: 0.0965    recall@50: 0.1586    ndcg@5: 0.0257    ndcg@10: 0.0335    ndcg@20: 0.0417    ndcg@50: 0.0539    precision@5: 0.0080    precision@10: 0.0064    precision@20: 0.0048    precision@50: 0.0032    map@5: 0.0211    map@10: 0.0243    map@20: 0.0265    map@50: 0.0284    
+Sun 10 Dec 2023 18:56:37 INFO epoch 115 training [time: 2.04s, train loss: 0.6411]
+Sun 10 Dec 2023 18:56:53 INFO epoch 115 evaluating [time: 7.39s, valid_score: 0.096500]
+Sun 10 Dec 2023 18:56:53 INFO valid result: 
+recall@5: 0.0396    recall@10: 0.0613    recall@20: 0.0965    recall@50: 0.1573    ndcg@5: 0.0269    ndcg@10: 0.0339    ndcg@20: 0.0429    ndcg@50: 0.0551    precision@5: 0.0083    precision@10: 0.0064    precision@20: 0.0051    precision@50: 0.0033    map@5: 0.0224    map@10: 0.0252    map@20: 0.0276    map@50: 0.0296    
+Sun 10 Dec 2023 18:56:53 INFO topu result: 
+recall@5: 0.0350    recall@10: 0.0558    recall@20: 0.1133    recall@50: 0.2010    ndcg@5: 0.0428    ndcg@10: 0.0491    ndcg@20: 0.0760    ndcg@50: 0.1083    precision@5: 0.0444    precision@10: 0.0370    precision@20: 0.0389    precision@50: 0.0267    map@5: 0.0188    map@10: 0.0183    map@20: 0.0244    map@50: 0.0291    
+Sun 10 Dec 2023 18:56:53 INFO bottomu result: 
+recall@5: 0.0400    recall@10: 0.0641    recall@20: 0.0961    recall@50: 0.1585    ndcg@5: 0.0258    ndcg@10: 0.0336    ndcg@20: 0.0416    ndcg@50: 0.0540    precision@5: 0.0080    precision@10: 0.0064    precision@20: 0.0048    precision@50: 0.0032    map@5: 0.0212    map@10: 0.0243    map@20: 0.0266    map@50: 0.0285    
+Sun 10 Dec 2023 18:56:57 INFO epoch 116 training [time: 3.14s, train loss: 0.6341]
+Sun 10 Dec 2023 18:57:12 INFO epoch 116 evaluating [time: 5.51s, valid_score: 0.096700]
+Sun 10 Dec 2023 18:57:12 INFO valid result: 
+recall@5: 0.0397    recall@10: 0.0614    recall@20: 0.0967    recall@50: 0.1574    ndcg@5: 0.0269    ndcg@10: 0.0339    ndcg@20: 0.0428    ndcg@50: 0.0550    precision@5: 0.0083    precision@10: 0.0065    precision@20: 0.0051    precision@50: 0.0033    map@5: 0.0223    map@10: 0.0252    map@20: 0.0276    map@50: 0.0295    
+Sun 10 Dec 2023 18:57:12 INFO topu result: 
+recall@5: 0.0276    recall@10: 0.0558    recall@20: 0.1133    recall@50: 0.2010    ndcg@5: 0.0380    ndcg@10: 0.0487    ndcg@20: 0.0758    ndcg@50: 0.1081    precision@5: 0.0370    precision@10: 0.0370    precision@20: 0.0389    precision@50: 0.0267    map@5: 0.0173    map@10: 0.0180    map@20: 0.0243    map@50: 0.0290    
+Sun 10 Dec 2023 18:57:12 INFO bottomu result: 
+recall@5: 0.0399    recall@10: 0.0640    recall@20: 0.0962    recall@50: 0.1586    ndcg@5: 0.0257    ndcg@10: 0.0335    ndcg@20: 0.0416    ndcg@50: 0.0539    precision@5: 0.0080    precision@10: 0.0064    precision@20: 0.0048    precision@50: 0.0032    map@5: 0.0211    map@10: 0.0243    map@20: 0.0265    map@50: 0.0284    
+Sun 10 Dec 2023 18:57:15 INFO epoch 117 training [time: 3.18s, train loss: 0.6374]
+Sun 10 Dec 2023 18:57:31 INFO epoch 117 evaluating [time: 6.58s, valid_score: 0.096500]
+Sun 10 Dec 2023 18:57:31 INFO valid result: 
+recall@5: 0.0398    recall@10: 0.0615    recall@20: 0.0965    recall@50: 0.1570    ndcg@5: 0.0269    ndcg@10: 0.0339    ndcg@20: 0.0428    ndcg@50: 0.0549    precision@5: 0.0084    precision@10: 0.0065    precision@20: 0.0051    precision@50: 0.0033    map@5: 0.0223    map@10: 0.0251    map@20: 0.0275    map@50: 0.0294    
+Sun 10 Dec 2023 18:57:31 INFO topu result: 
+recall@5: 0.0276    recall@10: 0.0558    recall@20: 0.1133    recall@50: 0.2010    ndcg@5: 0.0363    ndcg@10: 0.0472    ndcg@20: 0.0744    ndcg@50: 0.1067    precision@5: 0.0370    precision@10: 0.0370    precision@20: 0.0389    precision@50: 0.0267    map@5: 0.0160    map@10: 0.0170    map@20: 0.0234    map@50: 0.0280    
+Sun 10 Dec 2023 18:57:31 INFO bottomu result: 
+recall@5: 0.0400    recall@10: 0.0643    recall@20: 0.0965    recall@50: 0.1584    ndcg@5: 0.0258    ndcg@10: 0.0336    ndcg@20: 0.0417    ndcg@50: 0.0539    precision@5: 0.0080    precision@10: 0.0064    precision@20: 0.0048    precision@50: 0.0032    map@5: 0.0211    map@10: 0.0243    map@20: 0.0265    map@50: 0.0284    
+Sun 10 Dec 2023 18:57:32 INFO epoch 118 training [time: 1.89s, train loss: 0.6260]
+Sun 10 Dec 2023 18:57:47 INFO epoch 118 evaluating [time: 5.42s, valid_score: 0.096300]
+Sun 10 Dec 2023 18:57:47 INFO valid result: 
+recall@5: 0.0394    recall@10: 0.0614    recall@20: 0.0963    recall@50: 0.1572    ndcg@5: 0.0268    ndcg@10: 0.0339    ndcg@20: 0.0428    ndcg@50: 0.0550    precision@5: 0.0083    precision@10: 0.0065    precision@20: 0.0051    precision@50: 0.0033    map@5: 0.0223    map@10: 0.0252    map@20: 0.0276    map@50: 0.0295    
+Sun 10 Dec 2023 18:57:47 INFO topu result: 
+recall@5: 0.0276    recall@10: 0.0558    recall@20: 0.1133    recall@50: 0.2010    ndcg@5: 0.0363    ndcg@10: 0.0474    ndcg@20: 0.0746    ndcg@50: 0.1068    precision@5: 0.0370    precision@10: 0.0370    precision@20: 0.0389    precision@50: 0.0267    map@5: 0.0160    map@10: 0.0171    map@20: 0.0235    map@50: 0.0281    
+Sun 10 Dec 2023 18:57:47 INFO bottomu result: 
+recall@5: 0.0402    recall@10: 0.0639    recall@20: 0.0962    recall@50: 0.1588    ndcg@5: 0.0259    ndcg@10: 0.0335    ndcg@20: 0.0416    ndcg@50: 0.0540    precision@5: 0.0080    precision@10: 0.0064    precision@20: 0.0048    precision@50: 0.0032    map@5: 0.0212    map@10: 0.0243    map@20: 0.0265    map@50: 0.0285    
+Sun 10 Dec 2023 18:57:49 INFO epoch 119 training [time: 1.93s, train loss: 0.6208]
+Sun 10 Dec 2023 18:58:06 INFO epoch 119 evaluating [time: 7.15s, valid_score: 0.096500]
+Sun 10 Dec 2023 18:58:06 INFO valid result: 
+recall@5: 0.0396    recall@10: 0.0615    recall@20: 0.0965    recall@50: 0.1573    ndcg@5: 0.0269    ndcg@10: 0.0339    ndcg@20: 0.0428    ndcg@50: 0.0550    precision@5: 0.0083    precision@10: 0.0065    precision@20: 0.0051    precision@50: 0.0033    map@5: 0.0223    map@10: 0.0252    map@20: 0.0275    map@50: 0.0295    
+Sun 10 Dec 2023 18:58:06 INFO topu result: 
+recall@5: 0.0276    recall@10: 0.0546    recall@20: 0.1133    recall@50: 0.2010    ndcg@5: 0.0363    ndcg@10: 0.0467    ndcg@20: 0.0745    ndcg@50: 0.1066    precision@5: 0.0370    precision@10: 0.0370    precision@20: 0.0389    precision@50: 0.0267    map@5: 0.0160    map@10: 0.0174    map@20: 0.0237    map@50: 0.0282    
+Sun 10 Dec 2023 18:58:06 INFO bottomu result: 
+recall@5: 0.0403    recall@10: 0.0638    recall@20: 0.0963    recall@50: 0.1589    ndcg@5: 0.0258    ndcg@10: 0.0334    ndcg@20: 0.0416    ndcg@50: 0.0539    precision@5: 0.0081    precision@10: 0.0064    precision@20: 0.0048    precision@50: 0.0032    map@5: 0.0211    map@10: 0.0242    map@20: 0.0264    map@50: 0.0284    
+Sun 10 Dec 2023 18:58:08 INFO epoch 120 training [time: 1.86s, train loss: 0.6244]
+Sun 10 Dec 2023 18:58:23 INFO epoch 120 evaluating [time: 5.95s, valid_score: 0.096300]
+Sun 10 Dec 2023 18:58:23 INFO valid result: 
+recall@5: 0.0393    recall@10: 0.0617    recall@20: 0.0963    recall@50: 0.1569    ndcg@5: 0.0268    ndcg@10: 0.0341    ndcg@20: 0.0428    ndcg@50: 0.0550    precision@5: 0.0083    precision@10: 0.0065    precision@20: 0.0051    precision@50: 0.0033    map@5: 0.0223    map@10: 0.0253    map@20: 0.0276    map@50: 0.0295    
+Sun 10 Dec 2023 18:58:23 INFO topu result: 
+recall@5: 0.0276    recall@10: 0.0546    recall@20: 0.1133    recall@50: 0.1963    ndcg@5: 0.0380    ndcg@10: 0.0487    ndcg@20: 0.0761    ndcg@50: 0.1065    precision@5: 0.0370    precision@10: 0.0370    precision@20: 0.0389    precision@50: 0.0259    map@5: 0.0173    map@10: 0.0187    map@20: 0.0248    map@50: 0.0290    
+Sun 10 Dec 2023 18:58:23 INFO bottomu result: 
+recall@5: 0.0402    recall@10: 0.0639    recall@20: 0.0961    recall@50: 0.1587    ndcg@5: 0.0259    ndcg@10: 0.0335    ndcg@20: 0.0416    ndcg@50: 0.0540    precision@5: 0.0080    precision@10: 0.0064    precision@20: 0.0048    precision@50: 0.0032    map@5: 0.0212    map@10: 0.0243    map@20: 0.0266    map@50: 0.0285    
+Sun 10 Dec 2023 18:58:25 INFO epoch 121 training [time: 1.88s, train loss: 0.6166]
+Sun 10 Dec 2023 18:58:41 INFO epoch 121 evaluating [time: 7.15s, valid_score: 0.096500]
+Sun 10 Dec 2023 18:58:41 INFO valid result: 
+recall@5: 0.0396    recall@10: 0.0620    recall@20: 0.0965    recall@50: 0.1570    ndcg@5: 0.0269    ndcg@10: 0.0341    ndcg@20: 0.0428    ndcg@50: 0.0550    precision@5: 0.0083    precision@10: 0.0065    precision@20: 0.0051    precision@50: 0.0033    map@5: 0.0224    map@10: 0.0253    map@20: 0.0276    map@50: 0.0295    
+Sun 10 Dec 2023 18:58:41 INFO topu result: 
+recall@5: 0.0276    recall@10: 0.0546    recall@20: 0.1100    recall@50: 0.2051    ndcg@5: 0.0380    ndcg@10: 0.0485    ndcg@20: 0.0743    ndcg@50: 0.1096    precision@5: 0.0370    precision@10: 0.0370    precision@20: 0.0370    precision@50: 0.0274    map@5: 0.0173    map@10: 0.0186    map@20: 0.0245    map@50: 0.0293    
+Sun 10 Dec 2023 18:58:41 INFO bottomu result: 
+recall@5: 0.0401    recall@10: 0.0637    recall@20: 0.0959    recall@50: 0.1588    ndcg@5: 0.0258    ndcg@10: 0.0334    ndcg@20: 0.0416    ndcg@50: 0.0540    precision@5: 0.0080    precision@10: 0.0064    precision@20: 0.0048    precision@50: 0.0032    map@5: 0.0212    map@10: 0.0243    map@20: 0.0265    map@50: 0.0285    
+Sun 10 Dec 2023 18:58:43 INFO epoch 122 training [time: 1.88s, train loss: 0.6044]
+Sun 10 Dec 2023 18:58:59 INFO epoch 122 evaluating [time: 5.47s, valid_score: 0.096200]
+Sun 10 Dec 2023 18:58:59 INFO valid result: 
+recall@5: 0.0396    recall@10: 0.0615    recall@20: 0.0962    recall@50: 0.1570    ndcg@5: 0.0269    ndcg@10: 0.0340    ndcg@20: 0.0427    ndcg@50: 0.0550    precision@5: 0.0083    precision@10: 0.0065    precision@20: 0.0051    precision@50: 0.0033    map@5: 0.0223    map@10: 0.0252    map@20: 0.0275    map@50: 0.0295    
+Sun 10 Dec 2023 18:58:59 INFO topu result: 
+recall@5: 0.0276    recall@10: 0.0546    recall@20: 0.1100    recall@50: 0.2005    ndcg@5: 0.0401    ndcg@10: 0.0502    ndcg@20: 0.0757    ndcg@50: 0.1096    precision@5: 0.0370    precision@10: 0.0370    precision@20: 0.0370    precision@50: 0.0267    map@5: 0.0191    map@10: 0.0198    map@20: 0.0255    map@50: 0.0301    
+Sun 10 Dec 2023 18:58:59 INFO bottomu result: 
+recall@5: 0.0400    recall@10: 0.0639    recall@20: 0.0952    recall@50: 0.1587    ndcg@5: 0.0258    ndcg@10: 0.0334    ndcg@20: 0.0414    ndcg@50: 0.0539    precision@5: 0.0080    precision@10: 0.0064    precision@20: 0.0048    precision@50: 0.0032    map@5: 0.0211    map@10: 0.0242    map@20: 0.0264    map@50: 0.0284    
+Sun 10 Dec 2023 18:59:01 INFO epoch 123 training [time: 1.84s, train loss: 0.5942]
+Sun 10 Dec 2023 18:59:16 INFO epoch 123 evaluating [time: 5.79s, valid_score: 0.095900]
+Sun 10 Dec 2023 18:59:16 INFO valid result: 
+recall@5: 0.0395    recall@10: 0.0613    recall@20: 0.0959    recall@50: 0.1570    ndcg@5: 0.0268    ndcg@10: 0.0339    ndcg@20: 0.0426    ndcg@50: 0.0549    precision@5: 0.0083    precision@10: 0.0065    precision@20: 0.0051    precision@50: 0.0033    map@5: 0.0223    map@10: 0.0251    map@20: 0.0275    map@50: 0.0294    
+Sun 10 Dec 2023 18:59:16 INFO topu result: 
+recall@5: 0.0276    recall@10: 0.0546    recall@20: 0.1100    recall@50: 0.2051    ndcg@5: 0.0401    ndcg@10: 0.0499    ndcg@20: 0.0756    ndcg@50: 0.1109    precision@5: 0.0370    precision@10: 0.0370    precision@20: 0.0370    precision@50: 0.0274    map@5: 0.0191    map@10: 0.0196    map@20: 0.0255    map@50: 0.0302    
+Sun 10 Dec 2023 18:59:16 INFO bottomu result: 
+recall@5: 0.0401    recall@10: 0.0642    recall@20: 0.0959    recall@50: 0.1590    ndcg@5: 0.0258    ndcg@10: 0.0335    ndcg@20: 0.0415    ndcg@50: 0.0540    precision@5: 0.0080    precision@10: 0.0064    precision@20: 0.0048    precision@50: 0.0032    map@5: 0.0211    map@10: 0.0242    map@20: 0.0264    map@50: 0.0284    
+Sun 10 Dec 2023 18:59:19 INFO epoch 124 training [time: 3.37s, train loss: 0.6002]
+Sun 10 Dec 2023 18:59:35 INFO epoch 124 evaluating [time: 6.59s, valid_score: 0.095800]
+Sun 10 Dec 2023 18:59:35 INFO valid result: 
+recall@5: 0.0398    recall@10: 0.0610    recall@20: 0.0958    recall@50: 0.1569    ndcg@5: 0.0269    ndcg@10: 0.0338    ndcg@20: 0.0426    ndcg@50: 0.0549    precision@5: 0.0084    precision@10: 0.0064    precision@20: 0.0050    precision@50: 0.0033    map@5: 0.0223    map@10: 0.0251    map@20: 0.0275    map@50: 0.0294    
+Sun 10 Dec 2023 18:59:35 INFO topu result: 
+recall@5: 0.0350    recall@10: 0.0599    recall@20: 0.1100    recall@50: 0.2051    ndcg@5: 0.0450    ndcg@10: 0.0535    ndcg@20: 0.0765    ndcg@50: 0.1118    precision@5: 0.0444    precision@10: 0.0407    precision@20: 0.0370    precision@50: 0.0274    map@5: 0.0206    map@10: 0.0216    map@20: 0.0261    map@50: 0.0309    
+Sun 10 Dec 2023 18:59:35 INFO bottomu result: 
+recall@5: 0.0400    recall@10: 0.0642    recall@20: 0.0960    recall@50: 0.1589    ndcg@5: 0.0257    ndcg@10: 0.0335    ndcg@20: 0.0415    ndcg@50: 0.0539    precision@5: 0.0080    precision@10: 0.0064    precision@20: 0.0048    precision@50: 0.0032    map@5: 0.0210    map@10: 0.0242    map@20: 0.0264    map@50: 0.0284    
+Sun 10 Dec 2023 18:59:38 INFO epoch 125 training [time: 2.57s, train loss: 0.5883]
+Sun 10 Dec 2023 18:59:52 INFO epoch 125 evaluating [time: 5.43s, valid_score: 0.096200]
+Sun 10 Dec 2023 18:59:52 INFO valid result: 
+recall@5: 0.0399    recall@10: 0.0610    recall@20: 0.0962    recall@50: 0.1567    ndcg@5: 0.0271    ndcg@10: 0.0339    ndcg@20: 0.0428    ndcg@50: 0.0550    precision@5: 0.0084    precision@10: 0.0064    precision@20: 0.0051    precision@50: 0.0033    map@5: 0.0225    map@10: 0.0253    map@20: 0.0277    map@50: 0.0296    
+Sun 10 Dec 2023 18:59:52 INFO topu result: 
+recall@5: 0.0350    recall@10: 0.0645    recall@20: 0.1100    recall@50: 0.2051    ndcg@5: 0.0446    ndcg@10: 0.0560    ndcg@20: 0.0765    ndcg@50: 0.1117    precision@5: 0.0444    precision@10: 0.0444    precision@20: 0.0370    precision@50: 0.0274    map@5: 0.0204    map@10: 0.0219    map@20: 0.0262    map@50: 0.0309    
+Sun 10 Dec 2023 18:59:52 INFO bottomu result: 
+recall@5: 0.0400    recall@10: 0.0642    recall@20: 0.0955    recall@50: 0.1590    ndcg@5: 0.0258    ndcg@10: 0.0336    ndcg@20: 0.0415    ndcg@50: 0.0540    precision@5: 0.0080    precision@10: 0.0064    precision@20: 0.0048    precision@50: 0.0032    map@5: 0.0212    map@10: 0.0243    map@20: 0.0265    map@50: 0.0285    
+Sun 10 Dec 2023 18:59:54 INFO epoch 126 training [time: 1.98s, train loss: 0.5872]
+Sun 10 Dec 2023 19:00:12 INFO epoch 126 evaluating [time: 5.74s, valid_score: 0.096500]
+Sun 10 Dec 2023 19:00:12 INFO valid result: 
+recall@5: 0.0399    recall@10: 0.0609    recall@20: 0.0965    recall@50: 0.1567    ndcg@5: 0.0271    ndcg@10: 0.0339    ndcg@20: 0.0429    ndcg@50: 0.0550    precision@5: 0.0084    precision@10: 0.0064    precision@20: 0.0051    precision@50: 0.0033    map@5: 0.0225    map@10: 0.0253    map@20: 0.0277    map@50: 0.0296    
+Sun 10 Dec 2023 19:00:12 INFO topu result: 
+recall@5: 0.0350    recall@10: 0.0645    recall@20: 0.1100    recall@50: 0.2125    ndcg@5: 0.0455    ndcg@10: 0.0568    ndcg@20: 0.0774    ndcg@50: 0.1149    precision@5: 0.0444    precision@10: 0.0444    precision@20: 0.0370    precision@50: 0.0281    map@5: 0.0210    map@10: 0.0224    map@20: 0.0267    map@50: 0.0317    
+Sun 10 Dec 2023 19:00:12 INFO bottomu result: 
+recall@5: 0.0397    recall@10: 0.0639    recall@20: 0.0957    recall@50: 0.1577    ndcg@5: 0.0258    ndcg@10: 0.0335    ndcg@20: 0.0416    ndcg@50: 0.0538    precision@5: 0.0079    precision@10: 0.0064    precision@20: 0.0048    precision@50: 0.0032    map@5: 0.0212    map@10: 0.0244    map@20: 0.0266    map@50: 0.0285    
+Sun 10 Dec 2023 19:00:14 INFO epoch 127 training [time: 1.95s, train loss: 0.5803]
+Sun 10 Dec 2023 19:00:31 INFO epoch 127 evaluating [time: 7.16s, valid_score: 0.096500]
+Sun 10 Dec 2023 19:00:31 INFO valid result: 
+recall@5: 0.0398    recall@10: 0.0610    recall@20: 0.0965    recall@50: 0.1565    ndcg@5: 0.0271    ndcg@10: 0.0340    ndcg@20: 0.0430    ndcg@50: 0.0550    precision@5: 0.0084    precision@10: 0.0064    precision@20: 0.0051    precision@50: 0.0033    map@5: 0.0226    map@10: 0.0253    map@20: 0.0277    map@50: 0.0296    
+Sun 10 Dec 2023 19:00:31 INFO topu result: 
+recall@5: 0.0378    recall@10: 0.0583    recall@20: 0.1038    recall@50: 0.2178    ndcg@5: 0.0504    ndcg@10: 0.0539    ndcg@20: 0.0748    ndcg@50: 0.1165    precision@5: 0.0519    precision@10: 0.0407    precision@20: 0.0352    precision@50: 0.0289    map@5: 0.0225    map@10: 0.0214    map@20: 0.0257    map@50: 0.0319    
+Sun 10 Dec 2023 19:00:31 INFO bottomu result: 
+recall@5: 0.0398    recall@10: 0.0639    recall@20: 0.0955    recall@50: 0.1577    ndcg@5: 0.0259    ndcg@10: 0.0336    ndcg@20: 0.0416    ndcg@50: 0.0539    precision@5: 0.0080    precision@10: 0.0064    precision@20: 0.0048    precision@50: 0.0032    map@5: 0.0213    map@10: 0.0245    map@20: 0.0267    map@50: 0.0286    
+Sun 10 Dec 2023 19:00:33 INFO epoch 128 training [time: 1.87s, train loss: 0.5786]
+Sun 10 Dec 2023 19:00:51 INFO epoch 128 evaluating [time: 7.83s, valid_score: 0.096400]
+Sun 10 Dec 2023 19:00:51 INFO valid result: 
+recall@5: 0.0400    recall@10: 0.0611    recall@20: 0.0964    recall@50: 0.1564    ndcg@5: 0.0271    ndcg@10: 0.0339    ndcg@20: 0.0429    ndcg@50: 0.0549    precision@5: 0.0084    precision@10: 0.0064    precision@20: 0.0051    precision@50: 0.0033    map@5: 0.0225    map@10: 0.0253    map@20: 0.0277    map@50: 0.0296    
+Sun 10 Dec 2023 19:00:51 INFO topu result: 
+recall@5: 0.0378    recall@10: 0.0583    recall@20: 0.1100    recall@50: 0.2178    ndcg@5: 0.0504    ndcg@10: 0.0541    ndcg@20: 0.0776    ndcg@50: 0.1166    precision@5: 0.0519    precision@10: 0.0407    precision@20: 0.0370    precision@50: 0.0289    map@5: 0.0225    map@10: 0.0216    map@20: 0.0268    map@50: 0.0321    
+Sun 10 Dec 2023 19:00:51 INFO bottomu result: 
+recall@5: 0.0400    recall@10: 0.0640    recall@20: 0.0962    recall@50: 0.1583    ndcg@5: 0.0260    ndcg@10: 0.0337    ndcg@20: 0.0418    ndcg@50: 0.0541    precision@5: 0.0080    precision@10: 0.0064    precision@20: 0.0048    precision@50: 0.0032    map@5: 0.0214    map@10: 0.0245    map@20: 0.0267    map@50: 0.0287    
+Sun 10 Dec 2023 19:00:53 INFO epoch 129 training [time: 2.07s, train loss: 0.5673]
+Sun 10 Dec 2023 19:01:08 INFO epoch 129 evaluating [time: 6.69s, valid_score: 0.095900]
+Sun 10 Dec 2023 19:01:08 INFO valid result: 
+recall@5: 0.0400    recall@10: 0.0610    recall@20: 0.0959    recall@50: 0.1566    ndcg@5: 0.0271    ndcg@10: 0.0339    ndcg@20: 0.0427    ndcg@50: 0.0549    precision@5: 0.0084    precision@10: 0.0064    precision@20: 0.0050    precision@50: 0.0033    map@5: 0.0225    map@10: 0.0252    map@20: 0.0276    map@50: 0.0295    
+Sun 10 Dec 2023 19:01:08 INFO topu result: 
+recall@5: 0.0378    recall@10: 0.0645    recall@20: 0.1053    recall@50: 0.2178    ndcg@5: 0.0504    ndcg@10: 0.0573    ndcg@20: 0.0756    ndcg@50: 0.1169    precision@5: 0.0519    precision@10: 0.0444    precision@20: 0.0352    precision@50: 0.0289    map@5: 0.0225    map@10: 0.0229    map@20: 0.0267    map@50: 0.0322    
+Sun 10 Dec 2023 19:01:08 INFO bottomu result: 
+recall@5: 0.0400    recall@10: 0.0637    recall@20: 0.0961    recall@50: 0.1579    ndcg@5: 0.0258    ndcg@10: 0.0335    ndcg@20: 0.0416    ndcg@50: 0.0538    precision@5: 0.0080    precision@10: 0.0064    precision@20: 0.0048    precision@50: 0.0032    map@5: 0.0212    map@10: 0.0243    map@20: 0.0265    map@50: 0.0285    
+Sun 10 Dec 2023 19:01:10 INFO epoch 130 training [time: 1.87s, train loss: 0.5647]
+Sun 10 Dec 2023 19:01:26 INFO epoch 130 evaluating [time: 6.50s, valid_score: 0.096400]
+Sun 10 Dec 2023 19:01:26 INFO valid result: 
+recall@5: 0.0401    recall@10: 0.0611    recall@20: 0.0964    recall@50: 0.1570    ndcg@5: 0.0271    ndcg@10: 0.0339    ndcg@20: 0.0428    ndcg@50: 0.0550    precision@5: 0.0084    precision@10: 0.0065    precision@20: 0.0051    precision@50: 0.0033    map@5: 0.0225    map@10: 0.0252    map@20: 0.0276    map@50: 0.0295    
+Sun 10 Dec 2023 19:01:26 INFO topu result: 
+recall@5: 0.0378    recall@10: 0.0645    recall@20: 0.1100    recall@50: 0.2132    ndcg@5: 0.0495    ndcg@10: 0.0563    ndcg@20: 0.0768    ndcg@50: 0.1143    precision@5: 0.0519    precision@10: 0.0444    precision@20: 0.0370    precision@50: 0.0281    map@5: 0.0219    map@10: 0.0221    map@20: 0.0263    map@50: 0.0313    
+Sun 10 Dec 2023 19:01:26 INFO bottomu result: 
+recall@5: 0.0399    recall@10: 0.0638    recall@20: 0.0965    recall@50: 0.1581    ndcg@5: 0.0258    ndcg@10: 0.0334    ndcg@20: 0.0417    ndcg@50: 0.0539    precision@5: 0.0080    precision@10: 0.0064    precision@20: 0.0048    precision@50: 0.0032    map@5: 0.0211    map@10: 0.0243    map@20: 0.0265    map@50: 0.0285    
+Sun 10 Dec 2023 19:01:28 INFO epoch 131 training [time: 2.14s, train loss: 0.5730]
+Sun 10 Dec 2023 19:01:44 INFO epoch 131 evaluating [time: 7.17s, valid_score: 0.096100]
+Sun 10 Dec 2023 19:01:44 INFO valid result: 
+recall@5: 0.0402    recall@10: 0.0610    recall@20: 0.0961    recall@50: 0.1568    ndcg@5: 0.0271    ndcg@10: 0.0339    ndcg@20: 0.0428    ndcg@50: 0.0550    precision@5: 0.0085    precision@10: 0.0064    precision@20: 0.0051    precision@50: 0.0033    map@5: 0.0225    map@10: 0.0252    map@20: 0.0276    map@50: 0.0295    
+Sun 10 Dec 2023 19:01:44 INFO topu result: 
+recall@5: 0.0378    recall@10: 0.0645    recall@20: 0.1053    recall@50: 0.2057    ndcg@5: 0.0495    ndcg@10: 0.0563    ndcg@20: 0.0746    ndcg@50: 0.1119    precision@5: 0.0519    precision@10: 0.0444    precision@20: 0.0352    precision@50: 0.0274    map@5: 0.0219    map@10: 0.0221    map@20: 0.0260    map@50: 0.0309    
+Sun 10 Dec 2023 19:01:44 INFO bottomu result: 
+recall@5: 0.0395    recall@10: 0.0640    recall@20: 0.0962    recall@50: 0.1581    ndcg@5: 0.0256    ndcg@10: 0.0335    ndcg@20: 0.0416    ndcg@50: 0.0538    precision@5: 0.0079    precision@10: 0.0064    precision@20: 0.0048    precision@50: 0.0032    map@5: 0.0210    map@10: 0.0242    map@20: 0.0265    map@50: 0.0284    
+Sun 10 Dec 2023 19:01:47 INFO epoch 132 training [time: 2.92s, train loss: 0.5639]
+Sun 10 Dec 2023 19:02:05 INFO epoch 132 evaluating [time: 6.28s, valid_score: 0.096500]
+Sun 10 Dec 2023 19:02:05 INFO valid result: 
+recall@5: 0.0400    recall@10: 0.0613    recall@20: 0.0965    recall@50: 0.1561    ndcg@5: 0.0270    ndcg@10: 0.0339    ndcg@20: 0.0428    ndcg@50: 0.0548    precision@5: 0.0084    precision@10: 0.0065    precision@20: 0.0051    precision@50: 0.0033    map@5: 0.0224    map@10: 0.0252    map@20: 0.0276    map@50: 0.0295    
+Sun 10 Dec 2023 19:02:05 INFO topu result: 
+recall@5: 0.0378    recall@10: 0.0645    recall@20: 0.1053    recall@50: 0.2057    ndcg@5: 0.0495    ndcg@10: 0.0562    ndcg@20: 0.0743    ndcg@50: 0.1115    precision@5: 0.0519    precision@10: 0.0444    precision@20: 0.0352    precision@50: 0.0274    map@5: 0.0219    map@10: 0.0220    map@20: 0.0257    map@50: 0.0307    
+Sun 10 Dec 2023 19:02:05 INFO bottomu result: 
+recall@5: 0.0395    recall@10: 0.0640    recall@20: 0.0965    recall@50: 0.1582    ndcg@5: 0.0256    ndcg@10: 0.0335    ndcg@20: 0.0417    ndcg@50: 0.0538    precision@5: 0.0079    precision@10: 0.0064    precision@20: 0.0048    precision@50: 0.0032    map@5: 0.0210    map@10: 0.0243    map@20: 0.0265    map@50: 0.0284    
+Sun 10 Dec 2023 19:02:08 INFO epoch 133 training [time: 2.99s, train loss: 0.5566]
+Sun 10 Dec 2023 19:02:24 INFO epoch 133 evaluating [time: 7.17s, valid_score: 0.096600]
+Sun 10 Dec 2023 19:02:24 INFO valid result: 
+recall@5: 0.0401    recall@10: 0.0616    recall@20: 0.0966    recall@50: 0.1563    ndcg@5: 0.0270    ndcg@10: 0.0340    ndcg@20: 0.0428    ndcg@50: 0.0548    precision@5: 0.0084    precision@10: 0.0065    precision@20: 0.0051    precision@50: 0.0033    map@5: 0.0224    map@10: 0.0252    map@20: 0.0276    map@50: 0.0295    
+Sun 10 Dec 2023 19:02:24 INFO topu result: 
+recall@5: 0.0378    recall@10: 0.0583    recall@20: 0.1053    recall@50: 0.2057    ndcg@5: 0.0541    ndcg@10: 0.0567    ndcg@20: 0.0776    ndcg@50: 0.1150    precision@5: 0.0519    precision@10: 0.0407    precision@20: 0.0352    precision@50: 0.0274    map@5: 0.0256    map@10: 0.0234    map@20: 0.0280    map@50: 0.0331    
+Sun 10 Dec 2023 19:02:24 INFO bottomu result: 
+recall@5: 0.0396    recall@10: 0.0637    recall@20: 0.0961    recall@50: 0.1578    ndcg@5: 0.0256    ndcg@10: 0.0334    ndcg@20: 0.0415    ndcg@50: 0.0537    precision@5: 0.0079    precision@10: 0.0064    precision@20: 0.0048    precision@50: 0.0032    map@5: 0.0210    map@10: 0.0242    map@20: 0.0264    map@50: 0.0284    
+Sun 10 Dec 2023 19:02:26 INFO epoch 134 training [time: 2.23s, train loss: 0.5464]
+Sun 10 Dec 2023 19:02:42 INFO epoch 134 evaluating [time: 5.66s, valid_score: 0.096800]
+Sun 10 Dec 2023 19:02:42 INFO valid result: 
+recall@5: 0.0401    recall@10: 0.0613    recall@20: 0.0968    recall@50: 0.1560    ndcg@5: 0.0271    ndcg@10: 0.0339    ndcg@20: 0.0429    ndcg@50: 0.0548    precision@5: 0.0084    precision@10: 0.0065    precision@20: 0.0051    precision@50: 0.0033    map@5: 0.0224    map@10: 0.0252    map@20: 0.0276    map@50: 0.0295    
+Sun 10 Dec 2023 19:02:42 INFO topu result: 
+recall@5: 0.0378    recall@10: 0.0537    recall@20: 0.0992    recall@50: 0.2173    ndcg@5: 0.0501    ndcg@10: 0.0505    ndcg@20: 0.0713    ndcg@50: 0.1150    precision@5: 0.0519    precision@10: 0.0370    precision@20: 0.0333    precision@50: 0.0289    map@5: 0.0222    map@10: 0.0204    map@20: 0.0244    map@50: 0.0307    
+Sun 10 Dec 2023 19:02:42 INFO bottomu result: 
+recall@5: 0.0399    recall@10: 0.0639    recall@20: 0.0961    recall@50: 0.1576    ndcg@5: 0.0257    ndcg@10: 0.0335    ndcg@20: 0.0416    ndcg@50: 0.0537    precision@5: 0.0080    precision@10: 0.0064    precision@20: 0.0048    precision@50: 0.0032    map@5: 0.0211    map@10: 0.0243    map@20: 0.0265    map@50: 0.0284    
+Sun 10 Dec 2023 19:02:43 INFO epoch 135 training [time: 1.90s, train loss: 0.5568]
+Sun 10 Dec 2023 19:03:01 INFO epoch 135 evaluating [time: 6.46s, valid_score: 0.096900]
+Sun 10 Dec 2023 19:03:01 INFO valid result: 
+recall@5: 0.0396    recall@10: 0.0616    recall@20: 0.0969    recall@50: 0.1563    ndcg@5: 0.0269    ndcg@10: 0.0340    ndcg@20: 0.0429    ndcg@50: 0.0548    precision@5: 0.0083    precision@10: 0.0065    precision@20: 0.0051    precision@50: 0.0033    map@5: 0.0223    map@10: 0.0252    map@20: 0.0276    map@50: 0.0295    
+Sun 10 Dec 2023 19:03:01 INFO topu result: 
+recall@5: 0.0378    recall@10: 0.0583    recall@20: 0.0992    recall@50: 0.2219    ndcg@5: 0.0504    ndcg@10: 0.0533    ndcg@20: 0.0715    ndcg@50: 0.1169    precision@5: 0.0519    precision@10: 0.0407    precision@20: 0.0333    precision@50: 0.0296    map@5: 0.0225    map@10: 0.0208    map@20: 0.0245    map@50: 0.0309    
+Sun 10 Dec 2023 19:03:01 INFO bottomu result: 
+recall@5: 0.0399    recall@10: 0.0639    recall@20: 0.0962    recall@50: 0.1575    ndcg@5: 0.0256    ndcg@10: 0.0333    ndcg@20: 0.0415    ndcg@50: 0.0536    precision@5: 0.0080    precision@10: 0.0064    precision@20: 0.0048    precision@50: 0.0031    map@5: 0.0209    map@10: 0.0241    map@20: 0.0263    map@50: 0.0282    
+Sun 10 Dec 2023 19:03:01 INFO +++++Finished training, best eval result in epoch 109
+Sun 10 Dec 2023 19:03:01 INFO best valid result: recall@5: 0.0395    recall@10: 0.0617    recall@20: 0.0976    recall@50: 0.1586    ndcg@5: 0.0270    ndcg@10: 0.0342    ndcg@20: 0.0432    ndcg@50: 0.0554    precision@5: 0.0083    precision@10: 0.0065    precision@20: 0.0051    precision@50: 0.0034    map@5: 0.0225    map@10: 0.0254    map@20: 0.0278    map@50: 0.0298    

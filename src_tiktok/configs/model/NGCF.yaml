@@ -1,0 +1,6 @@
+embedding_size: 64
+weight_size: [64, 64]
+reg_weight: [0, 0.1, 0.01, 0.001, 1e-04, 1e-05]
+mess_dropout: [0.1, 0.1]
+
+hyper_parameters: ["reg_weight"]

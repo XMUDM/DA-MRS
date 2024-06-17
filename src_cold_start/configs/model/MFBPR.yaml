@@ -1,0 +1,14 @@
+# embedding_size: 64
+# reg_weight: [2.0, 1.0, 1e-01, 1e-02, 1e-03, 1e-04, 1e-05]
+# hyper_parameters: ["reg_weight"]
+
+embedding_size: 64
+reg_weight: [0.1] # [2.0, 1.0, 1e-01, 1e-02, 0] # , 1e-03, 1e-04, 1e-05]
+neighbor_weight: [0.001] # [0, 1, 0.1, 0.001]
+kl_weight: [1]
+
+n_mm_layers: [1] # [1, 2]
+n_ui_layers: 2
+knn_k: 10
+
+hyper_parameters: ["n_mm_layers", "reg_weight", "neighbor_weight", "kl_weight"]
