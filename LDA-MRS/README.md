@@ -1,7 +1,6 @@
 # LDA-MRS
 
-This repository contains our implementations for "Lightweight Denoising and Aligning Multi-modal Recommender System". 
-
+This repository contains our implementations for "Lightweight Denoising and Aligning Multi-modal Recommender System". Our paper is accepted by ACM  ACM Transactions on Information Systems(TOIS)! 
 
 
 ### Folder structure
@@ -9,7 +8,6 @@ This repository contains our implementations for "Lightweight Denoising and Alig
 - data: The public links to download the datasets and dataset preprocessing methods. 
 - log_files: The log files to quickly reproduce the reported results. 
 - src_LDAMRS: The implementation of LDA-MRS on Amazon Baby, Sports and Clothing. 
-
 
 
 ### Dependencies
