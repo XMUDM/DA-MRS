@@ -1,6 +1,9 @@
-# DA-MRS
+# DA-MRS and LDA-MRS
 
-This repository is the official implementation of "Improving Multi-modal Recommender Systems by Denoising and Aligning Multi-modal Content and User Feedback". Our paper is accepted by KDD 2024 conference! 
+This repository provides the official implementation of two papers:
+
+- **"Improving Multi-modal Recommender Systems by Denoising and Aligning Multi-modal Content and User Feedback"** (accepted at KDD 2024)
+- **"Lightweight Denoising and Aligning Multi-modal Recommender System"** (accepted at ACM Transactions on Information Systems, TOIS)
 
 Please consider to cite our paper if this framework helps you, thanks:
 ```
