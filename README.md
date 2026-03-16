@@ -1,8 +1,19 @@
 # DA-MRS
 
-This repository contains our implementations for Denoising and Aligning Multi-modal Recommender System. 
+This repository is the official implementation of "Improving Multi-modal Recommender Systems by Denoising and Aligning Multi-modal Content and User Feedback". Our paper is accepted by KDD 2024 conference! 
 
-
+Please consider to cite our paper if this framework helps you, thanks:
+```
+@InProceedings{
+  author    = {Guipeng Xv and Xinyu Li and Ruobing Xie and Chen Lin and Chong Liu and Feng Xia and Zhanhui Kang and Leyu Lin},
+  booktitle = {Proceedings of the 30th {ACM} {SIGKDD} Conference on Knowledge Discovery and Data Mining, {KDD} 2024, Barcelona, Spain, August 25-29, 2024},
+  title     = {Improving Multi-modal Recommender Systems by Denoising and Aligning Multi-modal Content and User Feedback},
+  year      = {2024},
+  pages     = {3645--3656},
+  publisher = {{ACM}},
+  doi      = {10.1145/3637528.3671703},
+}
+```
 
 ### Folder structure
 
@@ -12,7 +23,6 @@ This repository contains our implementations for Denoising and Aligning Multi-mo
 - src_cold_start: The Implementation of DA-MRS on the cold-start user testing experiment. 
 - src_tiktok: The implementation of DA-MRS+LightGCN and its baselines on TikTok dataset. 
 - visualization: The visualization of DA-MRS+LightGCN and LightGCN. 
-
 
 
 ### Dependencies
