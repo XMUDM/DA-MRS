@@ -1,0 +1,30 @@
+embedding_size: 64
+feat_embed_dim: 64
+weight_size: [64, 64]
+
+lambda_coeff: 0.8
+kl_weight: [0.01, 0.02] # [0.01, 0.005, 0.02] #
+# lamba 1
+# Baby/sports/clothing 都是 0.01 比较好 
+
+n_mm_layers: [1] 
+n_ui_layers: [2] 
+knn_k: [10] # [5, 10, 15, 20]
+learning_rate: [0.001]
+mm_image_weight: [[0.34, 0.33, 0.33]]
+
+#neighbor_loss_weight: [1, 0.1, 0.01, 0.001, 0.0001, 0]
+neighbor_loss_weight: [0.0025, 0.001] # [0.0025, 0.001, 0.005] #
+# lambda 2
+# Baby 0.0025 比较好
+# Sports/clothing 之前是 0.001
+# Clothing 在结合 D-BPR 时用0.0025比较好
+
+neighbor_weight: [0.5] # , 0.4, 0.6, 0.8, 1]
+
+alpha: [0.35] #p_m
+#alpha Baby 取 0.25 比较好， Sports 取 0.3 比较好，Clothing 取 0.35 比较好
+#beta: [1] #n_m
+beta: [1 , 2, 3]
+
+hyper_parameters: ["knn_k", "n_ui_layers", "neighbor_weight", "kl_weight", "n_mm_layers", "learning_rate", "mm_image_weight", "neighbor_loss_weight", "alpha", "beta"]
