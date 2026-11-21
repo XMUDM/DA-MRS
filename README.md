@@ -3,7 +3,7 @@
 This repository provides the official implementation of two papers:
 
 - **"Improving Multi-modal Recommender Systems by Denoising and Aligning Multi-modal Content and User Feedback"** (accepted at KDD 2024)
-- **"Lightweight Denoising and Aligning Multi-modal Recommender System"** (accepted at ACM Transactions on Information Systems, TOIS)
+- **"Lightweight Denoising and Aligning Multi-modal Recommender System"** (accepted at ACM Transactions on Information Systems, TOIS 2026)
 
 Please consider to cite our paper if this framework helps you, thanks:
 ```
@@ -15,6 +15,25 @@ Please consider to cite our paper if this framework helps you, thanks:
   pages     = {3645--3656},
   publisher = {{ACM}},
   doi      = {10.1145/3637528.3671703},
+}
+
+@article{10.1145/3847657,
+author = {Xv, Guipeng and Liu, Yi and Li, Xinyu and Huang, Zhenhua and Lin, Chen},
+title = {Lightweight Denoising and Aligning for Multi-modal Recommender System},
+year = {2026},
+issue_date = {November 2026},
+publisher = {Association for Computing Machinery},
+address = {New York, NY, USA},
+volume = {44},
+number = {8},
+issn = {1046-8188},
+url = {https://doi.org/10.1145/3847657},
+doi = {10.1145/3847657},
+journal = {ACM Trans. Inf. Syst.},
+month = nov,
+articleno = {179},
+numpages = {34},
+keywords = {Multi-modal Recommender System, Noisy Multi-modal Content, Noisy User Feedback}
 }
 ```
 
